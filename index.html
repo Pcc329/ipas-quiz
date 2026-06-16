@@ -5,135 +5,160 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>iPAS AI 應用規劃師 中級 複習站</title>
 <style>
-:root{--bg:#0f1117;--surface:#161b22;--card:#1c2128;--border:#30363d;--accent:#4493f8;--accent2:#a371f7;--green:#3fb950;--red:#f85149;--yellow:#d29922;--text:#e6edf3;--muted:#7d8590;--r:10px;}
+:root{--bg:#0f1117;--sur:#161b22;--card:#1c2128;--bdr:#30363d;--acc:#4493f8;--acc2:#a371f7;--grn:#3fb950;--red:#f85149;--ylw:#d29922;--txt:#e6edf3;--mut:#7d8590;--r:10px;}
 *{box-sizing:border-box;margin:0;padding:0;}
-body{font-family:-apple-system,'Segoe UI','PingFang TC','Microsoft JhengHei',sans-serif;background:var(--bg);color:var(--text);min-height:100vh;}
-.hdr{background:var(--surface);border-bottom:1px solid var(--border);padding:.85rem 1.2rem;display:flex;align-items:center;gap:.75rem;flex-wrap:wrap;position:sticky;top:0;z-index:50;}
-.logo{display:flex;align-items:center;gap:.5rem;font-size:.95rem;font-weight:700;}
-.badge{background:var(--accent);color:#000;font-size:.62rem;font-weight:800;padding:.15rem .5rem;border-radius:4px;}
-.hstats{display:flex;gap:.85rem;margin-left:auto;flex-wrap:wrap;align-items:center;}
-.hstat{font-size:.77rem;color:var(--muted);}
-.hnum{font-weight:700;color:var(--text);}.hnum.g{color:var(--green);}.hnum.r{color:var(--red);}
-.tabs{background:var(--surface);border-bottom:1px solid var(--border);display:flex;overflow-x:auto;padding:0 .75rem;}
-.tab{padding:.82rem 1rem;font-size:.83rem;cursor:pointer;border-bottom:2px solid transparent;color:var(--muted);white-space:nowrap;transition:all .15s;user-select:none;flex-shrink:0;}
-.tab:hover{color:var(--text);}.tab.on{color:var(--accent);border-bottom-color:var(--accent);}
+body{font-family:-apple-system,'Segoe UI','PingFang TC','Microsoft JhengHei',sans-serif;background:var(--bg);color:var(--txt);min-height:100vh;}
+.hdr{background:var(--sur);border-bottom:1px solid var(--bdr);padding:.8rem 1.2rem;display:flex;align-items:center;gap:.7rem;flex-wrap:wrap;position:sticky;top:0;z-index:50;}
+.logo{display:flex;align-items:center;gap:.45rem;font-size:.93rem;font-weight:700;}
+.badge{background:var(--acc);color:#000;font-size:.6rem;font-weight:800;padding:.12rem .48rem;border-radius:4px;}
+.hstats{display:flex;gap:.8rem;margin-left:auto;flex-wrap:wrap;align-items:center;}
+.hstat{font-size:.76rem;color:var(--mut);}
+.hn{font-weight:700;color:var(--txt);}.hn.g{color:var(--grn);}.hn.r{color:var(--red);}
+.tabs{background:var(--sur);border-bottom:1px solid var(--bdr);display:flex;overflow-x:auto;padding:0 .7rem;}
+.tab{padding:.8rem .95rem;font-size:.82rem;cursor:pointer;border-bottom:2px solid transparent;color:var(--mut);white-space:nowrap;transition:all .15s;user-select:none;flex-shrink:0;}
+.tab:hover{color:var(--txt);}.tab.on{color:var(--acc);border-bottom-color:var(--acc);}
 .view{display:none;}.view.on{display:block;}
-.wrap{max-width:760px;margin:0 auto;padding:1.4rem 1rem;}
+.wrap{max-width:740px;margin:0 auto;padding:1.3rem .9rem;}
 /* READ */
-.read-layout{display:grid;grid-template-columns:210px 1fr;min-height:calc(100vh - 105px);}
-@media(max-width:600px){.read-layout{grid-template-columns:1fr;}.read-nav{display:none;}}
-.read-nav{background:var(--surface);border-right:1px solid var(--border);padding:1rem .75rem;position:sticky;top:105px;height:calc(100vh - 105px);overflow-y:auto;}
-.nav-subj{font-size:.68rem;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);padding:.5rem .5rem .3rem;margin-top:.5rem;}
-.nav-ch{padding:.45rem .6rem;border-radius:6px;cursor:pointer;font-size:.81rem;color:var(--muted);transition:all .15s;display:flex;align-items:center;gap:.5rem;margin-bottom:.1rem;}
-.nav-ch:hover{color:var(--text);background:var(--card);}.nav-ch.on{background:rgba(68,147,248,.1);color:var(--accent);font-weight:600;}
-.nav-dot{width:6px;height:6px;border-radius:50%;background:var(--border);flex-shrink:0;}.nav-ch.on .nav-dot{background:var(--accent);}
-.read-body{padding:1.4rem 1.2rem;}
-.ch-subj-tag{font-size:.7rem;font-weight:600;padding:.2rem .55rem;border-radius:4px;display:inline-block;margin-bottom:.55rem;}
-.tag-s2{background:rgba(163,113,247,.15);color:var(--accent2);}.tag-s3{background:rgba(68,147,248,.15);color:var(--accent);}
-.ch-num{font-size:.79rem;color:var(--muted);margin-bottom:.2rem;}
-.ch-title{font-size:1.25rem;font-weight:700;line-height:1.4;margin-bottom:1.3rem;}
-.sec-card{background:var(--card);border:1px solid var(--border);border-radius:var(--r);margin-bottom:.9rem;overflow:hidden;}
-.sec-head{padding:.95rem 1.1rem;cursor:pointer;display:flex;align-items:center;gap:.7rem;transition:background .15s;user-select:none;}
-.sec-head:hover{background:rgba(255,255,255,.025);}
-.sec-num{width:24px;height:24px;border-radius:50%;background:rgba(68,147,248,.15);color:var(--accent);display:flex;align-items:center;justify-content:center;font-size:.7rem;font-weight:700;flex-shrink:0;}
-.sec-title-txt{font-size:.88rem;font-weight:600;flex:1;}
-.sec-arr{color:var(--muted);font-size:.88rem;transition:transform .2s;flex-shrink:0;}
-.sec-open .sec-arr{transform:rotate(90deg);}
-.sec-body{display:none;padding:1.1rem 1.15rem;font-size:.83rem;line-height:1.9;color:var(--text);border-top:1px solid var(--border);}
-.sec-body code{background:var(--bg);border:1px solid var(--border);border-radius:4px;padding:.1rem .35rem;font-family:monospace;font-size:.78rem;color:#a5d6ff;}
-.sec-body pre{background:#010409;border:1px solid var(--border);border-radius:6px;padding:.85rem;font-family:monospace;font-size:.78rem;line-height:1.6;overflow-x:auto;color:#a5d6ff;margin:.6rem 0;white-space:pre;}
-.ch-btns{display:flex;gap:.7rem;margin-top:1.4rem;padding-bottom:1rem;}
-.ch-btn{flex:1;padding:.55rem .9rem;border-radius:var(--r);border:1px solid var(--border);background:var(--bg);color:var(--muted);font-size:.81rem;cursor:pointer;transition:all .15s;text-align:center;}
-.ch-btn:hover:not(:disabled){border-color:var(--accent);color:var(--text);}
-.ch-btn:disabled{opacity:.3;cursor:default;}
-.ch-btn.primary{background:var(--accent);border-color:var(--accent);color:#000;font-weight:700;}
-.ch-btn.primary:hover{background:#58a6ff;}
+.rl{display:grid;grid-template-columns:200px 1fr;min-height:calc(100vh - 100px);}
+@media(max-width:580px){.rl{grid-template-columns:1fr;}.rnav{display:none;}}
+.rnav{background:var(--sur);border-right:1px solid var(--bdr);padding:.9rem .7rem;position:sticky;top:100px;height:calc(100vh - 100px);overflow-y:auto;}
+.nsubj{font-size:.65rem;text-transform:uppercase;letter-spacing:.1em;color:var(--mut);padding:.45rem .45rem .25rem;margin-top:.4rem;}
+.nch{padding:.42rem .55rem;border-radius:6px;cursor:pointer;font-size:.79rem;color:var(--mut);transition:all .15s;display:flex;align-items:center;gap:.45rem;margin-bottom:.08rem;}
+.nch:hover{color:var(--txt);background:var(--card);}
+.nch.on{background:rgba(68,147,248,.1);color:var(--acc);font-weight:600;}
+.ndot{width:5px;height:5px;border-radius:50%;background:var(--bdr);flex-shrink:0;}.nch.on .ndot{background:var(--acc);}
+.rbody{padding:1.3rem 1.1rem;}
+.csubj{font-size:.68rem;font-weight:600;padding:.18rem .52rem;border-radius:4px;display:inline-block;margin-bottom:.5rem;}
+.ts2{background:rgba(163,113,247,.15);color:var(--acc2);}.ts3{background:rgba(68,147,248,.15);color:var(--acc);}
+.cnum{font-size:.76rem;color:var(--mut);margin-bottom:.18rem;}
+.ctitle{font-size:1.22rem;font-weight:700;line-height:1.4;margin-bottom:1.2rem;}
+/* SECTION CARD */
+.scard{background:var(--card);border:1px solid var(--bdr);border-radius:var(--r);margin-bottom:.85rem;overflow:hidden;}
+.shead{padding:.9rem 1.05rem;cursor:pointer;display:flex;align-items:center;gap:.65rem;transition:background .15s;user-select:none;}
+.shead:hover{background:rgba(255,255,255,.025);}
+.snum{width:23px;height:23px;border-radius:50%;background:rgba(68,147,248,.15);color:var(--acc);display:flex;align-items:center;justify-content:center;font-size:.68rem;font-weight:700;flex-shrink:0;}
+.stit{font-size:.87rem;font-weight:600;flex:1;}
+.sarr{color:var(--mut);font-size:.86rem;transition:transform .2s;flex-shrink:0;}
+.sopen .sarr{transform:rotate(90deg);}
+.sbody{display:none;border-top:1px solid var(--bdr);}
+/* CONTENT BLOCKS */
+.blk{padding:1rem 1.1rem;border-bottom:1px solid var(--bdr);}
+.blk:last-child{border-bottom:none;}
+.blk-label{display:inline-block;font-size:.68rem;font-weight:600;padding:.18rem .5rem;border-radius:4px;margin-bottom:.6rem;}
+.lbl-concept{background:rgba(68,147,248,.12);color:var(--acc);}
+.lbl-example{background:rgba(63,185,80,.12);color:var(--grn);}
+.lbl-compare{background:rgba(163,113,247,.12);color:var(--acc2);}
+.lbl-exam{background:rgba(245,158,11,.12);color:var(--ylw);}
+.blk-title{font-size:.93rem;font-weight:600;color:var(--txt);margin-bottom:.5rem;}
+.blk-text{font-size:.83rem;line-height:1.85;color:var(--mut);}
+.blk-text strong{color:var(--txt);}
+/* CONCEPT BOX */
+.cbox{background:var(--bg);border:1px solid var(--bdr);border-radius:8px;padding:.9rem;margin-top:.6rem;font-size:.82rem;line-height:1.8;color:var(--mut);}
+.cbox strong{color:var(--txt);}
+/* POINTS GRID */
+.pts{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:.55rem;margin-top:.7rem;}
+.pt{background:var(--bg);border:1px solid var(--bdr);border-radius:7px;padding:.72rem .85rem;}
+.pt-lbl{font-size:.76rem;font-weight:600;color:var(--acc);margin-bottom:.3rem;}
+.pt-txt{font-size:.78rem;line-height:1.75;color:var(--mut);}
+.pt-txt strong{color:var(--txt);}
+/* EXAM HIGHLIGHT */
+.exam-box{background:rgba(245,158,11,.07);border:1px solid rgba(245,158,11,.25);border-radius:8px;padding:.82rem 1rem;margin-top:.7rem;}
+.exam-label{font-size:.7rem;font-weight:700;color:var(--ylw);margin-bottom:.3rem;}
+.exam-text{font-size:.81rem;line-height:1.8;color:var(--txt);}
+/* NAV BUTTONS */
+.cbtns{display:flex;gap:.65rem;margin-top:1.3rem;padding-bottom:.8rem;}
+.cbtn{flex:1;padding:.52rem .85rem;border-radius:var(--r);border:1px solid var(--bdr);background:var(--bg);color:var(--mut);font-size:.79rem;cursor:pointer;transition:all .15s;text-align:center;}
+.cbtn:hover:not(:disabled){border-color:var(--acc);color:var(--txt);}
+.cbtn:disabled{opacity:.3;cursor:default;}
+.cbtn.pri{background:var(--acc);border-color:var(--acc);color:#000;font-weight:700;}
+.cbtn.pri:hover{background:#58a6ff;}
 /* QUIZ */
-.prog-wrap{background:var(--card);border:1px solid var(--border);border-radius:var(--r);padding:1rem 1.1rem;margin-bottom:1.1rem;}
-.prog-row{display:flex;justify-content:space-between;font-size:.78rem;color:var(--muted);margin-bottom:.45rem;}
-.prog-bar{height:5px;background:var(--border);border-radius:3px;overflow:hidden;}
-.prog-fill{height:100%;background:linear-gradient(90deg,var(--accent),var(--accent2));transition:width .4s;}
-.prog-nums{display:grid;grid-template-columns:repeat(3,1fr);gap:.6rem;margin-top:.8rem;}
-.pnum{text-align:center;}.pnum-n{font-size:1.3rem;font-weight:700;}.pnum-n.g{color:var(--green);}.pnum-n.r{color:var(--red);}
-.pnum-l{font-size:.69rem;color:var(--muted);margin-top:.1rem;}
-.filters{display:flex;gap:.42rem;margin-bottom:.95rem;flex-wrap:wrap;}
-.fbtn{background:var(--card);border:1px solid var(--border);color:var(--muted);padding:.33rem .68rem;border-radius:6px;font-size:.76rem;cursor:pointer;transition:all .15s;}
-.fbtn:hover{border-color:var(--accent);color:var(--text);}
-.fbtn.on{background:rgba(68,147,248,.1);border-color:var(--accent);color:var(--accent);font-weight:600;}
-.fbtn[data-f="easy"].on{background:rgba(63,185,80,.1);border-color:var(--green);color:var(--green);}
-.fbtn[data-f="medium"].on{background:rgba(210,153,34,.1);border-color:var(--yellow);color:var(--yellow);}
-.fbtn[data-f="hard"].on{background:rgba(248,81,73,.1);border-color:var(--red);color:var(--red);}
-.mode-row{display:flex;gap:.42rem;margin-bottom:1.05rem;align-items:center;}
-.mode-label{font-size:.77rem;color:var(--muted);}
-.qcard{background:var(--card);border:1px solid var(--border);border-radius:var(--r);padding:1.35rem;}
-.qmeta{display:flex;gap:.42rem;align-items:center;flex-wrap:wrap;margin-bottom:.85rem;}
-.qtag{font-size:.66rem;padding:.17rem .47rem;border-radius:4px;font-weight:600;}
-.ts1{background:rgba(63,185,80,.12);color:var(--green);}.ts2{background:rgba(163,113,247,.15);color:var(--accent2);}.ts3{background:rgba(68,147,248,.15);color:var(--accent);}
-.te{background:rgba(63,185,80,.12);color:var(--green);}.tm{background:rgba(210,153,34,.12);color:var(--yellow);}.th{background:rgba(248,81,73,.12);color:var(--red);}
-.tt{background:var(--border);color:var(--muted);}
-.qnum{font-size:.69rem;color:var(--muted);margin-left:auto;}
-.qtext{font-size:.94rem;font-weight:600;line-height:1.75;margin-bottom:1.05rem;}
-.qcode{background:#010409;border:1px solid var(--border);border-radius:6px;padding:.82rem;font-family:monospace;font-size:.78rem;line-height:1.6;margin-bottom:1.05rem;overflow-x:auto;color:#a5d6ff;white-space:pre;}
-.opts{display:flex;flex-direction:column;gap:.4rem;}
-.opt{background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:.68rem .88rem;cursor:pointer;font-size:.85rem;transition:all .15s;display:flex;gap:.62rem;align-items:flex-start;line-height:1.55;}
-.opt:hover:not(.dis){border-color:var(--accent);background:rgba(68,147,248,.04);}
-.opt.ok{border-color:var(--green)!important;background:rgba(63,185,80,.07)!important;}
+.pw{background:var(--card);border:1px solid var(--bdr);border-radius:var(--r);padding:.95rem 1.05rem;margin-bottom:1.05rem;}
+.pr{display:flex;justify-content:space-between;font-size:.77rem;color:var(--mut);margin-bottom:.4rem;}
+.pb{height:5px;background:var(--bdr);border-radius:3px;overflow:hidden;}
+.pf{height:100%;background:linear-gradient(90deg,var(--acc),var(--acc2));transition:width .4s;}
+.pns{display:grid;grid-template-columns:repeat(3,1fr);gap:.55rem;margin-top:.75rem;}
+.pn{text-align:center;}.pnn{font-size:1.28rem;font-weight:700;}.pnn.g{color:var(--grn);}.pnn.r{color:var(--red);}
+.pnl{font-size:.68rem;color:var(--mut);margin-top:.08rem;}
+.filt{display:flex;gap:.4rem;margin-bottom:.9rem;flex-wrap:wrap;}
+.fb{background:var(--card);border:1px solid var(--bdr);color:var(--mut);padding:.3rem .65rem;border-radius:6px;font-size:.75rem;cursor:pointer;transition:all .15s;}
+.fb:hover{border-color:var(--acc);color:var(--txt);}
+.fb.on{background:rgba(68,147,248,.1);border-color:var(--acc);color:var(--acc);font-weight:600;}
+.fb[data-f=easy].on{background:rgba(63,185,80,.1);border-color:var(--grn);color:var(--grn);}
+.fb[data-f=medium].on{background:rgba(210,153,34,.1);border-color:var(--ylw);color:var(--ylw);}
+.fb[data-f=hard].on{background:rgba(248,81,73,.1);border-color:var(--red);color:var(--red);}
+.mr{display:flex;gap:.4rem;margin-bottom:1rem;align-items:center;}
+.mhint{font-size:.75rem;color:var(--mut);}
+.qcard{background:var(--card);border:1px solid var(--bdr);border-radius:var(--r);padding:1.3rem;}
+.qm{display:flex;gap:.4rem;align-items:center;flex-wrap:wrap;margin-bottom:.82rem;}
+.qt{font-size:.65rem;padding:.16rem .45rem;border-radius:4px;font-weight:600;}
+.qs1{background:rgba(63,185,80,.12);color:var(--grn);}.qs2{background:rgba(163,113,247,.15);color:var(--acc2);}.qs3{background:rgba(68,147,248,.15);color:var(--acc);}
+.qte{background:rgba(63,185,80,.12);color:var(--grn);}.qtm{background:rgba(210,153,34,.12);color:var(--ylw);}.qth{background:rgba(248,81,73,.12);color:var(--red);}
+.qtt{background:var(--bdr);color:var(--mut);}
+.qnum{font-size:.68rem;color:var(--mut);margin-left:auto;}
+.qtxt{font-size:.93rem;font-weight:600;line-height:1.75;margin-bottom:1.05rem;}
+.qcode{background:#010409;border:1px solid var(--bdr);border-radius:6px;padding:.8rem;font-family:monospace;font-size:.77rem;line-height:1.6;margin-bottom:1.05rem;overflow-x:auto;color:#a5d6ff;white-space:pre;}
+.opts{display:flex;flex-direction:column;gap:.38rem;}
+.opt{background:var(--bg);border:1px solid var(--bdr);border-radius:8px;padding:.66rem .86rem;cursor:pointer;font-size:.84rem;transition:all .15s;display:flex;gap:.6rem;align-items:flex-start;line-height:1.55;}
+.opt:hover:not(.dis){border-color:var(--acc);background:rgba(68,147,248,.04);}
+.opt.ok{border-color:var(--grn)!important;background:rgba(63,185,80,.07)!important;}
 .opt.no{border-color:var(--red)!important;background:rgba(248,81,73,.07)!important;}
 .opt.dis{cursor:default;}
-.okey{min-width:21px;height:21px;border-radius:50%;background:var(--border);display:flex;align-items:center;justify-content:center;font-size:.68rem;font-weight:700;flex-shrink:0;margin-top:1px;}
-.opt.ok .okey{background:var(--green);color:#000;}.opt.no .okey{background:var(--red);color:#fff;}
-.exp{display:none;margin-top:1rem;background:rgba(63,185,80,.04);border:1px solid rgba(63,185,80,.18);border-radius:8px;padding:.92rem 1.05rem;}
-.exp.on{display:block;}.exph{color:var(--green);font-weight:700;font-size:.82rem;margin-bottom:.38rem;}
-.expb{font-size:.82rem;line-height:1.8;color:var(--text);white-space:pre-wrap;}
-.acts{display:flex;gap:.52rem;margin-top:.95rem;flex-wrap:wrap;}
-.abtn{padding:.43rem .78rem;border-radius:7px;border:1px solid var(--border);background:var(--bg);color:var(--muted);font-size:.77rem;cursor:pointer;transition:all .15s;}
-.abtn:hover{border-color:var(--accent);color:var(--text);}
-.abtn.wb:hover,.abtn.wb.added{border-color:var(--red);color:var(--red);}
-.abtn.wb.added{background:rgba(248,81,73,.05);}
-.abtn.nx{background:var(--accent);border-color:var(--accent);color:#000;font-weight:700;margin-left:auto;}
-.abtn.nx:hover{background:#58a6ff!important;}
+.ok{min-width:20px;height:20px;border-radius:50%;background:var(--bdr);display:flex;align-items:center;justify-content:center;font-size:.67rem;font-weight:700;flex-shrink:0;margin-top:1px;}
+.opt.ok .ok{background:var(--grn);color:#000;}.opt.no .ok{background:var(--red);color:#fff;}
+.exp{display:none;margin-top:.95rem;background:rgba(63,185,80,.04);border:1px solid rgba(63,185,80,.18);border-radius:8px;padding:.9rem 1.05rem;}
+.exp.on{display:block;}.exph{color:var(--grn);font-weight:700;font-size:.81rem;margin-bottom:.36rem;}
+.expb{font-size:.81rem;line-height:1.8;color:var(--txt);white-space:pre-wrap;}
+.acts{display:flex;gap:.5rem;margin-top:.9rem;flex-wrap:wrap;}
+.ab{padding:.42rem .76rem;border-radius:7px;border:1px solid var(--bdr);background:var(--bg);color:var(--mut);font-size:.76rem;cursor:pointer;transition:all .15s;}
+.ab:hover{border-color:var(--acc);color:var(--txt);}
+.ab.wb:hover,.ab.wb.added{border-color:var(--red);color:var(--red);}
+.ab.wb.added{background:rgba(248,81,73,.05);}
+.ab.nx{background:var(--acc);border-color:var(--acc);color:#000;font-weight:700;margin-left:auto;}
+.ab.nx:hover{background:#58a6ff!important;}
 /* WB */
-.sec-t{font-size:.92rem;font-weight:700;margin-bottom:.85rem;padding-bottom:.52rem;border-bottom:1px solid var(--border);}
-.wbempty{text-align:center;padding:2.5rem 1rem;color:var(--muted);background:var(--card);border:1px solid var(--border);border-radius:var(--r);line-height:1.8;font-size:.86rem;}
-.wbitem{background:var(--card);border:1px solid var(--border);border-radius:8px;padding:.85rem 1rem;margin-bottom:.52rem;cursor:pointer;transition:all .15s;}
-.wbitem:hover{border-color:var(--accent);}
-.wbrow{display:flex;gap:.5rem;align-items:flex-start;}
-.wbq{font-size:.84rem;font-weight:600;line-height:1.5;flex:1;}
-.wbrm{color:var(--red);font-size:.72rem;cursor:pointer;padding:.12rem .32rem;border-radius:4px;flex-shrink:0;}
+.sect{font-size:.9rem;font-weight:700;margin-bottom:.82rem;padding-bottom:.5rem;border-bottom:1px solid var(--bdr);}
+.wbmt{text-align:center;padding:2.2rem 1rem;color:var(--mut);background:var(--card);border:1px solid var(--bdr);border-radius:var(--r);line-height:1.8;font-size:.84rem;}
+.wbi{background:var(--card);border:1px solid var(--bdr);border-radius:8px;padding:.82rem .98rem;margin-bottom:.5rem;cursor:pointer;transition:all .15s;}
+.wbi:hover{border-color:var(--acc);}
+.wbr{display:flex;gap:.48rem;align-items:flex-start;}
+.wbq{font-size:.83rem;font-weight:600;line-height:1.5;flex:1;}
+.wbrm{color:var(--red);font-size:.71rem;cursor:pointer;padding:.1rem .3rem;border-radius:4px;flex-shrink:0;}
 .wbrm:hover{background:rgba(248,81,73,.1);}
-.wbmeta{font-size:.7rem;color:var(--muted);display:flex;gap:.7rem;margin-top:.2rem;}
+.wbm{font-size:.69rem;color:var(--mut);display:flex;gap:.65rem;margin-top:.18rem;}
 /* SHEET */
-.cards-g{display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:.65rem;margin-bottom:1.4rem;}
-.cs-card{background:var(--card);border:1px solid var(--border);border-radius:var(--r);padding:.95rem;cursor:pointer;transition:all .15s;}
-.cs-card:hover{border-color:var(--accent);}
-.cs-head{display:flex;align-items:center;gap:.5rem;}
-.cs-t{font-size:.86rem;font-weight:600;flex:1;}
-.cs-arr{font-size:.79rem;color:var(--muted);transition:transform .2s;}
-.cs-open .cs-arr{transform:rotate(90deg);}
-.cs-body{display:none;margin-top:.68rem;font-size:.79rem;line-height:1.85;color:var(--muted);border-top:1px solid var(--border);padding-top:.68rem;}
-.cs-body strong{color:var(--text);}
-.kw-g{display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:.38rem;}
-.kw{padding:.36rem .58rem;background:var(--card);border:1px solid var(--border);border-radius:5px;font-size:.78rem;}
+.cg{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:.6rem;margin-bottom:1.3rem;}
+.cc{background:var(--card);border:1px solid var(--bdr);border-radius:var(--r);padding:.9rem;cursor:pointer;transition:all .15s;}
+.cc:hover{border-color:var(--acc);}
+.cch{display:flex;align-items:center;gap:.48rem;}
+.cct{font-size:.84rem;font-weight:600;flex:1;}
+.cca{font-size:.78rem;color:var(--mut);transition:transform .2s;}
+.ccopen .cca{transform:rotate(90deg);}
+.ccb{display:none;margin-top:.65rem;font-size:.78rem;line-height:1.85;color:var(--mut);border-top:1px solid var(--bdr);padding-top:.65rem;}
+.ccb strong{color:var(--txt);}
+.kwg{display:grid;grid-template-columns:repeat(auto-fill,minmax(165px,1fr));gap:.36rem;}
+.kw{padding:.34rem .55rem;background:var(--card);border:1px solid var(--bdr);border-radius:5px;font-size:.76rem;}
 /* REFS */
-.ref-list{display:flex;flex-direction:column;gap:.48rem;}
-.ref-a{display:flex;align-items:center;gap:.72rem;text-decoration:none;background:var(--card);border:1px solid var(--border);border-radius:var(--r);padding:.85rem 1rem;transition:all .15s;color:var(--text);}
-.ref-a:hover{border-color:var(--accent);}
-.ref-icon{font-size:1.1rem;flex-shrink:0;}.ref-info{flex:1;}
-.ref-title{font-size:.86rem;font-weight:600;}.ref-desc{font-size:.73rem;color:var(--muted);margin-top:.1rem;}
-.ref-tag{font-size:.66rem;background:var(--border);color:var(--muted);padding:.13rem .4rem;border-radius:4px;white-space:nowrap;}
-.toast{position:fixed;bottom:1.2rem;right:1.2rem;background:var(--card);border:1px solid var(--border);border-radius:8px;padding:.58rem .95rem;font-size:.8rem;opacity:0;transform:translateY(6px);transition:all .2s;pointer-events:none;z-index:200;}
+.rl2{display:flex;flex-direction:column;gap:.46rem;}
+.ra{display:flex;align-items:center;gap:.7rem;text-decoration:none;background:var(--card);border:1px solid var(--bdr);border-radius:var(--r);padding:.82rem .98rem;transition:all .15s;color:var(--txt);}
+.ra:hover{border-color:var(--acc);}
+.ri{font-size:1.08rem;flex-shrink:0;}.rinfo{flex:1;}
+.rt{font-size:.84rem;font-weight:600;}.rd{font-size:.72rem;color:var(--mut);margin-top:.1rem;}
+.rtag{font-size:.65rem;background:var(--bdr);color:var(--mut);padding:.12rem .38rem;border-radius:4px;white-space:nowrap;}
+.toast{position:fixed;bottom:1.1rem;right:1.1rem;background:var(--card);border:1px solid var(--bdr);border-radius:8px;padding:.55rem .9rem;font-size:.79rem;opacity:0;transform:translateY(6px);transition:all .2s;pointer-events:none;z-index:200;}
 .toast.on{opacity:1;transform:translateY(0);}
-@media(max-width:480px){.hstats{gap:.52rem;}.wrap{padding:1rem .7rem;}.cards-g{grid-template-columns:1fr;}}
+@media(max-width:460px){.hstats{gap:.5rem;}.wrap{padding:.9rem .65rem;}.cg{grid-template-columns:1fr;}.pts{grid-template-columns:1fr;}}
 </style>
 </head>
 <body>
 <header class="hdr">
   <div class="logo"><span class="badge">iPAS</span>AI 應用規劃師 中級</div>
   <div class="hstats">
-    <div class="hstat">答題 <span class="hnum" id="hn-t">0</span></div>
-    <div class="hstat">✓ <span class="hnum g" id="hn-c">0</span></div>
-    <div class="hstat">✗ <span class="hnum r" id="hn-w">0</span></div>
-    <div class="hstat">正確率 <span class="hnum" id="hn-r">—</span></div>
+    <div class="hstat">答題 <span class="hn" id="hn-t">0</span></div>
+    <div class="hstat">✓ <span class="hn g" id="hn-c">0</span></div>
+    <div class="hstat">✗ <span class="hn r" id="hn-w">0</span></div>
+    <div class="hstat">正確率 <span class="hn" id="hn-r">—</span></div>
   </div>
 </header>
 <div class="tabs">
@@ -143,88 +168,66 @@ body{font-family:-apple-system,'Segoe UI','PingFang TC','Microsoft JhengHei',san
   <div class="tab" onclick="goTab('sheet',this)">📋 考點速查</div>
   <div class="tab" onclick="goTab('refs',this)">🔗 參考資料</div>
 </div>
-
 <!-- READ -->
 <div class="view on" id="v-read">
-  <div class="read-layout">
-    <nav class="read-nav" id="read-nav"></nav>
-    <div class="read-body" id="read-body"></div>
+  <div class="rl">
+    <nav class="rnav" id="rnav"></nav>
+    <div class="rbody" id="rbody"></div>
   </div>
 </div>
-
 <!-- QUIZ -->
 <div class="view" id="v-quiz">
 <div class="wrap">
-  <div class="prog-wrap">
-    <div class="prog-row"><span>作答進度</span><span id="p-label">0 / 50 題</span></div>
-    <div class="prog-bar"><div class="prog-fill" id="p-fill" style="width:0%"></div></div>
-    <div class="prog-nums">
-      <div class="pnum"><div class="pnum-n" id="p-tot">0</div><div class="pnum-l">已作答</div></div>
-      <div class="pnum"><div class="pnum-n g" id="p-cor">0</div><div class="pnum-l">答對</div></div>
-      <div class="pnum"><div class="pnum-n r" id="p-wrg">0</div><div class="pnum-l">答錯</div></div>
+  <div class="pw">
+    <div class="pr"><span>作答進度</span><span id="plbl">0 / 50 題</span></div>
+    <div class="pb"><div class="pf" id="pf" style="width:0%"></div></div>
+    <div class="pns">
+      <div class="pn"><div class="pnn" id="p-t">0</div><div class="pnl">已作答</div></div>
+      <div class="pn"><div class="pnn g" id="p-c">0</div><div class="pnl">答對</div></div>
+      <div class="pn"><div class="pnn r" id="p-w">0</div><div class="pnl">答錯</div></div>
     </div>
   </div>
-  <div class="filters" id="sf">
-    <button class="fbtn on" onclick="setSubj('all',this)">全部</button>
-    <button class="fbtn" onclick="setSubj('科目一',this)">科目一</button>
-    <button class="fbtn" onclick="setSubj('科目二',this)">科目二</button>
-    <button class="fbtn" onclick="setSubj('科目三',this)">科目三</button>
+  <div class="filt" id="sf">
+    <button class="fb on" onclick="setSubj('all',this)">全部</button>
+    <button class="fb" onclick="setSubj('科目一',this)">科目一</button>
+    <button class="fb" onclick="setSubj('科目二',this)">科目二</button>
+    <button class="fb" onclick="setSubj('科目三',this)">科目三</button>
   </div>
-  <div class="filters" id="df">
-    <button class="fbtn on" onclick="setDiff('all',this)">難度：全部</button>
-    <button class="fbtn" data-f="easy" onclick="setDiff('easy',this)">基礎</button>
-    <button class="fbtn" data-f="medium" onclick="setDiff('medium',this)">進階</button>
-    <button class="fbtn" data-f="hard" onclick="setDiff('hard',this)">挑戰</button>
+  <div class="filt" id="df">
+    <button class="fb on" onclick="setDiff('all',this)">難度：全部</button>
+    <button class="fb" data-f="easy" onclick="setDiff('easy',this)">基礎</button>
+    <button class="fb" data-f="medium" onclick="setDiff('medium',this)">進階</button>
+    <button class="fb" data-f="hard" onclick="setDiff('hard',this)">挑戰</button>
   </div>
-  <div class="mode-row">
-    <button class="fbtn on" onclick="setMode('rand',this)">🔀 隨機</button>
-    <button class="fbtn" onclick="setMode('seq',this)">📋 順序</button>
-    <span class="mode-label" id="m-hint">隨機出題</span>
+  <div class="mr">
+    <button class="fb on" onclick="setMode('rand',this)">🔀 隨機</button>
+    <button class="fb" onclick="setMode('seq',this)">📋 順序</button>
+    <span class="mhint" id="mhint">隨機出題</span>
   </div>
   <div id="qa"></div>
 </div>
 </div>
-
-<!-- WRONG BOOK -->
+<!-- WB -->
 <div class="view" id="v-wb">
 <div class="wrap">
-  <div class="sec-t">📕 錯題本 <span id="wb-count" style="font-size:.74rem;color:var(--muted);font-weight:400"></span></div>
-  <div id="wb-list"></div>
+  <div class="sect">📕 錯題本 <span id="wbcnt" style="font-size:.72rem;color:var(--mut);font-weight:400"></span></div>
+  <div id="wblist"></div>
 </div>
 </div>
-
-<!-- CHEATSHEET -->
+<!-- SHEET -->
 <div class="view" id="v-sheet">
 <div class="wrap">
-  <div class="sec-t">📐 核心公式速查</div>
-  <div class="cards-g">
-    <div class="cs-card" onclick="csToggle(this)">
-      <div class="cs-head"><span class="cs-t">Precision / Recall / F1</span><span class="cs-arr">›</span></div>
-      <div class="cs-body"><strong>Precision</strong> = TP/(TP+FP)　預測正中有多少真的是正<br><strong>Recall</strong> = TP/(TP+FN)　真正的正有多少被找出來<br><strong>F1</strong> = 2×P×R/(P+R)<br><br><strong>醫療/詐欺</strong>：Recall 優先（不能漏）<br><strong>垃圾郵件</strong>：Precision 優先（不能誤刪）</div>
-    </div>
-    <div class="cs-card" onclick="csToggle(this)">
-      <div class="cs-head"><span class="cs-t">L1 vs L2 正則化</span><span class="cs-arr">›</span></div>
-      <div class="cs-body"><strong>L1 Lasso</strong>：部分權重歸零 → 稀疏、特徵選擇<br><strong>L2 Ridge</strong>：所有權重縮小但不為零 → 通用防過擬合<br><br>記憶：L1 = Lasso = Leave some zero</div>
-    </div>
-    <div class="cs-card" onclick="csToggle(this)">
-      <div class="cs-head"><span class="cs-t">過擬合 vs 欠擬合</span><span class="cs-arr">›</span></div>
-      <div class="cs-body"><strong>過擬合</strong>：訓練低＋驗證高 → L1/L2、Dropout、更多資料<br><strong>欠擬合</strong>：兩者都高且接近 → 增加模型複雜度<br><br>學習曲線兩條線都高且接近 = 欠擬合</div>
-    </div>
-    <div class="cs-card" onclick="csToggle(this)">
-      <div class="cs-head"><span class="cs-t">何時需要 StandardScaler</span><span class="cs-arr">›</span></div>
-      <div class="cs-body"><strong>需要</strong>：KNN、SVM(RBF)、PCA、神經網路<br><strong>不需要</strong>：決策樹、隨機森林、XGBoost<br><br>記憶：距離型/梯度型 → 需要；樹型 → 不需要</div>
-    </div>
-    <div class="cs-card" onclick="csToggle(this)">
-      <div class="cs-head"><span class="cs-t">F1 計算範例</span><span class="cs-arr">›</span></div>
-      <div class="cs-body">TP=80, FP=20, FN=40<br>P = 80/100 = <strong>0.80</strong><br>R = 80/120 = <strong>0.667</strong><br>F1 = 2×0.80×0.667/(0.80+0.667) = <strong>0.727</strong></div>
-    </div>
-    <div class="cs-card" onclick="csToggle(this)">
-      <div class="cs-head"><span class="cs-t">Sklearn Data Leakage 避免</span><span class="cs-arr">›</span></div>
-      <div class="cs-body"><strong>錯誤</strong>：對全部資料 fit_transform 再做 cross_val_score<br><strong>正確</strong>：用 Pipeline，每個 Fold 只對訓練集 fit<br><br>X_test 只能 transform()，不能 fit_transform()！</div>
-    </div>
+  <div class="sect">📐 核心公式速查</div>
+  <div class="cg">
+    <div class="cc" onclick="cctog(this)"><div class="cch"><span class="cct">Precision / Recall / F1</span><span class="cca">›</span></div><div class="ccb"><strong>Precision</strong> = TP/(TP+FP) 預測為正中有多少真的是正<br><strong>Recall</strong> = TP/(TP+FN) 真正的正有多少被找出來<br><strong>F1</strong> = 2×P×R/(P+R)<br><br><strong>醫療/詐欺</strong>：Recall 優先（不能漏）<br><strong>垃圾郵件</strong>：Precision 優先（不能誤刪）</div></div>
+    <div class="cc" onclick="cctog(this)"><div class="cch"><span class="cct">L1 vs L2 正則化</span><span class="cca">›</span></div><div class="ccb"><strong>L1 Lasso</strong>：部分權重歸零 → 稀疏、特徵選擇<br><strong>L2 Ridge</strong>：所有權重縮小但不為零 → 通用防過擬合<br><br>記憶：L1 = Lasso = Leave some zero</div></div>
+    <div class="cc" onclick="cctog(this)"><div class="cch"><span class="cct">過擬合 vs 欠擬合</span><span class="cca">›</span></div><div class="ccb"><strong>過擬合</strong>：訓練低＋驗證高 → L1/L2、Dropout、更多資料<br><strong>欠擬合</strong>：兩者都高且接近 → 增加模型複雜度<br><br>學習曲線兩條線都高且接近 = 欠擬合</div></div>
+    <div class="cc" onclick="cctog(this)"><div class="cch"><span class="cct">何時需要標準化</span><span class="cca">›</span></div><div class="ccb"><strong>需要</strong>：KNN、SVM(RBF)、PCA、神經網路、邏輯斯迴歸<br><strong>不需要</strong>：決策樹、隨機森林、XGBoost<br><br>記憶：距離型/梯度型 → 需要；樹型 → 不需要</div></div>
+    <div class="cc" onclick="cctog(this)"><div class="cch"><span class="cct">F1 計算範例</span><span class="cca">›</span></div><div class="ccb">TP=80, FP=20, FN=40<br>P = 80/100 = <strong>0.80</strong><br>R = 80/120 = <strong>0.667</strong><br>F1 = 2×0.80×0.667/(0.80+0.667) = <strong>0.727</strong></div></div>
+    <div class="cc" onclick="cctog(this)"><div class="cch"><span class="cct">Sklearn Data Leakage 避免</span><span class="cca">›</span></div><div class="ccb"><strong>錯誤</strong>：對全部資料 fit_transform 再做 cross_val_score<br><strong>正確</strong>：用 Pipeline，每個 Fold 只對訓練集 fit<br><br>X_test 只能 transform()，不能 fit_transform()！</div></div>
   </div>
-  <div class="sec-t">🔑 5/17 真實考題關鍵字</div>
-  <div class="kw-g" style="margin-bottom:1.4rem">
+  <div class="sect">🔑 5/17 真實考題關鍵字</div>
+  <div class="kwg" style="margin-bottom:1.3rem">
     <div class="kw">VAE + KL 散度</div><div class="kw">DBSCAN（無需指定 k）</div>
     <div class="kw">HITL 人在迴路</div><div class="kw">供應鏈攻擊</div>
     <div class="kw">Hyperopt 超參數搜尋</div><div class="kw">DVC 資料版本控制</div>
@@ -234,251 +237,278 @@ body{font-family:-apple-system,'Segoe UI','PingFang TC','Microsoft JhengHei',san
     <div class="kw">GBM 殘差序列學習</div><div class="kw">ResNet 殘差 / U-Net</div>
     <div class="kw">Zero Trust 零信任</div><div class="kw">F1 計算題</div>
   </div>
-  <div class="sec-t">🔁 AI Pipeline 串聯記憶</div>
-  <div style="background:var(--card);border:1px solid var(--border);border-radius:var(--r);padding:1.05rem;font-size:.82rem;line-height:2.1;">
-    <span style="color:var(--accent);font-weight:600">資料收集</span> → <span style="color:var(--accent);font-weight:600">前處理</span> → <span style="color:var(--accent);font-weight:600">特徵工程</span> → <span style="color:var(--accent);font-weight:600">建模</span> → <span style="color:var(--accent);font-weight:600">交叉驗證</span> → <span style="color:var(--accent);font-weight:600">評估</span> → <span style="color:var(--accent);font-weight:600">超參數調校</span> → <span style="color:var(--accent);font-weight:600">部署</span> → <span style="color:var(--accent);font-weight:600">監控</span> → <span style="color:var(--accent);font-weight:600">AI 治理</span><br><br>
-    <span style="color:var(--muted)">🔗 不平衡 → SMOTE → Recall → F1 → Stratified KFold</span><br>
-    <span style="color:var(--muted)">🔗 過擬合 → L1/L2 → Dropout → Early Stopping → Cross Val</span>
+  <div class="sect">🔁 AI Pipeline 串聯記憶</div>
+  <div style="background:var(--card);border:1px solid var(--bdr);border-radius:var(--r);padding:1rem;font-size:.81rem;line-height:2.1;">
+    <span style="color:var(--acc);font-weight:600">資料收集</span> → <span style="color:var(--acc);font-weight:600">前處理</span> → <span style="color:var(--acc);font-weight:600">特徵工程</span> → <span style="color:var(--acc);font-weight:600">建模</span> → <span style="color:var(--acc);font-weight:600">交叉驗證</span> → <span style="color:var(--acc);font-weight:600">評估</span> → <span style="color:var(--acc);font-weight:600">超參數調校</span> → <span style="color:var(--acc);font-weight:600">部署</span> → <span style="color:var(--acc);font-weight:600">監控</span> → <span style="color:var(--acc);font-weight:600">AI 治理</span><br><br>
+    <span style="color:var(--mut)">🔗 不平衡 → SMOTE → Recall → F1 → Stratified KFold</span><br>
+    <span style="color:var(--mut)">🔗 過擬合 → L1/L2 → Dropout → Early Stopping → Cross Val</span>
   </div>
 </div>
 </div>
-
 <!-- REFS -->
 <div class="view" id="v-refs">
 <div class="wrap">
-  <div class="sec-t">🔗 參考資料</div>
-  <div class="ref-list">
-    <a class="ref-a" href="https://hackmd.io/@Saint918/r1JwP2LXxe" target="_blank"><span class="ref-icon">📝</span><div class="ref-info"><div class="ref-title">5/17 場次真實考題回憶</div><div class="ref-desc">Saint918 整理 · 科目一二關鍵字 · 考場心得</div></div><span class="ref-tag">HackMD</span></a>
-    <a class="ref-a" href="https://vocus.cc/salon/678ac6e5fd89780001eb761c" target="_blank"><span class="ref-icon">✍️</span><div class="ref-info"><div class="ref-title">CCChen AI 考試學習沙龍</div><div class="ref-desc">備考方向 · 模擬題 · 科目三深度解析</div></div><span class="ref-tag">vocus</span></a>
-    <a class="ref-a" href="https://vocus.cc/article/6a0b25f9fd897800010a813d" target="_blank"><span class="ref-icon">🔬</span><div class="ref-info"><div class="ref-title">科目三機器學習建模心得</div><div class="ref-desc">AI Pipeline 觀念 · L233 核心考點</div></div><span class="ref-tag">vocus</span></a>
-    <a class="ref-a" href="https://ipd.nat.gov.tw/ipas/" target="_blank"><span class="ref-icon">🏛️</span><div class="ref-info"><div class="ref-title">iPAS 官方網站</div><div class="ref-desc">報名 · 學習指引下載 · 歷屆試題</div></div><span class="ref-tag">官方</span></a>
+  <div class="sect">🔗 參考資料</div>
+  <div class="rl2">
+    <a class="ra" href="https://hackmd.io/@Saint918/r1JwP2LXxe" target="_blank"><span class="ri">📝</span><div class="rinfo"><div class="rt">5/17 場次真實考題回憶</div><div class="rd">Saint918 整理 · 科目一二關鍵字</div></div><span class="rtag">HackMD</span></a>
+    <a class="ra" href="https://vocus.cc/salon/678ac6e5fd89780001eb761c" target="_blank"><span class="ri">✍️</span><div class="rinfo"><div class="rt">CCChen AI 考試學習沙龍</div><div class="rd">備考方向 · 模擬題 · 科目三解析</div></div><span class="rtag">vocus</span></a>
+    <a class="ra" href="https://vocus.cc/article/6a0b25f9fd897800010a813d" target="_blank"><span class="ri">🔬</span><div class="rinfo"><div class="rt">科目三機器學習建模心得</div><div class="rd">AI Pipeline 觀念 · L233 核心考點</div></div><span class="rtag">vocus</span></a>
+    <a class="ra" href="https://ipd.nat.gov.tw/ipas/" target="_blank"><span class="ri">🏛️</span><div class="rinfo"><div class="rt">iPAS 官方網站</div><div class="rd">報名 · 學習指引 · 歷屆試題</div></div><span class="rtag">官方</span></a>
   </div>
 </div>
 </div>
-
 <div class="toast" id="toast"></div>
-
 <script>
-const QS = [{"id": 1, "subject": "科目一", "topic": "S1", "topicName": "生成式AI", "difficulty": "easy", "question": "變分自編碼器（VAE）訓練時，損失函數中的 KL 散度（KL Divergence）主要用途為何？", "code": null, "options": ["衡量重建影像與原始影像的像素差異", "衡量潛在空間分佈與標準常態分佈的差距", "衡量編碼器與解碼器的參數數量差異", "衡量訓練集與測試集的資料分佈偏移"], "answer": 1, "explanation": "VAE 的損失函數包含兩項：重建損失（衡量輸出與輸入的差異）和 KL 散度。KL 散度負責將潛在向量的分佈拉近標準常態分佈 N(0,1)，使得潛在空間具有連續性與可插值性，是 VAE 能夠生成新樣本的關鍵。"}, {"id": 2, "subject": "科目一", "topic": "S1", "topicName": "分群演算法", "difficulty": "easy", "question": "DBSCAN 演算法相較於 K-means 最主要的優勢為何？", "code": null, "options": ["收斂速度更快，適合大規模資料", "不需要預先指定分群數量 k，且能處理雜訊點", "對高維資料的效果更好", "需要的記憶體空間更少"], "answer": 1, "explanation": "DBSCAN（Density-Based Spatial Clustering of Applications with Noise）是密度型分群演算法，最大優點是不需要預先指定群數 k，並且能自動將低密度區域的點標記為雜訊（noise）。K-means 則必須事先決定 k 值，且對雜訊點敏感。"}, {"id": 3, "subject": "科目一", "topic": "S1", "topicName": "HITL", "difficulty": "easy", "question": "Human-In-The-Loop（HITL）在 AI 系統中的主要作用為何？", "code": null, "options": ["讓人類直接取代 AI 進行所有決策", "在 AI 訓練或推論流程中納入人類判斷，提升準確性與可靠性", "讓人類監督 AI 的電力使用狀況", "減少 AI 模型的參數量以節省資源"], "answer": 1, "explanation": "HITL 指在 AI 流程的關鍵環節引入人類判斷，例如資料標注、邊界案例審查、模型輸出驗證等。常見於醫療診斷、法律文件審查、內容審核等高風險場景，目的是結合 AI 的效率與人類的判斷力，提高系統整體可靠性。"}, {"id": 4, "subject": "科目一", "topic": "S1", "topicName": "語意分割", "difficulty": "easy", "question": "語意分割（Semantic Segmentation）與實例分割（Instance Segmentation）最主要的差異為何？", "code": null, "options": ["語意分割速度較慢，實例分割速度較快", "語意分割對每個像素分類但不區分個別物件；實例分割能區分同類別的不同個體", "語意分割只能處理二值化圖像，實例分割可處理彩色圖像", "語意分割使用CNN，實例分割使用Transformer"], "answer": 1, "explanation": "語意分割（如 FCN、DeepLab）對每個像素賦予類別標籤，但同類別的多個物件視為同一區域。實例分割（如 Mask R-CNN）則進一步區分同類別的不同個體，例如圖中有三個人，每個人都有獨立的遮罩。"}, {"id": 5, "subject": "科目一", "topic": "S1", "topicName": "MLflow", "difficulty": "easy", "question": "MLflow 在機器學習專案中主要解決什麼問題？", "code": null, "options": ["自動調整模型超參數", "追蹤實驗參數、指標與模型版本，方便比較不同訓練結果", "直接部署模型到生產環境", "資料清理與特徵工程自動化"], "answer": 1, "explanation": "MLflow 是開源的機器學習生命週期管理平台，核心功能是實驗追蹤（Tracking）：記錄每次訓練的參數、評估指標、程式碼版本與模型檔案。此外也支援模型注冊（Model Registry）與部署（Projects）。解決了實驗結果難以管理與復現的問題。"}, {"id": 6, "subject": "科目一", "topic": "S1", "topicName": "LoRA", "difficulty": "medium", "question": "LoRA（Low-Rank Adaptation）技術在大型語言模型微調中的核心概念為何？", "code": null, "options": ["凍結所有預訓練層，只訓練最後一層輸出", "將原始權重矩陣分解為兩個低秩矩陣之乘積，只更新少量新增參數", "將模型所有參數量化為 4-bit 精度", "使用知識蒸餾將大型模型壓縮為小型模型"], "answer": 1, "explanation": "LoRA 凍結原始預訓練模型的所有權重，在每個需要調整的層旁邊插入兩個低秩矩陣 A 和 B（原始 d×d 矩陣分解為 d×r 和 r×d，r 遠小於 d）。訓練時只更新這兩個小矩陣，大幅減少可訓練參數數量（通常只有全量微調的 0.1%~1%），記憶體需求和訓練時間大幅降低，同時保留預訓練知識。"}, {"id": 7, "subject": "科目一", "topic": "S1", "topicName": "DVC", "difficulty": "medium", "question": "DVC（Data Version Control）主要解決 ML 專案中哪個痛點？", "code": null, "options": ["模型推論速度太慢的問題", "大型資料集和模型檔案無法用 Git 版本管理的問題", "訓練過程中 GPU 記憶體不足的問題", "不同框架之間模型格式不相容的問題"], "answer": 1, "explanation": "Git 無法有效管理 GB 級的資料集和模型檔案。DVC 的設計理念是將大型檔案存在遠端儲存（S3、GCS、本地），在 Git 中只記錄輕量的 .dvc 指標檔（記錄檔案的 hash），讓資料和模型也能像程式碼一樣做版本控制、分支管理和協作。"}, {"id": 8, "subject": "科目一", "topic": "S1", "topicName": "供應鏈攻擊", "difficulty": "medium", "question": "AI 系統的供應鏈攻擊（Supply Chain Attack）最可能的攻擊向量為何？", "code": null, "options": ["直接攻擊 AI 模型的推論端點", "在訓練資料、預訓練模型或相依套件中植入惡意內容", "透過暴力破解取得 API 金鑰", "修改模型的超參數設定"], "answer": 1, "explanation": "AI 供應鏈攻擊指在 AI 系統的上游（訓練資料、預訓練模型、開源套件、資料標注服務）植入惡意內容。例如：在公開資料集投毒（Data Poisoning）、上傳含後門的預訓練模型到 HuggingFace、在 PyPI 套件中植入惡意程式碼等。防禦方式包含模型來源驗證、資料審計、套件依賴掃描。"}, {"id": 9, "subject": "科目二", "topic": "L222", "topicName": "SQL/NoSQL", "difficulty": "easy", "question": "下列哪種場景最適合使用 NoSQL 資料庫而非關聯式資料庫（SQL）？", "code": null, "options": ["需要複雜多表 JOIN 查詢的財務報表系統", "需要儲存結構不固定、快速水平擴展的社群媒體用戶行為日誌", "需要嚴格 ACID 交易的銀行轉帳系統", "需要複雜的外鍵關聯與參照完整性的訂單系統"], "answer": 1, "explanation": "NoSQL 適合：結構不固定（Schema-less）、高寫入吞吐量、水平擴展（Sharding）、大量非結構化資料的場景。社群媒體日誌的特點恰好符合：格式多樣、量大、讀寫頻繁但不需要複雜 JOIN。SQL 則適合需要 ACID 保證、複雜關聯查詢的場景（如金融、訂單系統）。"}, {"id": 10, "subject": "科目二", "topic": "L222", "topicName": "ETL", "difficulty": "easy", "question": "在大數據處理架構中，ETL 代表的三個步驟依序為何？", "code": null, "options": ["Evaluate、Train、Load", "Extract、Transform、Load", "Execute、Test、Launch", "Encode、Transfer、Link"], "answer": 1, "explanation": "ETL 是資料整合的標準流程：Extract（擷取）：從各種來源（資料庫、API、檔案）取得原始資料；Transform（轉換）：清洗、格式統一、特徵計算、資料合併等處理；Load（載入）：將處理後的資料存入目標儲存（資料倉儲、資料湖）。現代也有 ELT 架構（先載入再轉換），適合雲端大數據平台。"}, {"id": 11, "subject": "科目二", "topic": "L222", "topicName": "資料清理", "difficulty": "easy", "question": "在資料前處理中，處理類別型（categorical）缺失值最常見且安全的做法為何？", "code": null, "options": ["直接刪除含缺失值的所有行", "填入出現頻率最高的類別（眾數填補）", "填入數值 0", "填入該欄位的平均值"], "answer": 1, "explanation": "類別型變數的缺失值處理：(1) 眾數填補（最常用）：用最頻繁出現的類別填入；(2) 新增「Unknown」類別；(3) 根據其他欄位預測。直接填 0 對類別型無意義；平均值適用數值型變數；直接刪除會造成資料損失。最佳選擇視資料缺失比例與業務意義而定。"}, {"id": 12, "subject": "科目二", "topic": "L222", "topicName": "Spark", "difficulty": "medium", "question": "Apache Spark 相較於傳統 Hadoop MapReduce 最大的效能優勢為何？", "code": null, "options": ["Spark 只能在單機上運行，不支援分散式", "Spark 將中間計算結果保存在記憶體（in-memory），大幅減少磁碟 I/O", "Spark 不需要程式設計，完全自動化", "Spark 使用更多 CPU 核心進行計算"], "answer": 1, "explanation": "Hadoop MapReduce 每個計算步驟都需將中間結果寫入 HDFS 磁碟，磁碟 I/O 成為瓶頸。Spark 引入 RDD（Resilient Distributed Dataset）在記憶體中保存中間結果，迭代式計算（如機器學習訓練）速度可提升 10~100 倍。適合即時串流（Spark Streaming）、機器學習（MLlib）、互動式查詢（Spark SQL）等場景。"}, {"id": 13, "subject": "科目二", "topic": "L222", "topicName": "資料湖", "difficulty": "easy", "question": "資料湖（Data Lake）與資料倉儲（Data Warehouse）最主要的差異為何？", "code": null, "options": ["資料湖只能儲存結構化資料，資料倉儲可儲存任何格式", "資料湖儲存原始格式的任意資料（結構化/半結構化/非結構化）；資料倉儲儲存經過整理、符合 Schema 的結構化資料", "資料湖查詢速度比資料倉儲快", "資料湖只能在地端部署，資料倉儲只能在雲端"], "answer": 1, "explanation": "資料湖（如 AWS S3 + Athena、Azure Data Lake）：以原始格式儲存所有類型資料，Schema-on-Read（查詢時才定義結構），適合探索性分析和 AI/ML。資料倉儲（如 Snowflake、BigQuery、Redshift）：嚴格的 Schema，高度優化的查詢性能，適合 BI 報表和商業分析。"}, {"id": 14, "subject": "科目二", "topic": "L224", "topicName": "GBM", "difficulty": "medium", "question": "GBM（Gradient Boosting Machine）的核心訓練思想為何？", "code": null, "options": ["並行訓練多棵完整的決策樹，取平均結果", "序列式訓練多棵淺層決策樹，每棵樹學習前一棵樹的殘差（residual error）", "隨機抽取特徵子集訓練多棵獨立決策樹", "對資料集進行多次 bootstrap 抽樣，分別訓練模型"], "answer": 1, "explanation": "GBM 是 Boosting 方法的代表。每輪訓練一棵新的弱學習器（淺層決策樹），學習的目標是前一輪模型預測的殘差（負梯度方向），逐步修正前一棵樹的錯誤。最終預測是所有樹的加權加總。XGBoost、LightGBM、CatBoost 都是 GBM 的衍生版本。Bagging（隨機森林）則是並行訓練、彼此獨立。"}, {"id": 15, "subject": "科目二", "topic": "L224", "topicName": "ResNet/U-Net", "difficulty": "medium", "question": "ResNet（殘差網路）中的「殘差連接（Residual Connection）」主要解決了深度神經網路的什麼問題？", "code": null, "options": ["解決過擬合問題，等效於 Dropout 正則化", "解決梯度消失問題，讓梯度能夠直接跨層傳遞", "減少模型參數量，提高推論速度", "解決資料不平衡問題"], "answer": 1, "explanation": "深度網路（層數很多時）訓練時梯度從輸出層反向傳播，經過多次相乘後趨近於 0（梯度消失），導致前面的層幾乎無法更新。ResNet 的殘差連接（Skip Connection）讓輸入直接加到輸出：H(x) = F(x) + x，梯度可以沿著 shortcut 直接傳到更早的層，有效解決梯度消失，使得訓練幾百層的深度網路成為可能。"}, {"id": 16, "subject": "科目二", "topic": "L224", "topicName": "Zero Trust", "difficulty": "medium", "question": "Zero Trust 零信任架構的核心原則為何？", "code": null, "options": ["信任內部網路所有流量，只驗證外部連線", "永遠不預設信任，對每次存取請求都進行持續驗證（Never trust, always verify）", "只對管理員帳號進行嚴格驗證", "建立一個安全的內網邊界，邊界內完全信任"], "answer": 1, "explanation": "傳統「城堡護城河」模型假設內部網路是安全的。Zero Trust 打破此假設：無論請求來自內網還是外網，都必須驗證身份、設備健康狀態、最小權限。核心原則：(1) 持續驗證；(2) 最小權限存取；(3) 假設已被入侵。在 AI 系統中，Zero Trust 確保模型 API、訓練資料存取、MLOps 管線都受到嚴格控制。"}, {"id": 17, "subject": "科目二", "topic": "L224", "topicName": "F1計算", "difficulty": "hard", "question": "某二元分類模型的混淆矩陣如下：TP=80, FP=20, FN=40, TN=60。該模型的 F1-score 為何？", "code": null, "options": ["0.727", "0.667", "0.800", "0.571"], "answer": 0, "explanation": "先計算 Precision 和 Recall：\nPrecision = TP/(TP+FP) = 80/(80+20) = 80/100 = 0.8\nRecall = TP/(TP+FN) = 80/(80+40) = 80/120 = 0.667\nF1 = 2×(Precision×Recall)/(Precision+Recall)\n= 2×(0.8×0.667)/(0.8+0.667)\n= 2×0.5336/1.467\n= 1.0672/1.467 ≈ 0.727\n答案是 A (0.727)。"}, {"id": 18, "subject": "科目三", "topic": "L231", "topicName": "貝氏定理", "difficulty": "easy", "question": "貝氏定理（Bayes' Theorem）在垃圾郵件分類器中的應用邏輯為何？", "code": null, "options": ["計算郵件中每個單字的出現頻率作為特徵", "根據郵件內容（已觀察到的證據），更新「這是垃圾郵件」的機率估計", "計算郵件寄件人與收件人之間的相似度", "最小化分類錯誤的損失函數"], "answer": 1, "explanation": "樸素貝葉斯分類器應用：P(垃圾|郵件內容) ∝ P(郵件內容|垃圾) × P(垃圾)。先驗機率 P(垃圾) 是垃圾郵件的基準比例；似然 P(郵件內容|垃圾) 是垃圾郵件中出現這些詞的機率；後驗 P(垃圾|郵件內容) 是最終判斷結果。貝氏定理讓我們用新觀察到的證據更新對假設的信念。"}, {"id": 19, "subject": "科目三", "topic": "L231", "topicName": "假設檢定", "difficulty": "medium", "question": "在機器學習特徵選擇中，若某特徵的 p 值為 0.001（顯著水準 α=0.05），應如何解讀？", "code": null, "options": ["此特徵與目標變數沒有統計顯著關聯，應移除", "p 值遠小於 0.05，拒絕虛無假設，此特徵與目標變數有統計顯著關聯", "此特徵會造成過擬合，應正則化", "模型的預測誤差為 0.001"], "answer": 1, "explanation": "假設檢定邏輯：虛無假設 H₀ = 「此特徵與目標無關」。p 值是「假設 H₀ 為真時，觀測到這麼極端數據的機率」。p=0.001 << α=0.05，表示在 H₀ 為真的情況下，觀測到這個結果的機率極低，因此我們拒絕 H₀，認為此特徵確實與目標有顯著關聯，值得保留。"}, {"id": 20, "subject": "科目三", "topic": "L231", "topicName": "常態分佈", "difficulty": "easy", "question": "在機器學習中，為什麼線性迴歸模型假設誤差項（residuals）服從常態分佈？", "code": null, "options": ["為了確保模型的訓練速度更快", "此假設使得最小平方估計量（OLS）具有最小變異數的不偏估計性質（BLUE）", "為了讓損失函數可以使用梯度下降", "常態分佈是唯一適合連續資料的分佈"], "answer": 1, "explanation": "在高斯-馬可夫定理（Gauss-Markov Theorem）框架下，若誤差服從 N(0,σ²)，OLS 估計量在所有線性不偏估計中具有最小變異數（BLUE: Best Linear Unbiased Estimator）。此外，常態誤差假設讓我們能進行 t 檢定、F 檢定等統計推論，計算信賴區間和 p 值。"}, {"id": 21, "subject": "科目三", "topic": "L231", "topicName": "梯度下降", "difficulty": "medium", "question": "Mini-batch 梯度下降（Mini-batch GD）相比全批次梯度下降（Batch GD）的主要優勢為何？", "code": null, "options": ["每次更新計算所有樣本的梯度，結果最精確", "每次只用一個樣本更新，速度最快但方向最不穩定", "平衡計算效率與梯度估計穩定性；能利用 GPU 向量化運算，同時引入適度雜訊幫助跳出局部最小值", "完全消除梯度估計的雜訊"], "answer": 2, "explanation": "三種梯度下降的比較：Batch GD（全批次）：每次用全部資料計算梯度，方向準確但記憶體需求大、速度慢。SGD（隨機梯度下降）：每次用一個樣本，速度快但梯度雜訊大。Mini-batch GD：每次用一小批（32~256個），兼顧 GPU 平行計算效率、梯度方向穩定性，適度的雜訊有助於跳出局部最小值，是深度學習的標準選擇。"}, {"id": 22, "subject": "科目三", "topic": "L231", "topicName": "Adam優化器", "difficulty": "medium", "question": "Adam 優化器相比純 SGD 的主要改進在於？", "code": null, "options": ["Adam 使用更大的學習率，收斂更快", "Adam 結合了動量（Momentum）和自適應學習率（AdaGrad）的優點，對每個參數動態調整更新步長", "Adam 完全消除了對學習率超參數的需求", "Adam 只更新梯度最大的前 10% 參數"], "answer": 1, "explanation": "Adam（Adaptive Moment Estimation）維護兩個動態統計量：m（一階動量：梯度的指數移動平均，類似 Momentum，加速收斂方向）和 v（二階動量：梯度平方的指數移動平均，類似 AdaGrad，對頻繁更新的參數降低學習率、稀疏特徵提高學習率）。最終更新量 ≈ m/√v，對每個參數自適應調整步長，實踐中比 SGD 收斂更快、更穩定。"}, {"id": 23, "subject": "科目三", "topic": "L231", "topicName": "L1/L2正則化", "difficulty": "medium", "question": "L1 正則化（Lasso）與 L2 正則化（Ridge）的最關鍵差異為何？", "code": null, "options": ["L1 讓部分權重精確歸零（稀疏模型），具有特徵選擇效果；L2 讓所有權重縮小趨近 0 但不為 0", "L1 適合防止過擬合，L2 適合防止欠擬合", "L1 計算量比 L2 小，訓練更快", "L2 會讓部分特徵權重歸零，L1 不會"], "answer": 0, "explanation": "L1（Lasso）懲罰項 = λ×Σ|wᵢ|：絕對值函數在 0 點不可微，梯度下降時會把小權重「推到」精確的 0，產生稀疏模型，具有隱式特徵選擇效果。適合高維特徵、多餘特徵的場景。L2（Ridge）懲罰項 = λ×Σwᵢ²：平方項的梯度在 0 附近趨近於 0，只能讓權重縮小但不會精確為 0。適合希望所有特徵都保留但縮小的場景。"}, {"id": 24, "subject": "科目三", "topic": "L231", "topicName": "PCA數學", "difficulty": "medium", "question": "執行 PCA 前為什麼必須對資料進行標準化（StandardScaler）？", "code": null, "options": ["標準化可以讓訓練速度更快", "PCA 基於協方差矩陣計算主成分，若各特徵量級差異大，數值大的特徵會主導主成分方向，導致降維結果失真", "標準化可以消除資料中的離群值", "標準化是所有機器學習演算法的必要步驟"], "answer": 1, "explanation": "PCA 透過計算資料的協方差矩陣並找其特徵向量來確定主成分方向。若有一個特徵範圍是 0-1（如比率），另一個是 0-100000（如薪資），未標準化時，薪資特徵的變異數遠大於比率特徵，PCA 會幾乎完全按薪資方向排列，比率特徵的資訊被忽略。標準化後（均值 0、標準差 1），每個特徵在協方差矩陣中的貢獻才能公平比較。"}, {"id": 25, "subject": "科目三", "topic": "L231", "topicName": "型一型二錯誤", "difficulty": "medium", "question": "在醫療篩檢場景中，「型二錯誤（Type II Error / False Negative）」造成的後果為何，為什麼比型一錯誤更嚴重？", "code": null, "options": ["型二錯誤是誤判健康人為患者，造成不必要的治療費用", "型二錯誤是漏掉實際患病的人（判斷為健康），可能延誤治療造成嚴重後果，因此比型一錯誤（誤判）更不能接受", "型二錯誤會讓模型的 Precision 下降", "型二錯誤與 Recall 無關"], "answer": 1, "explanation": "型一錯誤（False Positive）= 實際無病，判斷為有病 → 誤診，造成不必要檢查/治療，但及早介入通常可修正。型二錯誤（False Negative）= 實際有病，判斷為無病 → 漏診，可能延誤治療，後果嚴重甚至致命。在癌症篩檢、傳染病偵測等場景，寧可多驗（增加 FP）也不能漏掉（減少 FN）→ 最大化 Recall（召回率）= TP/(TP+FN)。"}, {"id": 26, "subject": "科目三", "topic": "L232", "topicName": "邏輯斯迴歸", "difficulty": "easy", "question": "邏輯斯迴歸（Logistic Regression）的輸出是什麼？", "code": null, "options": ["連續數值，可以是任意實數", "介於 0 到 1 之間的機率值，透過 Sigmoid 函數轉換", "離散的類別標籤（如 0 或 1），不含機率", "多維向量，代表每個類別的得分"], "answer": 1, "explanation": "邏輯斯迴歸先計算線性組合 z = w·x + b，再透過 Sigmoid 函數 σ(z) = 1/(1+e⁻ᶻ) 將 z 壓縮到 (0,1) 範圍，輸出可解釋為「屬於正類的機率」。通常設 threshold=0.5：輸出 > 0.5 則預測正類，否則負類。適合二元分類任務（信用風險、疾病預測等）。"}, {"id": 27, "subject": "科目三", "topic": "L232", "topicName": "決策樹", "difficulty": "easy", "question": "決策樹在選擇分裂特徵時，Gini 不純度（Gini Impurity）的計算邏輯為何？", "code": null, "options": ["計算節點中所有樣本的平均值", "衡量從節點中隨機選取兩個樣本屬於不同類別的機率，越低代表節點越純（相同類別越多）", "計算節點中不同類別數量的總和", "計算資訊熵（Entropy），越高代表越不確定"], "answer": 1, "explanation": "Gini 不純度 = 1 - Σpᵢ²，其中 pᵢ 是第 i 類的比例。解讀：隨機選取兩個樣本，它們屬於不同類別的機率。Gini=0 表示節點完全純（全是同一類）；Gini=0.5 表示最不純（兩類各佔一半）。決策樹每次選擇能最大降低 Gini 的特徵進行分裂。資訊增益（Information Gain）使用的是 Entropy，兩者結果通常接近。"}, {"id": 28, "subject": "科目三", "topic": "L232", "topicName": "隨機森林", "difficulty": "medium", "question": "隨機森林（Random Forest）比單一決策樹更不容易過擬合的原因為何？", "code": null, "options": ["隨機森林使用更少的訓練資料", "隨機森林對每棵樹進行 Bootstrap 抽樣和隨機特徵子集選取，多棵樹的預測取多數決，降低單棵樹的過擬合影響", "隨機森林限制每棵樹的深度為 1", "隨機森林加入了 L2 正則化項"], "answer": 1, "explanation": "隨機森林的 Bagging 機制：(1) Bootstrap 抽樣：每棵樹用有放回抽取的訓練子集，降低各樹之間的相關性；(2) 隨機特徵子集：每個節點只從隨機選取的特徵子集中選分裂特徵，確保樹的多樣性；(3) 多數決集成：單棵樹的過擬合偏差在集成後相互抵消。這讓隨機森林的泛化能力通常遠優於單棵深度決策樹。"}, {"id": 29, "subject": "科目三", "topic": "L232", "topicName": "SVM", "difficulty": "medium", "question": "SVM（支援向量機）中「核函數（Kernel Function）」的主要作用為何？", "code": null, "options": ["計算分類超平面到各訓練樣本的距離", "將原始特徵空間映射到更高維空間，使原本線性不可分的資料在高維空間中變得線性可分，同時避免直接計算高維映射", "對特徵進行標準化以加速訓練", "選擇最重要的支持向量以減少計算量"], "answer": 1, "explanation": "核技巧（Kernel Trick）：不實際計算高維映射 φ(x)，而是直接計算 K(x,z) = φ(x)·φ(z)（核函數），避免了高維計算的代價。常用核函數：線性核（K=x·z）、多項式核、RBF 高斯核（K=exp(-γ||x-z||²)）。RBF 核可隱式映射到無限維空間，能處理複雜非線性邊界，是 SVM 最常用的核函數。"}, {"id": 30, "subject": "科目三", "topic": "L232", "topicName": "KNN", "difficulty": "easy", "question": "KNN（K 近鄰）演算法為什麼必須在訓練前對特徵進行標準化？", "code": null, "options": ["標準化可以讓 KNN 處理類別特徵", "KNN 基於距離計算，若特徵量級不同，數值大的特徵會主導距離計算，導致模型偏向該特徵", "標準化可以減少需要計算的鄰居數量", "KNN 本身不支援非標準化的資料"], "answer": 1, "explanation": "KNN 的預測完全依賴「距離」（通常是歐氏距離）。若特徵 A 範圍是 0-1，特徵 B 範圍是 0-10000，計算距離時 B 的差異會淹沒 A 的差異，模型幾乎只根據 B 特徵分類。標準化（StandardScaler 或 MinMaxScaler）確保每個特徵的貢獻在距離計算中是平等的。同理，SVM（RBF核）、K-means 等距離型演算法也需要標準化。"}, {"id": 31, "subject": "科目三", "topic": "L232", "topicName": "XGBoost", "difficulty": "medium", "question": "XGBoost 相較於傳統 GBM 的主要改進為何？", "code": null, "options": ["XGBoost 使用並行的隨機森林而非序列的 Boosting", "XGBoost 引入了正則化項（L1/L2 懲罰樹複雜度）、列抽樣、缺失值處理與高效剪枝，大幅提升速度與防止過擬合", "XGBoost 不需要設定學習率", "XGBoost 只能處理數值型特徵"], "answer": 1, "explanation": "XGBoost 的改進：(1) 目標函數加入正則化（λ懲罰葉子數量、α懲罰葉子權重），有效防止過擬合；(2) 二階泰勒展開，優化更精確；(3) 列（特徵）抽樣，類似 Random Forest；(4) 內建缺失值處理；(5) 近似分裂演算法，處理大資料集；(6) 可並行計算各層節點分裂（非樹間並行，而是節點內並行）。"}, {"id": 32, "subject": "科目三", "topic": "L232", "topicName": "CNN", "difficulty": "medium", "question": "CNN（卷積神經網路）中池化層（Pooling Layer）的主要作用為何？", "code": null, "options": ["增加特徵圖（Feature Map）的空間解析度", "降低特徵圖的空間尺寸，減少參數量，同時提供位移不變性（Translation Invariance）", "學習特徵的線性組合", "對特徵進行批次正規化"], "answer": 1, "explanation": "池化層（Max Pooling 或 Average Pooling）在局部區域取最大值或平均值，作用：(1) 降維：減少特徵圖尺寸（如 56×56 → 28×28），大幅減少後續層的參數量；(2) 位移不變性：物件在圖中輕微移動，池化後的特徵仍然相似，提高模型對位置的容忍度；(3) 控制過擬合：減少參數間接降低過擬合風險。"}, {"id": 33, "subject": "科目三", "topic": "L232", "topicName": "LSTM", "difficulty": "medium", "question": "LSTM（長短期記憶網路）相較於基本 RNN 最主要的改進為何？", "code": null, "options": ["LSTM 的參數量更少，訓練更快", "LSTM 透過門控機制（輸入門、遺忘門、輸出門）選擇性保留長期記憶，解決了 RNN 的長期依賴問題", "LSTM 只能處理固定長度的序列", "LSTM 不使用反向傳播，訓練方式不同"], "answer": 1, "explanation": "基本 RNN 在反向傳播時，梯度需穿越多個時間步，導致梯度消失（序列太長時前面的資訊被遺忘）。LSTM 引入 Cell State（記憶細胞）和三個門：遺忘門（決定忘掉什麼）、輸入門（決定存入什麼新資訊）、輸出門（決定輸出什麼）。梯度能沿 Cell State 的路徑「高速公路」傳遞，有效保留長距離依賴資訊（如文章開頭的主語影響結尾的代詞預測）。"}, {"id": 34, "subject": "科目三", "topic": "L232", "topicName": "Transformer", "difficulty": "medium", "question": "Transformer 的 Self-Attention 機制相比 RNN 處理序列的最大優勢為何？", "code": null, "options": ["Transformer 每次只能處理一個詞，比 RNN 更精確", "Self-Attention 能直接計算序列中任意兩個位置的關係，無需序列化處理，支援並行計算且能捕捉長距離依賴", "Transformer 不需要訓練資料", "Self-Attention 只關注相鄰位置的詞，忽略遠距離關係"], "answer": 1, "explanation": "RNN 序列化處理（第 t 步必須等 t-1 步完成），長序列時：(1) 無法並行，訓練慢；(2) 遠距離資訊被壓縮在固定大小的隱藏狀態中，容易丟失。Self-Attention 讓序列中每個位置與所有其他位置直接計算注意力分數（Query×Key），關係強度由 Attention Weight 決定，直接跨越任意距離。所有位置可完全並行計算，是 Transformer 訓練速度快的根本原因。"}, {"id": 35, "subject": "科目三", "topic": "L232", "topicName": "Dropout", "difficulty": "easy", "question": "Dropout 技術在神經網路訓練中的主要作用為何？", "code": null, "options": ["加速模型的前向傳播速度", "在訓練時隨機將部分神經元的輸出設為 0，防止神經元之間的協同依賴，達到正則化效果", "在推論時隨機丟棄部分輸入特徵", "壓縮模型的記憶體使用量"], "answer": 1, "explanation": "Dropout 在每個訓練步驟，以機率 p 隨機將神經元輸出設為 0（通常 p=0.2~0.5）。效果：(1) 每個 mini-batch 使用不同的子網路，相當於訓練了指數級的不同模型再集成；(2) 防止神經元過度依賴特定鄰居，強迫每個神經元學習更獨立的特徵表示；(3) 推論時不 dropout，但所有輸出乘以 (1-p) 進行縮放補償。"}, {"id": 36, "subject": "科目三", "topic": "L233", "topicName": "SMOTE", "difficulty": "medium", "question": "在處理嚴重不平衡的二元分類資料集時（正類:負類 = 1:100），為什麼 Accuracy 不適合作為主要評估指標？", "code": null, "options": ["Accuracy 的計算公式比 F1 複雜", "若模型把所有樣本預測為負類（多數類），Accuracy 仍可達 99%，但正類完全沒被偵測到", "Accuracy 只適用於多分類問題", "Accuracy 無法處理二元分類問題"], "answer": 1, "explanation": "當資料集正負類比例為 1:100 時，最「懶惰」的模型（全部預測負類）就能有 100/(1+100) ≈ 99% 的 Accuracy，但 Recall（召回率）= 0%，完全失去意義。這種現象叫「Accuracy Paradox」。不平衡資料應使用：F1-score（精準率與召回率的調和平均）、Precision-Recall AUC、G-mean，或搭配 SMOTE 過採樣後再評估。"}, {"id": 37, "subject": "科目三", "topic": "L233", "topicName": "SMOTE", "difficulty": "medium", "question": "SMOTE（Synthetic Minority Over-sampling Technique）合成少數類樣本的方法為何？", "code": null, "options": ["直接複製少數類樣本多份", "在少數類樣本的 K 近鄰之間進行線性插值，生成新的合成樣本", "從少數類樣本的分佈隨機生成新樣本", "對多數類樣本進行欠採樣（隨機刪除）"], "answer": 1, "explanation": "SMOTE 的合成步驟：(1) 對每個少數類樣本，找出其 K 個最近鄰（少數類中）；(2) 在該樣本與隨機選取的某個近鄰之間，沿連線做線性插值：x_new = x + rand(0,1) × (x_neighbor - x)；(3) 重複直到達到目標比例。優點：生成的樣本在特徵空間中是有意義的插值，比直接複製更有效地擴展少數類的決策邊界。"}, {"id": 38, "subject": "科目三", "topic": "L233", "topicName": "Bias-Variance", "difficulty": "medium", "question": "模型在訓練集上 Accuracy=99%，在測試集上 Accuracy=65%，這是什麼問題，應如何處理？", "code": null, "options": ["欠擬合（Underfitting），應增加模型複雜度或特徵", "過擬合（Overfitting），應增加正則化、使用 Dropout、減少模型複雜度或增加訓練資料", "資料不平衡問題，應使用 SMOTE", "學習率設定過低，應增加學習率"], "answer": 1, "explanation": "訓練集準確率極高、測試集明顯偏低 = 訓練集表現與泛化表現差距大 = 過擬合（High Variance）。模型記住了訓練資料的雜訊而非學到通用規律。解決方案：(1) 正則化（L1/L2）；(2) Dropout；(3) Early Stopping；(4) 增加訓練資料；(5) Data Augmentation；(6) 減少模型複雜度（降低層數/神經元數）；(7) Cross Validation。"}, {"id": 39, "subject": "科目三", "topic": "L233", "topicName": "ROC-AUC", "difficulty": "medium", "question": "ROC 曲線的 AUC（Area Under Curve）值為 0.5 代表什麼意義？", "code": null, "options": ["模型達到完美分類，AUC=0.5 是最高值", "模型的分類能力等同於隨機猜測，完全沒有辨別能力", "模型嚴重過擬合", "模型的 Precision 和 Recall 都是 0.5"], "answer": 1, "explanation": "ROC 曲線繪製不同閾值下的 True Positive Rate (Recall) vs False Positive Rate。AUC 解讀：AUC=1.0：完美分類器；AUC=0.5：對角線，等於隨機猜測，模型毫無辨別能力；AUC<0.5：預測方向反了（可以對調預測結果改善）；AUC > 0.7 通常認為有一定參考價值，> 0.9 為優秀。AUC 的物理意義：隨機取一正一負樣本，模型給正樣本更高分的機率。"}, {"id": 40, "subject": "科目三", "topic": "L233", "topicName": "交叉驗證", "difficulty": "medium", "question": "Stratified K-Fold 交叉驗證相比一般 K-Fold 的優勢為何？", "code": null, "options": ["Stratified K-Fold 訓練速度比 K-Fold 快 K 倍", "Stratified K-Fold 確保每個 Fold 中各類別的比例與原始資料集相同，避免某個 Fold 中某類別樣本過少", "Stratified K-Fold 只需要一個 Fold 就能完成驗證", "Stratified K-Fold 可以自動選擇最佳 K 值"], "answer": 1, "explanation": "K-Fold 隨機切分可能導致某個 Fold 中某類別比例嚴重偏斜（尤其不平衡資料）。Stratified K-Fold 在切分時保持每個 Fold 與原始資料相同的類別比例（分層抽樣），確保每個 Fold 都具有代表性。對於不平衡資料集（如少數類只有 3%），Stratified K-Fold 是避免評估偏差的必要選擇。"}, {"id": 41, "subject": "科目三", "topic": "L233", "topicName": "Early Stopping", "difficulty": "medium", "question": "在神經網路訓練中，Early Stopping 的工作原理為何？", "code": null, "options": ["在達到設定的訓練輪數時立即停止", "監控驗證集的損失（或指標），當驗證損失連續 N 輪不再改善時停止訓練，並恢復到最佳驗證損失的模型權重", "在訓練損失低於某個閾值時停止", "在學習率低於某個閾值時停止"], "answer": 1, "explanation": "Early Stopping 的邏輯：若訓練繼續，訓練損失持續下降，但驗證損失開始上升（模型開始記憶訓練雜訊），就是過擬合的信號。Early Stopping 設置 patience（容忍連續 N 輪不改善），當驗證指標停止改善時觸發停止，並恢復到驗證性能最好那輪的模型。優點：免費的正則化效果，不需修改模型架構。"}, {"id": 42, "subject": "科目三", "topic": "L233", "topicName": "Scikit-learn程式", "difficulty": "hard", "question": "下列程式碼中，第 4 行呼叫 scaler.transform(X_test) 而非 scaler.fit_transform(X_test) 的原因為何？", "code": "from sklearn.preprocessing import StandardScaler\nfrom sklearn.model_selection import train_test_split\nX_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2)\nscaler = StandardScaler()\nX_train_scaled = scaler.fit_transform(X_train)\nX_test_scaled = scaler.transform(X_test)  # 注意這裡", "options": ["transform 比 fit_transform 計算速度更快", "測試集必須使用訓練集計算出的均值和標準差來轉換，若對測試集重新 fit 會造成資料洩漏（Data Leakage）", "transform 和 fit_transform 結果完全相同，寫法不同而已", "測試集樣本太少，不足以計算標準差"], "answer": 1, "explanation": "Data Leakage（資料洩漏）是常見的 ML 錯誤。StandardScaler.fit() 會從資料中學習均值（mean）和標準差（std）。若對測試集也 fit，模型訓練過程就「看到」了測試集的統計資訊，破壞了評估的公正性（測試集應模擬完全未見過的資料）。正確做法：只在訓練集上 fit（學習均值/標準差），然後用同樣的均值/標準差 transform 訓練集和測試集。"}, {"id": 43, "subject": "科目三", "topic": "L233", "topicName": "Scikit-learn程式", "difficulty": "hard", "question": "以下程式碼的輸出會是什麼？", "code": "from sklearn.metrics import confusion_matrix\nimport numpy as np\ny_true = [1, 0, 1, 1, 0, 1]\ny_pred = [1, 0, 0, 1, 0, 1]\ncm = confusion_matrix(y_true, y_pred)\nrecall = cm[1,1] / (cm[1,1] + cm[1,0])\nprint(round(recall, 2))", "options": ["0.50", "0.75", "0.80", "1.00"], "answer": 1, "explanation": "逐步計算：y_true=[1,0,1,1,0,1], y_pred=[1,0,0,1,0,1]\n比對：TP=3(預測1且真實1), FP=0(預測1但真實0), FN=1(預測0但真實1), TN=2(預測0且真實0)\n混淆矩陣 cm = [[TN,FP],[FN,TP]] = [[2,0],[1,3]]\ncm[1,1]=3（TP）, cm[1,0]=1（FN）\nRecall = 3/(3+1) = 3/4 = 0.75"}, {"id": 44, "subject": "科目三", "topic": "L233", "topicName": "Grid Search", "difficulty": "medium", "question": "使用 GridSearchCV 進行超參數搜尋時，若有 3 個超參數各有 4 個候選值，並使用 5-Fold 交叉驗證，總共需要訓練幾個模型？", "code": null, "options": ["12 個", "60 個", "320 個", "64 個"], "answer": 2, "explanation": "計算：超參數組合數 = 4 × 4 × 4 = 64 種組合；每種組合進行 5-Fold CV = 每種組合訓練 5 個模型；總訓練次數 = 64 × 5 = 320 個模型。這也是為什麼 GridSearchCV 在大超參數空間時計算成本極高，此時應考慮 RandomizedSearchCV（隨機採樣部分組合）或貝葉斯優化方法。"}, {"id": 45, "subject": "科目三", "topic": "L233", "topicName": "Precision-Recall", "difficulty": "medium", "question": "在信用卡詐欺偵測系統中，模型應優先最大化哪個評估指標？", "code": null, "options": ["Accuracy（準確率）", "Precision（精確率）", "Recall（召回率）", "Specificity（特異度）"], "answer": 2, "explanation": "詐欺偵測的業務邏輯：漏掉詐欺交易（FN）的損失遠大於誤報一筆正常交易（FP，頂多讓客戶多花一次驗證流程）。Recall = TP/(TP+FN)：最大化 Recall 意味著盡量不漏掉詐欺（減少 FN）。此場景與醫療篩檢類似，寧可多報（降低 Precision）也不能漏掉（提高 Recall）。Accuracy 因資料嚴重不平衡而不適用。"}, {"id": 46, "subject": "科目三", "topic": "L234", "topicName": "聯邦學習", "difficulty": "medium", "question": "聯邦學習（Federated Learning）的核心隱私保護機制為何？", "code": null, "options": ["將所有資料加密後集中到中央伺服器訓練", "各方在本地訓練模型，只上傳模型梯度或參數更新，原始資料永遠不離開本地", "對資料進行匿名化後再共享", "使用同態加密對全部資料進行加密計算"], "answer": 1, "explanation": "聯邦學習的架構：(1) 中央伺服器下發全局模型給各參與方；(2) 各方在本地資料上訓練，計算梯度更新；(3) 只將梯度（不含原始資料）上傳中央；(4) 中央聚合（如 FedAvg：加權平均）所有梯度，更新全局模型；(5) 重複步驟。應用場景：醫院聯合訓練疾病預測模型（各醫院病歷不離院）、手機鍵盤預測（資料不離設備）。"}, {"id": 47, "subject": "科目三", "topic": "L234", "topicName": "同態加密", "difficulty": "medium", "question": "同態加密（Homomorphic Encryption）在 AI 應用中的獨特價值為何？", "code": null, "options": ["讓加密傳輸速度提升 10 倍", "允許在加密狀態下直接對資料進行計算，解密後得到正確結果，整個過程原始資料從未暴露", "對資料進行不可逆的雜湊，保護隱私", "自動刪除 90 天以上的舊資料"], "answer": 1, "explanation": "傳統加密：加密 → 傳輸 → 解密 → 計算（解密時資料暴露）。同態加密（HE）：支援在密文上直接做計算（加法、乘法），解密後等同於明文計算的結果，原始資料全程無需解密。AI 應用：醫院將加密的病歷傳給 AI 服務商，服務商在加密資料上進行推論，回傳加密結果，醫院解密獲得預測，服務商全程看不到明文。代價是計算開銷極大（比明文計算慢千倍）。"}, {"id": 48, "subject": "科目三", "topic": "L234", "topicName": "差分隱私", "difficulty": "medium", "question": "差分隱私（Differential Privacy）的核心概念為何？", "code": null, "options": ["對資料集中的姓名和身分證字號進行遮蔽", "在查詢或模型訓練過程中加入精心設計的隨機雜訊，使攻擊者無法從輸出結果推斷單一個人的資料", "對資料進行 k-匿名化處理", "對模型權重進行加密儲存"], "answer": 1, "explanation": "差分隱私的數學定義：對於任意兩個相差一筆記錄的資料集 D 和 D'，任意輸出的機率比值 ≤ e^ε（ε 為隱私預算）。直覺理解：加入校準的 Laplace 或 Gaussian 雜訊，讓輸出對任何單一個人的資料不敏感。應用：Apple 在 iOS 統計功能上使用差分隱私；Google 的 TensorFlow Privacy 庫；人口普查資料發布。ε 越小隱私保護越強，但資料效用越低。"}, {"id": 49, "subject": "科目三", "topic": "L234", "topicName": "SHAP", "difficulty": "medium", "question": "SHAP（SHapley Additive exPlanations）值在 AI 可解釋性中的作用為何？", "code": null, "options": ["衡量模型整體的 AUC 指標", "計算每個特徵對特定預測結果的貢獻量（正面或負面），基於賽局理論的 Shapley 值", "衡量模型訓練過程中損失函數的變化", "替代模型選擇 Random Forest 或 XGBoost"], "answer": 1, "explanation": "SHAP 基於合作賽局理論的 Shapley 值，計算每個特徵對模型預測的邊際貢獻。輸出：每個樣本每個特徵的 SHAP 值（正值=提高預測、負值=降低預測）。應用：醫生使用 SHAP 解釋 AI 的診斷（「血糖值高是主要原因」）；金融機構解釋貸款拒絕原因（符合 PDPA/GDPR 的解釋義務）；工程師定位模型缺陷。LIME 是另一種可解釋方法（局部線性近似）。"}, {"id": 50, "subject": "科目三", "topic": "L234", "topicName": "PDPA個資法", "difficulty": "medium", "question": "依台灣個人資料保護法（PDPA），企業在 AI 系統收集個人資料前，必須履行哪項義務？", "code": null, "options": ["提交政府審查申請，等待核准", "向當事人明確告知蒐集機關名稱、蒐集目的、資料類別、利用情形、當事人權利等事項（事前告知義務）", "對收集的個資進行加密後才能使用", "每年向主管機關申報資料使用狀況"], "answer": 1, "explanation": "台灣 PDPA 的「事前告知義務」：企業蒐集個人資料前，應告知：(1) 蒐集機關名稱；(2) 蒐集目的；(3) 個人資料的類別；(4) 利用期間、地區、對象及方式；(5) 當事人的權利（查詢、閱覽、更正、刪除、停止使用等）；(6) 不提供資料的影響。這些是確保資料主體「知情同意」的基礎，也是 AI 系統合規的必要條件。"}];
-const CHS = [{"id": "s2-ch1", "subject": "科目二", "chapter": "第一章", "title": "機率統計基礎", "code": "L221", "sections": [{"title": "1.1 敘述性統計與資料摘要", "content": "【核心概念】\n敘述性統計是資料分析的起點，用於摘要和描述資料集的主要特性。\n\n【集中趨勢量數】\n• 平均數（Mean）：所有觀測值的算術平均，對離群值敏感\n• 中位數（Median）：排序後中間位置的值，對離群值穩健\n• 眾數（Mode）：出現頻率最高的值，適合類別型資料\n\n【離散趨勢量數】\n• 變異數（Variance）：各觀測值與平均數差的平方平均\n• 標準差（Standard Deviation）：變異數的平方根，與原資料同單位\n• 四分位距（IQR）：Q3-Q1，常用於偵測離群值（1.5×IQR法則）\n\n【機器學習應用】\n• 特徵標準化依賴平均數和標準差\n• 離群值偵測使用 IQR 或 Z-score（|z|>3 視為離群）\n• 資料探索階段（EDA）必備工具"}, {"title": "1.2 機率分佈", "content": "【離散型分佈】\n• 伯努利分佈（Bernoulli）：單次二元結果，p=成功機率。應用：邏輯斯迴歸的標籤假設\n• 二項分佈（Binomial）：n次伯努利試驗的成功次數\n• 泊松分佈（Poisson）：單位時間內事件發生次數。應用：異常偵測\n\n【連續型分佈】\n• 常態分佈（Normal/Gaussian）：鐘形曲線，N(μ,σ²)。應用：誤差建模、特徵標準化假設\n• 均勻分佈（Uniform）：所有值等機率。應用：超參數搜尋的先驗\n• 指數分佈（Exponential）：事件間等待時間\n\n【重要性質】\n• 中央極限定理：大樣本的樣本平均數趨向常態分佈（n≥30）\n• 68-95-99.7法則：常態分佈在 μ±1σ、μ±2σ、μ±3σ 的機率"}, {"title": "1.3 假設檢定與 p 值", "content": "【假設檢定框架】\n• 虛無假設 H₀：預設無效果（如「特徵與目標無關」）\n• 對立假設 H₁：我們想驗證的假設\n• 顯著水準 α：通常設 0.05，拒絕 H₀ 的門檻\n\n【p 值解讀】\n• p 值 = 假設 H₀ 為真時，觀測到這麼極端結果的機率\n• p < α（如 0.05）→ 拒絕 H₀，結果具統計顯著性\n• p ≥ α → 無法拒絕 H₀\n• 注意：p 值不是「H₀ 為真的機率」\n\n【型一與型二錯誤】\n• 型一錯誤（False Positive / α）：H₀ 為真但拒絕它 → 誤報\n• 型二錯誤（False Negative / β）：H₀ 為假但未拒絕 → 漏報\n• 醫療篩檢：型二錯誤（漏診）後果更嚴重 → 最大化 Recall\n\n【機器學習應用】\n• 特徵選擇：用 t-test、ANOVA 篩選與目標顯著相關的特徵\n• A/B 測試：評估模型改版是否顯著提升效果"}]}, {"id": "s2-ch2", "subject": "科目二", "chapter": "第二章", "title": "大數據處理技術", "code": "L222", "sections": [{"title": "2.1 資料收集與清理", "content": "【資料來源類型】\n• 結構化資料：關聯式資料庫（SQL），欄位明確\n• 半結構化資料：JSON、XML、CSV\n• 非結構化資料：文字、圖像、音訊、影片\n\n【缺失值處理策略】\n數值型特徵：\n• 均值填補（Mean Imputation）：快速但對離群值敏感\n• 中位數填補（Median Imputation）：對離群值更穩健\n• 模型預測填補（KNN Imputer、迴歸填補）：最精確但耗時\n\n類別型特徵：\n• 眾數填補（Mode）：最常見作法\n• 新增「Unknown」類別：保留缺失的資訊\n\n【離群值處理】\n• Z-score 法：|z| > 3 視為離群值\n• IQR 法：< Q1-1.5×IQR 或 > Q3+1.5×IQR 視為離群\n• Winsorization（截尾）：將超出範圍的值替換為邊界值\n• Box-Cox 轉換：改善偏態分佈，縮小離群影響\n\n【特徵縮放】\n• StandardScaler：z = (x-μ)/σ，均值0標準差1。適用：PCA、SVM、KNN、神經網路\n• MinMaxScaler：x' = (x-min)/(max-min)，範圍[0,1]。適用：神經網路輸入、圖像像素\n• 決策樹/隨機森林/XGBoost：不需要特徵縮放"}, {"title": "2.2 SQL 與 NoSQL", "content": "【關聯式資料庫（SQL）】\n• 特點：嚴格 Schema、ACID 交易保證、支援複雜 JOIN\n• 適用：金融交易、訂單系統、需要多表關聯的場景\n• 代表：MySQL、PostgreSQL、Oracle\n\n【NoSQL 資料庫】\n分類：\n• 鍵值型（Key-Value）：Redis — 快取、Session 管理\n• 文件型（Document）：MongoDB — 結構不固定的用戶資料、日誌\n• 欄族型（Column-Family）：Cassandra、HBase — 時序資料、大規模寫入\n• 圖型（Graph）：Neo4j — 社交網路、知識圖譜\n\n選擇原則：\n• 需要複雜 JOIN 和 ACID → SQL\n• 需要水平擴展、高寫入量、Schema 彈性 → NoSQL\n• AI/ML 場景多用 NoSQL 儲存特徵向量和日誌\n\n【向量資料庫（Vector DB）】\n• 用途：儲存 Embedding 向量，支援語意相似度搜尋（ANN）\n• 代表：Pinecone、Chroma、Qdrant、Weaviate\n• RAG 架構核心元件：文件向量化後存入 → 查詢時找 Top-K 相似文件"}, {"title": "2.3 大數據處理框架", "content": "【Hadoop 生態系】\n• HDFS（分散式檔案系統）：資料分塊儲存在多節點\n• MapReduce：分散式計算框架，分 Map（對映）和 Reduce（歸約）兩階段\n• 缺點：每步驟寫磁碟，I/O 效能瓶頸\n\n【Apache Spark】\n• 核心優勢：記憶體內（In-Memory）計算，比 MapReduce 快 10-100 倍\n• RDD（Resilient Distributed Dataset）：分散式記憶體資料集\n• 元件：Spark SQL（結構化查詢）、MLlib（機器學習）、Spark Streaming（串流）\n\n【ETL 流程】\nExtract（擷取）→ Transform（轉換：清洗/格式統一/特徵計算）→ Load（載入：資料倉儲/資料湖）\n\n【Lambda 架構】\n• 批次層（Batch Layer）：處理全量歷史資料，結果準確但有延遲\n• 速度層（Speed Layer）：串流處理最新增量資料，低延遲\n• 服務層（Serving Layer）：合併兩層結果回應查詢"}]}, {"id": "s2-ch3", "subject": "科目二", "chapter": "第三章", "title": "大數據分析與 AI 應用", "code": "L224", "sections": [{"title": "3.1 資料不平衡處理", "content": "【問題說明】\n當正負類別比例嚴重失衡時（如 1:100），模型傾向全部預測多數類，Accuracy 可達 99% 但實際無用。\n\n⚠️ 陷阱：不平衡資料不能只看 Accuracy！應使用 F1-score、Precision-Recall AUC\n\n【處理方法】\n過採樣（Over-sampling）：\n• SMOTE（最重要）：在少數類的 K 近鄰之間線性插值生成合成樣本\n  步驟：找 K 個近鄰 → 隨機選一個 → 在連線上插值 x_new = x + rand(0,1)×(x_neighbor-x)\n• 優點：比直接複製多樣性更好，擴展少數類的決策邊界\n\n欠採樣（Under-sampling）：\n• 隨機刪除多數類樣本，快速但丟失資訊\n\n演算法層面：\n• class_weight='balanced'：Sklearn 自動計算反比權重，少數類損失懲罰更重\n• 等效於隱式過採樣，不需生成新樣本\n\n【配套評估指標】\n不平衡資料應搭配：\n• Recall（召回率）：找出所有正例的能力，醫療/詐欺場景優先\n• F1-score：Precision 和 Recall 的調和平均\n• Stratified K-Fold：確保每個 Fold 的類別比例與原始一致"}, {"title": "3.2 特徵工程", "content": "【特徵編碼】\nOne-Hot Encoding（獨熱編碼）：\n• 將 k 個類別轉為 k 個二元欄位（0或1）\n• 注意 Dummy Trap：線性模型需刪去一個欄位避免多重共線性\n• 適用：類別間無順序關係（城市、顏色）\n\nLabel Encoding（標籤編碼）：\n• 將類別映射為整數（北=0, 中=1, 南=2）\n• 隱含順序關係，適用於決策樹（對順序不敏感的演算法）\n• 不適合線性模型（會誤認為有順序）\n\n【特徵選擇方法】\n• 過濾法（Filter）：相關係數、卡方檢定、互資訊（MI）—— 計算快，模型無關\n• 包裝法（Wrapper）：前向/後向逐步選擇，RFE —— 效果好但計算慢\n• 嵌入法（Embedded）：L1 Lasso（自動歸零）、Random Forest 特徵重要性\n\n【降維技術】\nPCA（主成分分析）：\n• 必須先 StandardScaler → 計算協方差矩陣 → 找最大變異方向\n• n_components 決定保留維度數（或設百分比如 0.95 保留 95% 變異）\n• 線性降維，適合去除多重共線性\n\nt-SNE：非線性降維，適合視覺化，不能 transform 新資料"}, {"title": "3.3 生成式 AI 與 RAG", "content": "【LLM 幻覺問題】\nLLM（大型語言模型）基於統計語言模式生成文字，可能生成聽起來合理但事實錯誤的內容（幻覺/Hallucination）。\n\n【RAG 架構（Retrieval-Augmented Generation）】\n離線階段：\n1. 將知識庫文件切割成 Chunks\n2. 用 Embedding 模型轉換為向量\n3. 存入向量資料庫（Pinecone/Chroma）\n\n線上階段：\n1. 用戶查詢 → 轉換為向量\n2. 在向量資料庫中找 Top-K 語意相似文件\n3. 將文件 + 問題一起傳給 LLM\n4. LLM 基於真實文件生成回答\n\n優點：\n• 降低幻覺：基於真實文件回答\n• 知識可更新：修改向量 DB 無需重訓模型\n• 可溯源：引用具體文件來源\n• 企業隱私：資料留在自己的 Vector DB\n\n【vs 微調（Fine-tuning）】\nRAG：知識存在外部資料庫，即時更新成本低\n微調：知識固化在模型權重，更新需重新訓練"}]}, {"id": "s3-ch1", "subject": "科目三", "chapter": "第一章", "title": "機器學習基礎數學", "code": "L231", "sections": [{"title": "1.1 梯度下降與優化", "content": "【梯度下降（Gradient Descent）】\n核心思想：沿損失函數梯度的反方向更新參數，逐步找到最小值。\n更新規則：θ = θ - α × ∇L(θ)\n• α（學習率）：步長大小。太大震盪無法收斂；太小訓練太慢\n\n【三種變體比較】\n• Batch GD（全批次）：每次用全部資料計算梯度，方向準確但記憶體大、速度慢\n• SGD（隨機）：每次用 1 個樣本，速度快但梯度雜訊大\n• Mini-batch GD：每次用小批次（32~256），兼顧效率與穩定性 ← 深度學習標準選擇\n\n【Adam 優化器（最重要）】\nAdam = Momentum（動量）+ AdaGrad（自適應學習率）\n• 維護一階動量 m（梯度移動平均，記憶方向）\n• 維護二階動量 v（梯度平方移動平均，調整步長）\n• 更新量 ≈ m/√v：頻繁更新的參數步長小，稀疏參數步長大\n優點：收斂快、對學習率不那麼敏感、實踐效果好\n\n【L1 / L2 正則化】\n• L1（Lasso）：損失 + λΣ|w|，部分權重精確歸零 → 稀疏模型、特徵選擇\n• L2（Ridge）：損失 + λΣw²，所有權重縮小但不為零 → 防止整體過擬合\n• Elastic Net：L1 + L2 的組合，兼具兩者特性"}, {"title": "1.2 PCA 與線性代數", "content": "【向量與矩陣基礎】\n• 特徵向量：一筆資料的所有特徵排列成向量 x = [x₁, x₂, ..., xₙ]\n• 矩陣乘法：全連接層核心運算 z = Wx + b（W 為權重矩陣）\n• 點積（Dot Product）：x·y = Σxᵢyᵢ，衡量相似度（推薦系統核心）\n• 餘弦相似度：cos(x,y) = x·y / (||x||×||y||)，範圍[-1,1]\n\n【PCA（主成分分析）】\n目的：將高維資料投影到低維空間，保留最大變異量方向。\n\n執行步驟：\n1. StandardScaler 標準化（必須！量級大的特徵會主導協方差矩陣）\n2. 計算協方差矩陣\n3. 求特徵值和特徵向量（主成分方向）\n4. 選取前 k 個主成分（按特徵值大小排序）\n5. 投影到新空間\n\nScikit-learn：\n```python\nfrom sklearn.preprocessing import StandardScaler\nfrom sklearn.decomposition import PCA\nscaler = StandardScaler()\nX_scaled = scaler.fit_transform(X_train)\npca = PCA(n_components=0.95)  # 保留95%變異\nX_pca = pca.fit_transform(X_scaled)\n```\n\n【SVD（奇異值分解）】\n• 任意矩陣 X ≈ UΣVᵀ 分解為三個矩陣\n• 推薦系統：用戶-物品評分矩陣分解為用戶潛在因子和物品潛在因子"}, {"title": "1.3 貝氏定理與條件機率", "content": "【貝氏定理】\nP(A|B) = P(B|A) × P(A) / P(B)\n\n• 先驗機率 P(A)：未觀測到證據前的信念\n• 似然 P(B|A)：假設 A 為真時觀測到 B 的機率\n• 後驗機率 P(A|B)：觀測到證據 B 後更新的信念\n\n【樸素貝葉斯分類器】\n「樸素」假設：在已知類別下，各特徵條件獨立。\nP(類別|特徵) ∝ P(類別) × ΠP(特徵ᵢ|類別)\n\n應用：垃圾郵件過濾（最經典）\n優點：訓練極快、小樣本表現好\n缺點：獨立性假設通常不成立（但實踐中效果仍可以）\n\n【貝葉斯推論在 ML 中的應用】\n• 貝葉斯優化（Hyperopt/Optuna）：用先驗分佈指導超參數搜尋\n• 高斯過程（Gaussian Process）：對函數的分佈進行建模\n• MCMC：從複雜後驗分佈採樣（貝葉斯神經網路）"}]}, {"id": "s3-ch2", "subject": "科目三", "chapter": "第二章", "title": "機器學習演算法", "code": "L232", "sections": [{"title": "2.1 監督式學習", "content": "【線性迴歸】\n預測連續數值，y = w·x + b，最小化殘差平方和（OLS）。\n應用：房價預測、銷售預測\n\n【邏輯斯迴歸】\nz = w·x + b → Sigmoid(z) = 1/(1+e⁻ᶻ) → 輸出機率 ∈ (0,1)\n• 對數勝算（Log-Odds / Logit）：線性可分性假設建立在 log-odds 是特徵的線性組合\n• 應用：二元分類（信用評分、疾病預測）\n• 損失函數：交叉熵損失\n\n【決策樹】\n遞迴分裂，選擇最大化資訊增益（或最小化 Gini 不純度）的特徵。\n• Gini 不純度 = 1 - Σpᵢ²（越低越純）\n• 資訊增益 = 父節點熵 - 子節點加權平均熵\n• 優點：可解釋、不需標準化、能處理非線性\n• 缺點：容易過擬合（需限制深度）\n\n【SVM（支援向量機）】\n找最大間隔超平面，支持向量是距離超平面最近的樣本。\n• 核技巧：K(x,z)=φ(x)·φ(z)，隱式映射到高維空間處理非線性\n• RBF 核（最常用）：K=exp(-γ||x-z||²)\n• 必須 StandardScaler（距離型演算法）\n\n【KNN（K 近鄰）】\n找 K 個最近鄰，多數決分類或取平均迴歸。\n• 必須 StandardScaler（完全依賴距離）\n• 缺點：預測慢 O(n)，記憶體大，高維效果差（維度詛咒）"}, {"title": "2.2 集成方法", "content": "【隨機森林（Random Forest）】\nBagging 方法：並行訓練多棵決策樹，多數決。\n隨機性來源：\n1. Bootstrap 抽樣：每棵樹用有放回抽取的訓練子集\n2. 隨機特徵子集：每個節點只從隨機選取的特徵中選分裂特徵\n\n效果：各樹偏差相互抵消 → 低 Variance，不易過擬合\n特徵重要性：MDI（Mean Decrease Impurity），統計每個特徵帶來的不純度降低量\n\n【XGBoost / GBM（Gradient Boosting）】\nBoosting 方法：序列訓練，每棵樹學習前一棵樹的殘差。\n\nXGBoost 改進：\n• 正則化：目標函數加入 λ（葉子數量）和 α（葉子權重）懲罰\n• 列抽樣（Column Subsampling）\n• 內建缺失值處理\n• 支援並行計算（節點內並行）\n\n比較：\n• 隨機森林（Bagging）：並行、低 Variance\n• XGBoost（Boosting）：序列、低 Bias，通常比隨機森林準確率更高但更容易過擬合\n\n【Stacking 集成】\nLevel-0 多個不同算法 → Level-1 元學習器學習如何組合各基學習器的預測\n比 Bagging 能捕捉不同算法的互補優勢"}, {"title": "2.3 深度學習", "content": "【神經網路基礎】\n人工神經元：z = Σwᵢxᵢ + b → 激活函數 a(z)\n\n激活函數比較：\n• Sigmoid：輸出(0,1)，梯度飽和問題（|z|大時梯度→0），用於輸出層\n• ReLU：f(x)=max(0,x)，正數區域梯度=1，不飽和，深度學習首選\n• Leaky ReLU：解決 Dying ReLU（負數區域小斜率而非0）\n• Tanh：輸出(-1,1)，比 Sigmoid 梯度大\n\n【CNN（卷積神經網路）】\n• 卷積層：局部感受野，卷積核掃描提取特徵（邊緣、紋理）\n• 池化層：最大池化或平均池化，降低空間尺寸 + 位移不變性\n• 輸出尺寸計算：(W + 2P - F)/S + 1（W=輸入，P=padding，F=kernel，S=stride）\n\nResNet 殘差連接：H(x) = F(x) + x\n→ 解決梯度消失，讓訓練幾百層成為可能\n\nU-Net：U 型對稱（編碼器+解碼器）+ Skip Connection\n→ 醫學影像分割，適合小資料集\n\n【Transformer / Attention】\nSelf-Attention：每個位置與所有其他位置計算注意力分數，支援並行\nScaled Dot-Product：Attention = Softmax(QKᵀ/√dk)V\n÷√dk 的原因：dk 大時點積方差大，Softmax 飽和，除以√dk 穩定梯度\n多頭注意力（Multi-Head）：並行多個頭，捕捉不同類型的依賴關係"}]}, {"id": "s3-ch3", "subject": "科目三", "chapter": "第三章", "title": "機器學習建模與調校", "code": "L233", "sections": [{"title": "3.1 過擬合與正則化", "content": "【診斷方法】\n學習曲線（Learning Curve）：\n• 過擬合（High Variance）：訓練損失低 + 驗證損失高 → 兩條線差距大\n• 欠擬合（High Bias）：訓練損失高 + 驗證損失高 → 兩條線都高但接近\n• 正常：兩條線都低且趨於一致\n\n【過擬合解決方案（重要！L233 佔 44%）】\n正則化：\n• L1（Lasso）：稀疏模型，特徵選擇，適合高維\n• L2（Ridge）：縮小所有權重，通用防止過擬合\n\n神經網路特有：\n• Dropout：訓練時隨機歸零神經元輸出（p=0.2~0.5），防止協同依賴\n  推論時不 Dropout，輸出乘以(1-p)補償\n• Batch Normalization：每層輸出標準化，允許更大學習率，輕微正則化效果\n• Early Stopping：監控驗證損失，連續 N 輪不改善就停止並恢復最佳模型\n\n資料層面：\n• Data Augmentation：翻轉、旋轉、裁剪增加訓練資料多樣性\n• 增加真實訓練資料\n• SMOTE（針對不平衡問題）\n\n模型層面：\n• 減少層數/神經元\n• 使用更強正則化"}, {"title": "3.2 評估指標", "content": "【混淆矩陣】\n• TP：實際正、預測正（命中）\n• FP：實際負、預測正（誤報） ← 影響 Precision\n• FN：實際正、預測負（漏報） ← 影響 Recall\n• TN：實際負、預測負（正確拒絕）\n\n【核心指標公式】\n• Precision = TP/(TP+FP)：預測為正的中，真正是正的比例\n• Recall = TP/(TP+FN)：真正是正的中，被找出的比例\n• F1 = 2×P×R/(P+R)：調和平均，兼顧兩者\n• Accuracy = (TP+TN)/(TP+TN+FP+FN)：不平衡資料時會誤導！\n\n【情境選擇（常考！）】\n• 醫療篩檢、詐欺偵測：Recall 優先（漏掉後果嚴重）\n• 垃圾郵件過濾：Precision 優先（誤刪重要信後果嚴重）\n• 不平衡資料：F1-score 或 AUC-PR\n\n【ROC-AUC】\n• ROC 曲線：不同閾值下的 TPR（Recall）vs FPR\n• AUC=1.0 完美；AUC=0.5 等同隨機猜測；AUC>0.7 有參考價值\n• AUC 物理意義：隨機取一正一負樣本，模型給正樣本更高分的機率\n\n【F1 計算範例】\nTP=80, FP=20, FN=40\nP = 80/100 = 0.80\nR = 80/120 = 0.667\nF1 = 2×0.80×0.667/(0.80+0.667) = 0.727"}, {"title": "3.3 交叉驗證與超參數調校", "content": "【K-Fold 交叉驗證】\n將資料分成 K 份，輪流用 K-1 份訓練、1 份驗證，共 K 次，取平均作為性能估計。\n\nStratified K-Fold：\n• 確保每個 Fold 的類別比例與原始資料相同\n• 不平衡資料的必選方案\n• Sklearn：StratifiedKFold(n_splits=5)\n\n⚠️ Data Leakage 警告：\n• 標準化的 fit() 必須只在訓練子集上\n• 使用 Pipeline 自動避免洩漏：\n```python\npipe = Pipeline([('scaler', StandardScaler()), ('clf', SVC())])\ncross_val_score(pipe, X, y, cv=5)  # 每個 Fold 內部正確 fit\n```\n\n【超參數搜尋】\nGrid Search：\n• 窮舉所有組合，訓練次數 = 組合數 × K\n• 3個超參數各4個值 + 5-Fold = 64×5 = 320 次訓練\n• 組合少時適用\n\nRandom Search：\n• 隨機採樣組合，同樣次數下探索更廣\n• 大多數超參數影響不大時，Random Search 更高效\n\nBayesian Optimization（Hyperopt/Optuna）：\n• 維護超參數性能模型，智慧選擇下一組候選\n• 最高效，適合昂貴的訓練任務"}]}, {"id": "s3-ch4", "subject": "科目三", "chapter": "第四章", "title": "AI 治理與倫理", "code": "L234", "sections": [{"title": "4.1 隱私保護技術", "content": "【聯邦學習（Federated Learning）】\n問題：各方不願共享原始資料（醫院病歷、手機資料）。\n解法：\n1. 中央下發全局模型\n2. 各方在本地資料訓練，計算梯度\n3. 只上傳梯度（不含原始資料）\n4. 中央聚合（FedAvg：加權平均）更新全局模型\n5. 重複直到收斂\n\n風險：梯度反推攻擊（Gradient Inversion）可從梯度還原訓練資料\n防禦：差分隱私 + 安全聚合\n\n【同態加密（Homomorphic Encryption）】\n允許在加密狀態下直接計算，解密後得到正確結果。\n• 醫院加密病歷 → AI 服務商在密文上推論 → 回傳加密結果 → 醫院解密\n• 全程原始資料不暴露\n• 代價：計算開銷極大（比明文慢千倍）\n\n【差分隱私（Differential Privacy）】\n在查詢或訓練過程加入精心設計的隨機雜訊，使攻擊者無法推斷單一個人的資料。\n• ε（隱私預算）：越小隱私保護越強，資料效用越低\n• Apple iOS、Google 的生產系統有使用\n\n【k-匿名（k-anonymity）】\n準識別符組合（生日+性別+郵遞區號）至少有 k 筆相同記錄，無法唯一識別個人。"}, {"title": "4.2 AI 法規與合規", "content": "【台灣個人資料保護法（PDPA）】\n企業在 AI 系統收集個資前，必須履行事前告知義務：\n1. 蒐集機關名稱\n2. 蒐集目的\n3. 個人資料類別\n4. 利用期間、地區、對象及方式\n5. 當事人權利（查詢、閱覽、更正、刪除、停止使用）\n6. 不提供資料的影響\n\n資料主體權利：知情權、更正權、刪除權（被遺忘權）、攜帶權\n\n【GDPR（歐盟）vs PDPA（台灣）】\n兩者核心相同：資料最小化、目的限制、告知義務、資料主體權利\nGDPR Article 22：對影響個人的自動化決策，有權要求解釋 → 推動 XAI\n\n【AI 系統合規清單】\n□ 收集前告知並取得同意\n□ 最小化收集（只收必要資料）\n□ 安全措施（加密、存取控制）\n□ 資料保留限制（到期刪除）\n□ 跨境傳輸審查\n□ 高風險 AI 影響評估（DPIA）"}, {"title": "4.3 演算法偏見與可解釋 AI", "content": "【演算法偏見的來源】\n1. 資料偏見：訓練資料反映歷史歧視（人臉識別對深膚色準確率低）\n2. 採樣偏見：特定族群在訓練集比例不足\n3. 標注偏見：標注者帶入主觀偏見\n4. 代理特徵：使用與受保護屬性高度相關的間接特徵\n\n【公平性指標】\n• Demographic Parity（人口統計同等性）：不同族群獲得正面結果的比例相同\n  P(Ŷ=1|A=0) = P(Ŷ=1|A=1)\n• Equal Opportunity：真正符合資格的人中，不同族群的 TPR 相同\n  P(Ŷ=1|Y=1,A=0) = P(Ŷ=1|Y=1,A=1)\n注意：兩個指標通常不能同時滿足（公平性不可能三角）\n\n【可解釋 AI（XAI）】\nSHAP（SHapley Additive exPlanations）：\n• 基於合作賽局理論，計算每個特徵對特定預測的邊際貢獻\n• 正值=提高預測，負值=降低預測\n• 醫療 AI 必備：醫生需要知道「為什麼」才能負責任地使用\n\nLIME（Local Interpretable Model-Agnostic Explanations）：\n• 在預測點附近用局部線性模型近似複雜模型的行為\n• 提供局部解釋，適合單一樣本解釋"}]}];
+const QS=[{"id": 1, "subject": "科目三", "topic": "L233", "topicName": "交叉驗證", "difficulty": "medium", "question": "某零售企業建立一個銷售預測模型，希望評估該模型在不同月份的新資料上，是否仍能維持穩定的預測表現。資料科學團隊計畫利用統計方法檢驗模型對未觀察資料的適應能力與泛化效果。下列哪一種方法最適合用於此目的？", "code": null, "options": ["F 檢定（F-test）", "交叉驗證（Cross-Validation）", "配對樣本 t 檢定（Paired-sample t-test）", "卡方檢定（Chi-square Test）"], "answer": 1, "explanation": "交叉驗證（Cross-Validation）是評估模型泛化能力的標準方法，透過將資料切分為多個折（Fold），輪流作為訓練集與驗證集，能有效評估模型在未見資料上的表現穩定性。F 檢定、t 檢定、卡方檢定都是統計假設檢定，用途不同，不適合評估模型泛化能力。"}, {"id": 2, "subject": "科目三", "topic": "L231", "topicName": "L1正則化", "difficulty": "medium", "question": "在建立迴歸或分類模型時，若希望避免模型過度擬合（Overfitting），可透過加入正則化項以限制模型的複雜度。其中，L1 正則化（Lasso）的主要效果為何？", "code": null, "options": ["增加模型參數的數量，以提升表現靈活度", "強化梯度穩定性，避免參數更新過度震盪", "產生稀疏模型（Sparse Model），使部分參數權重收斂為零", "提高學習率（Learning Rate），加速模型收斂速度"], "answer": 2, "explanation": "L1 正則化（Lasso）在損失函數中加入參數絕對值之和（λΣ|w|）作為懲罰項。由於絕對值函數在 0 點的次梯度特性，L1 會讓部分參數權重精確歸零，產生稀疏模型（Sparse Model），同時具備特徵選擇的效果。L2（Ridge）則是讓所有權重縮小但不歸零。"}, {"id": 3, "subject": "科目三", "topic": "L231", "topicName": "非凸優化", "difficulty": "hard", "question": "在訓練非線性模型時，若目標函數為非凸函數（Non-convex Function），演算法在參數更新過程中可能出現多個極值點，導致最佳化結果不穩定。請問此時最可能發生下列哪一種情況？", "code": null, "options": ["梯度消失", "資料過少", "局部最優解", "過擬合"], "answer": 2, "explanation": "非凸函數（Non-convex Function）有多個局部最小值（Local Minimum），梯度下降演算法可能陷入局部最優解而非全局最優解，導致最佳化結果不穩定。這是深度學習訓練的核心挑戰之一。梯度消失是另一個問題，但題目描述的「多個極值點」直接對應局部最優解。"}, {"id": 4, "subject": "科目三", "topic": "L232", "topicName": "DBSCAN", "difficulty": "medium", "question": "在執行 DBSCAN（Density-Based Spatial Clustering of Applications with Noise）群集分析時，若某資料點鄰域內的樣本數不足以形成核心點（Core Point），且該點未被任何核心點的鄰域所包含，也未與其他群集形成密度可達關係（Density Reachability），此資料點最終將被歸類為哪一種類型？", "code": null, "options": ["鄰近點（Neighbor Point）", "雜訊點（Noise Point）", "邊界點（Border Point）", "潛在點（Potential Point）"], "answer": 1, "explanation": "DBSCAN 將資料點分為三類：核心點（Core Point）：鄰域內樣本數≥MinPts；邊界點（Border Point）：不是核心點但在核心點鄰域內；雜訊點（Noise Point）：既不是核心點、也不在任何核心點鄰域內，無法被任何群集包含。題目描述的條件完全符合雜訊點的定義。"}, {"id": 5, "subject": "科目三", "topic": "L232", "topicName": "CNN卷積層", "difficulty": "easy", "question": "某智慧製造公司開發一套影像辨識系統，用於自動檢測生產線上的瑕疵產品。系統採用卷積神經網路（CNN）作為主要模型架構，其中第一層卷積層（Convolutional Layer）主要負責的功能為下列何者？", "code": null, "options": ["自動提取輸入影像中的局部特徵", "降低影像維度以加速運算效率", "增加神經元與參數數量以提升模型容量", "整合所有特徵並輸出最終分類結果"], "answer": 0, "explanation": "CNN 的卷積層（Convolutional Layer）透過可學習的卷積核（Filter）在輸入影像上進行局部感受，自動提取局部特徵（如邊緣、紋理、色彩梯度等）。第一層卷積層通常提取低階特徵（邊緣、角落），越深的層提取越高階的語意特徵。降低維度是池化層（Pooling）的功能；整合所有特徵輸出是全連接層的功能。"}, {"id": 6, "subject": "科目三", "topic": "L232", "topicName": "CNN參數共享", "difficulty": "medium", "question": "某智慧城市團隊開發一套交通監控系統，用於即時辨識路口監視器影像中的車輛與行人。CNN 在訓練與推論效率上明顯優於傳統的全連接神經網路（FCNN）。請問下列何者為主要原因？", "code": null, "options": ["CNN 能自動學習影像的旋轉與比例不變性", "CNN 可直接跳過人工特徵提取步驟進行分類", "CNN 透過區域感知（Local Receptive Field）與參數共享（Parameter Sharing）機制，降低模型參數量與運算複雜度", "CNN 捨棄激勵函數（Activation Function），以加快運算速度"], "answer": 2, "explanation": "CNN 比 FCNN 效率高的核心原因是兩個機制：① 局部感受野（Local Receptive Field）：每個神經元只連接局部區域，而非全部輸入。② 參數共享（Parameter Sharing）：同一個卷積核在整張影像上共用，大幅減少參數量。FCNN 的每個神經元連接所有輸入，參數量隨影像尺寸平方成長，極為龐大。"}, {"id": 7, "subject": "科目三", "topic": "L232", "topicName": "LSTM應用", "difficulty": "easy", "question": "下列哪一種應用最適合採用長短期記憶網路（Long Short-Term Memory, LSTM）模型？", "code": null, "options": ["預測未來七天的電力需求變化趨勢", "辨識監視影像中不同類別的物件", "將大量顧客資料依相似特徵自動分群", "將高維度的感測器資料壓縮成低維表示"], "answer": 0, "explanation": "LSTM 是專為處理序列資料（Sequential Data）設計的遞迴神經網路，能透過門控機制記憶長期依賴關係。電力需求預測是典型的時間序列問題，LSTM 可以利用過去幾天/幾小時的歷史數據預測未來趨勢。影像辨識→CNN；資料分群→K-means等分群算法；高維壓縮→自編碼器或PCA。"}, {"id": 8, "subject": "科目三", "topic": "L232", "topicName": "決策樹資訊增益", "difficulty": "easy", "question": "資訊增益（Information Gain）常用於衡量特徵對分類結果的不確定性貢獻程度，並據以進行特徵選擇。此方法主要應用於下列哪一類模型架構中？", "code": null, "options": ["使用 L1 正則化進行特徵篩選的線性模型", "利用激活函數（Activation Function）進行特徵擷取的深度神經網路", "透過核函數（Kernel Function）將特徵映射至高維空間的分類模型", "透過遞迴分裂方式建立分類規則的決策樹模型"], "answer": 3, "explanation": "資訊增益（Information Gain）= 父節點熵 - 分裂後各子節點加權平均熵，是決策樹（Decision Tree）選擇最佳分裂特徵的核心指標。ID3 演算法使用資訊增益；C4.5 使用增益比率（Gain Ratio）；CART 使用 Gini 不純度。這三者都是決策樹的分裂準則。"}, {"id": 9, "subject": "科目三", "topic": "L233", "topicName": "特徵縮放", "difficulty": "easy", "question": "在建構以距離為基礎的機器學習模型（如 KNN、SVM）時，下列哪一項資料前處理方式最為關鍵？", "code": null, "options": ["進行特徵縮放（Feature Scaling），使各特徵變數具有相似的數值範圍", "將連續型特徵變數轉換為類別型變數", "以平均值或中位數進行缺失值補齊", "進行隨機抽樣以平衡資料筆數"], "answer": 0, "explanation": "KNN 和 SVM（RBF 核）都是基於距離計算的演算法。若各特徵的數值範圍差異懸殊（例如年齡 0-100 vs 薪資 0-1,000,000），距離計算會被數值大的特徵主導，造成嚴重偏差。特徵縮放（StandardScaler 或 MinMaxScaler）確保每個特徵在距離計算中具有平等的地位。"}, {"id": 10, "subject": "科目三", "topic": "L233", "topicName": "AutoML", "difficulty": "medium", "question": "下列哪一種應用情境最適合導入 AutoML，以提升模型開發效率？", "code": null, "options": ["公司已有完整的 MLOps 平台與資深資料科學團隊，模型更新採固定流程", "製造部門的生產良率模型已長期穩定運作，只需定期調整參數", "行銷部門希望在短時間內比較多種顧客流失預測模型，缺乏專職工程師與時間進行手動建模", "財務部門正在開發高度客製化的信用風險評估模型，需要精細控制特徵工程與演算法細節"], "answer": 2, "explanation": "AutoML 的設計目標是自動化超參數搜尋、特徵工程、模型選擇等流程，最適合的情境是：缺乏專職資料科學人員、時間有限、需要快速比較多個模型的場景。選項 A、B 已有成熟流程不需要；選項 D 需要高度客製化，AutoML 的自動化反而不符合需求。"}, {"id": 11, "subject": "科目三", "topic": "L233", "topicName": "Random Search vs Grid Search", "difficulty": "medium", "question": "相較於 Grid Search，Random Search 在超參數調整上具備哪一項主要優勢？", "code": null, "options": ["可自動產生模型架構", "可使用更大的訓練集", "避免模型過擬合", "能更有效率搜尋高維參數空間"], "answer": 3, "explanation": "Grid Search 窮舉所有超參數組合，當超參數維度增加時，搜尋空間以指數級增長（維度詛咒）。Random Search 隨機採樣超參數組合，研究（Bergstra & Bengio, 2012）證明：當超參數中只有少數幾個真正重要時，Random Search 在相同試驗次數下能探索更廣的重要超參數範圍，搜尋效率更高。"}, {"id": 12, "subject": "科目三", "topic": "L233", "topicName": "學習率超參數", "difficulty": "medium", "question": "某智慧製造公司開發設備故障預測系統，訓練過程中模型收斂速度不穩定：有時過快導致過擬合，有時又遲遲無法達到最佳準確率。開發團隊可以藉由調整下列哪一項超參數以改善此問題？", "code": null, "options": ["每個神經元的輸出結果", "損失函數（Loss Function）在訓練過程中的梯度變化值（Gradient）", "學習率（Learning Rate），控制模型權重更新的速度", "模型在訓練後產生的權重值"], "answer": 2, "explanation": "學習率（Learning Rate, α）是最關鍵的超參數之一，直接控制每次參數更新的步長大小。學習率過大→收斂不穩定，在最小值附近震盪；學習率過小→收斂速度緩慢，訓練時間過長。其他選項（神經元輸出、梯度值、訓練後的權重）都是模型在訓練過程中自動產生的，不是超參數。"}, {"id": 13, "subject": "科目三", "topic": "L234", "topicName": "標籤偏差", "difficulty": "easy", "question": "標籤偏差（Label Bias）通常是因為什麼原因造成？", "code": null, "options": ["訓練資料量過大", "標記資料本身帶有主觀偏見", "模型結構設計不當", "特徵數量設定過多"], "answer": 1, "explanation": "標籤偏差（Label Bias）是指資料標注過程中，由於標注者的主觀判斷、文化背景、個人偏見等因素，導致標籤分配不公平或不一致。例如：人臉辨識的標注者對某些族裔標注品質較差，或情感分析標注者對某類評論的正負面判斷帶有主觀偏見。這是演算法偏見（Algorithmic Bias）的重要來源之一。"}, {"id": 14, "subject": "科目三", "topic": "L234", "topicName": "模型可解釋性", "difficulty": "easy", "question": "下列哪一種 AI 應用情境中，模型的可解釋性（Explainability）最為關鍵？", "code": null, "options": ["電商平台利用深度學習模型預測用戶的下一次購買時間，以優化推播行銷策略", "新創公司使用機器學習演算法自動調整廣告出價策略，以提升點擊轉換率", "醫院導入 AI 模型分析病患影像並給出腫瘤惡性可能性，作為臨床醫師診斷依據", "銀行導入 AI 模型預測客戶流失率，並自動推薦留客優惠方案"], "answer": 2, "explanation": "醫療 AI 的可解釋性是最高優先級：① 臨床責任：醫師必須理解 AI 診斷依據才能負責任地做決策；② 法規要求：GDPR Article 22 要求對影響個人的自動化決策提供解釋；③ 錯誤偵測：可解釋性幫助發現模型的錯誤推理模式；④ 信任建立：可解釋的 AI 才能被醫療從業者接受。SHAP 值是醫療 AI 最常用的可解釋工具。"}, {"id": 15, "subject": "科目三", "topic": "L231", "topicName": "R²決定係數", "difficulty": "medium", "question": "在線性迴歸模型中，若 R² 值為 0.85，其意義為何？", "code": null, "options": ["模型準確率為 85%", "85% 的變異可被模型解釋", "預測誤差為 15%", "模型有 85% 的信心水準"], "answer": 1, "explanation": "R²（決定係數，Coefficient of Determination）衡量模型解釋目標變數變異的能力。R²=0.85 表示「目標變數 85% 的變異量可由模型的自變數解釋」，剩餘 15% 的變異是模型無法解釋的殘差。注意：R² 不是準確率（Accuracy 是分類指標），也不等於預測誤差，更與信心水準無關。"}, {"id": 16, "subject": "科目三", "topic": "L233", "topicName": "F1計算", "difficulty": "hard", "question": "在二元分類問題中，若精確率（Precision）為 0.8，召回率（Recall）為 0.6，則 F1 分數（F1 Score）為何？", "code": null, "options": ["0.686", "0.700", "0.720", "0.750"], "answer": 0, "explanation": "F1 Score = 2 × Precision × Recall / (Precision + Recall) = 2 × 0.8 × 0.6 / (0.8 + 0.6) = 0.96 / 1.4 ≈ 0.686。注意：F1 是調和平均，不是算術平均（算術平均會得到 0.7），調和平均對較小值更敏感，能平衡 Precision 和 Recall 的貢獻。"}, {"id": 17, "subject": "科目三", "topic": "L231", "topicName": "Adam優化器", "difficulty": "medium", "question": "下列哪一種優化演算法內建動量（Momentum）的設計機制？", "code": null, "options": ["SGD+Momentum", "Adam", "RMSProp", "Adagrad"], "answer": 1, "explanation": "Adam（Adaptive Moment Estimation）同時結合了兩個機制：① 一階動量（First Moment）= 梯度的指數移動平均，類似 Momentum，記憶過去梯度方向加速收斂；② 二階動量（Second Moment）= 梯度平方的指數移動平均，類似 AdaGrad/RMSProp，自動調整每個參數的學習率。因此 Adam 內建動量設計。SGD+Momentum 雖然也有動量，但題目問的是「內建動量的設計機制」，Adam 是最完整的。"}, {"id": 18, "subject": "科目三", "topic": "L232", "topicName": "XGBoost改進", "difficulty": "medium", "question": "下列何者最能同時反映 XGBoost 相較於傳統梯度提升決策樹（GBDT）的主要技術改進？", "code": null, "options": ["引入正則化項（Regularization）以抑制過擬合，並支援缺失值自動處理與並行化訓練", "改以隨機森林（Random Forest）架構取代樹模型以提升準確率", "以類神經網路（Neural Network）取代弱分類器（Weak Learners）", "採用批次正規化（Batch Normalization）技術提升模型穩定性"], "answer": 0, "explanation": "XGBoost 相較於傳統 GBDT 的核心改進：① 正則化：目標函數加入 L1/L2 懲罰樹的複雜度（葉子數量和葉子權重），有效防止過擬合；② 缺失值自動處理：對缺失值學習最佳的分裂方向；③ 並行化訓練：節點內的特徵分裂可以並行計算；④ 二階泰勒展開：更精確的梯度近似；⑤ 列抽樣（Column Subsampling）類似隨機森林。"}, {"id": 19, "subject": "科目三", "topic": "L233", "topicName": "不平衡資料評估", "difficulty": "medium", "question": "某醫療機構開發疾病早期偵測模型，正樣本（確診病例）僅佔 3%。在模型訓練與評估過程中，下列哪一種作法最不適合用於提升對少數類病例的預測能力？", "code": null, "options": ["使用 SMOTE 過採樣", "調整類別權重", "使用準確率（Accuracy）作為評估指標", "欠採樣多數類（Undersampling the majority class）"], "answer": 2, "explanation": "在嚴重不平衡資料（正樣本僅 3%）中，使用 Accuracy 作為主要評估指標是最不適合的！若模型全部預測為負類（未確診），Accuracy = 97%，看起來極佳但完全沒有偵測到任何確診病例。應改用 Recall、F1-score、Precision-Recall AUC 等對類別不平衡敏感的指標。SMOTE、類別權重調整、欠採樣都是有效的處理方法。"}, {"id": 20, "subject": "科目三", "topic": "L233", "topicName": "互動特徵", "difficulty": "medium", "question": "某電子商務公司為開發商品評論情感分析模型，希望模型能捕捉評論中不同特徵之間的關聯影響，例如「商品價格」與「顧客滿意度」的互動效果。下列哪一種特徵工程設計方式最適合用於建立互動特徵（Interaction Features）？", "code": null, "options": ["將單一特徵取平方", "對所有特徵進行對數轉換", "將兩個或多個特徵進行乘積或交互組合", "對特徵進行標準化"], "answer": 2, "explanation": "互動特徵（Interaction Features）是指將兩個或多個特徵進行組合（乘積、比值或其他運算）以捕捉它們之間的交互效應。例如：price × satisfaction_level 可以捕捉「高價產品中，滿意度對評論情感的放大效果」。單特徵平方是多項式特徵；對數轉換改變分佈；標準化只是縮放，都不能捕捉特徵間的互動關係。"}, {"id": 21, "subject": "科目三", "topic": "L232", "topicName": "多頭注意力", "difficulty": "medium", "question": "某語音辨識系統開發團隊採用 Transformer 架構，導入多頭注意力（Multi-head Attention）機制。請問下列何者為此機制的主要優點？", "code": null, "options": ["減少模型參數量以降低訓練成本", "加速整體注意力計算過程", "從不同表示子空間（Representation Subspaces）同時捕捉多樣化關聯資訊", "避免梯度消失（Gradient Vanishing）問題"], "answer": 2, "explanation": "多頭注意力（Multi-head Attention）並行運行多個注意力頭（h個），每個頭在不同的投影子空間中學習不同類型的依賴關係。在語音辨識中：某個頭可能學習發音特徵間的關係，另一個頭學習語速變化，第三個頭學習長距離語意脈絡。多個頭的輸出拼接後線性投影，讓模型能同時理解多層次資訊，表示能力遠優於單頭注意力。"}, {"id": 22, "subject": "科目三", "topic": "L231", "topicName": "貝氏定理應用", "difficulty": "medium", "question": "某電商平台以貝氏定理（Bayes' Theorem）推論顧客購買機率，「在觀察到這些行為特徵的情況下，該顧客會購買的機率」。下列敘述何者最符合其核心運作機制？", "code": null, "options": ["根據歷史樣本自動分群，找出行為相似的顧客群", "以條件機率方式計算顧客屬於「會購買」或「不會購買」的分類機率", "以最小平方誤差（MSE）為損失函數，預測顧客的購買金額", "依據回饋信號（Feedback Signal）透過強化學習動態調整推薦策略"], "answer": 1, "explanation": "貝氏定理核心：P(購買|行為特徵) ∝ P(行為特徵|購買) × P(購買)。「在觀察到行為特徵的情況下，計算購買機率」正是條件機率 P(購買|行為特徵) 的計算。樸素貝葉斯分類器就是這個思路的直接應用。A是分群（非監督式學習）；C是迴歸問題；D是強化式學習，都不符合題意。"}, {"id": 23, "subject": "科目三", "topic": "L231", "topicName": "蒙地卡羅方法", "difficulty": "medium", "question": "一家再生能源公司希望預測未來三個月太陽能發電量的波動範圍，工程團隊決定以隨機抽樣方式模擬多種可能情境，以估算整體發電量的機率分佈與風險區間。請問此時所採用的技術最符合下列哪一種方法？", "code": null, "options": ["蒙地卡羅方法（Monte Carlo Method）", "K-means 聚類（K-means Clustering）", "支持向量迴歸（Support Vector Regression, SVR）", "特徵選取（Feature Selection）"], "answer": 0, "explanation": "蒙地卡羅方法（Monte Carlo Method）透過大量隨機抽樣模擬來估計複雜系統的機率分佈和統計特性，適合處理具有高度不確定性的問題。題目描述「以隨機抽樣方式模擬多種可能情境，估算機率分佈與風險區間」正是蒙地卡羅方法的核心應用場景。"}, {"id": 24, "subject": "科目三", "topic": "L231", "topicName": "殘差圖分析", "difficulty": "medium", "question": "某房地產公司利用多元迴歸模型預測房價，殘差圖顯示部分資料點的殘差極大，且在高價區樣本中出現系統性彎曲分佈現象。根據此觀察，下列何者為最可能的正確解釋？", "code": null, "options": ["模型過度擬合（Overfitting），導致在訓練資料上表現過好、泛化能力不足", "模型特徵數量不足，導致欠擬合（Underfitting）", "模型存在異常值（Outlier）或非線性關係，違反迴歸假設", "殘差圖呈現隨機分佈，表示模型已完全符合所有假設"], "answer": 2, "explanation": "理想的殘差圖應呈現隨機分佈（無規律）。題目描述「部分資料點殘差極大」→ 存在異常值（Outlier）；「高價區出現系統性彎曲分佈」→ 存在非線性關係，違反線性迴歸的線性假設。這兩個現象表明需要處理離群值或引入多項式特徵/非線性模型。"}, {"id": 25, "subject": "科目三", "topic": "L233", "topicName": "信用評分卡流程", "difficulty": "hard", "question": "某金融機構建立傳統信用評分卡模型，採用邏輯迴歸作為建模方法，依循監理機關建議的標準化流程。下列哪一項不是傳統信用評分卡模型開發流程中的常見步驟？", "code": null, "options": ["使用生成式模型進行特徵學習", "進行特徵選擇與多重共線性（Multicollinearity）分析", "進行分箱（Binning）與資訊值（Information Value, IV）檢定", "使用樣本穩定性指標（Population Stability Index, PSI）檢驗模型穩定性"], "answer": 0, "explanation": "傳統信用評分卡的標準開發流程包含：特徵選擇與多重共線性分析、分箱（Binning）與 IV 值篩選特徵、邏輯迴歸建模、PSI 監控模型穩定性、KS 統計量評估區分度等。「使用生成式模型進行特徵學習」屬於深度學習/現代 AI 方法，不屬於傳統信用評分卡的標準流程，也不符合監理機關對可解釋性的要求。"}, {"id": 26, "subject": "科目三", "topic": "L233", "topicName": "防止過擬合策略", "difficulty": "medium", "question": "在防止監督式學習模型過擬合（Overfitting）時，下列哪一種策略不屬於降低模型複雜度或限制學習能力的作法？", "code": null, "options": ["採用 L1 或 L2 正則化", "在訓練過程中使用 Dropout 技術", "採取早期停止（Early Stopping）機制", "擴增輸入特徵變數以提升模型表達能力"], "answer": 3, "explanation": "L1/L2 正則化（懲罰複雜度）、Dropout（隨機關閉神經元）、Early Stopping（提前停止訓練）都是降低模型複雜度或限制學習的手段，有助於防止過擬合。「擴增輸入特徵變數以提升模型表達能力」反而是增加模型複雜度的作法，若不控制，可能加重過擬合問題，不屬於防止過擬合的策略。"}, {"id": 27, "subject": "科目三", "topic": "L232", "topicName": "ReLU激活函數", "difficulty": "medium", "question": "某智慧製造團隊使用線性激活函數後，模型訓練準確率長期停滯，懷疑模型無法學習到足夠複雜的特徵表達。若要改善此問題，下列哪一項調整方案最為合適？", "code": null, "options": ["增加卷積層數量，使網路更深以強化特徵提取", "將輸入影像先進行灰階化處理，降低運算量", "使用 Sigmoid 激活函數，以將輸出壓縮至[0,1]範圍", "改用 ReLU 激活函數，以引入非線性並提升模型表達能力"], "answer": 3, "explanation": "線性激活函數的根本問題：無論堆疊多少層線性變換，整個網路仍等效於單層線性模型（線性的組合還是線性），無法表達非線性關係。ReLU f(x)=max(0,x) 引入非線性，正數區域梯度為 1（不飽和），深度網路能有效學習複雜特徵。Sigmoid 雖然也是非線性，但在深層網路中容易梯度消失，效果不如 ReLU。"}, {"id": 28, "subject": "科目三", "topic": "L234", "topicName": "取樣偏差", "difficulty": "medium", "question": "某電商公司顧客流失預測模型，以去年「曾經購買三次以上」的活躍顧客紀錄作為樣本。模型上線後，對新註冊會員與低消費會員的預測準確率明顯偏低。造成此現象最可能的原因為何？", "code": null, "options": ["特徵設計未排除與會員忠誠度高度相關的變數，導致特徵偏差（Feature Bias）", "標記（Label）由人工標註，導致標籤偏差（Label Bias）", "訓練樣本僅涵蓋高活躍顧客，造成取樣偏差（Sampling Bias）", "模型未進行超參數調整，導致過擬合（Overfitting）"], "answer": 2, "explanation": "訓練樣本只包含「購買三次以上的活躍顧客」，但預測對象是「全體會員」（包含新註冊和低消費）。由於訓練集的分佈不能代表全體會員的分佈，模型對從未見過的會員類型預測效果差——這是典型的取樣偏差（Sampling Bias）。要解決此問題，訓練資料必須包含各類型會員的代表性樣本。"}, {"id": 29, "subject": "科目三", "topic": "L233", "topicName": "時間序列交叉驗證", "difficulty": "hard", "question": "在工業設備故障預測中，隨著設備運行環境變化，原有驗證集已無法充分反映現況，導致模型預測準確率逐漸下降。下列哪一種策略最能有效提升模型在長期運行環境中的穩健性？", "code": null, "options": ["固定驗證集內容，並透過 L2 正則化強化模型泛化", "將全部歷史資料納入訓練，不使用驗證集，依靠早期停止控制訓練", "簡化模型架構，減少模型參數數量以降低過擬合風險", "採用時間序列交叉驗證（Time Series Cross Validation）或滑動視窗驗證（Rolling Window Validation）方法，動態更新驗證資料以適應時間演進"], "answer": 3, "explanation": "對於時間序列資料，固定驗證集可能因資料漂移（Data Drift）而失效。時間序列交叉驗證（如 Walk-Forward Validation）或滑動視窗驗證（Rolling Window）能動態更新訓練/驗證資料，確保模型持續適應最新的資料分佈，最能反映實際部署後的長期表現。"}, {"id": 30, "subject": "科目三", "topic": "L233", "topicName": "語言遷移與F1", "difficulty": "hard", "question": "某情感分析模型在英文資料集上取得 macro F1-score = 0.91。當該模型部署於西班牙文資料集時，F1-score 驟降至 0.58。下列哪一項解釋最合理，且與 F1-score 變化相關？", "code": null, "options": ["macro F1-score 本身波動性高，建議改用 micro-average F1-score 評估", "模型在西班牙文語料上過度擬合，導致評估結果偏高", "語言轉移造成召回率（Recall）下降，模型無法正確辨識關鍵情緒詞彙", "以均方誤差（MSE）取代 F1-score 評估可獲得更準確的結果"], "answer": 2, "explanation": "模型在英文訓練，部署到西班牙文（語言遷移 / Domain Shift）後，模型無法辨識西班牙文的情緒詞彙，造成大量正樣本被誤判為負類（FN增加），Recall 大幅下降，F1-score 連帶下降。這是典型的資料分佈漂移（Distribution Shift）問題。解決方案：在西班牙文資料上做遷移學習或微調。"}, {"id": 31, "subject": "科目三", "topic": "L233", "topicName": "Early Stopping策略", "difficulty": "medium", "question": "某能源公司訓練深度神經網路預測長期電力需求，在訓練第 80 輪後驗證損失開始波動，呈現週期性上升與下降。若要合理運用早期停止法（Early Stopping）以確保模型具最佳泛化能力，下列哪一項策略最為適當？", "code": null, "options": ["直接根據訓練集損失最低點停止訓練", "監控驗證集損失並設定適度的耐心值（Patience），在連續多輪未改善後再停止訓練", "改以測試集損失作為早停依據，以提升模型最終評估一致性", "將所有資料重新合併後訓練至收斂，避免因資料分割導致評估波動"], "answer": 1, "explanation": "Early Stopping 的正確做法：監控「驗證集」損失（不是訓練集），設定 Patience（容忍連續 N 輪未改善）。由於驗證損失因季節性波動，Patience 要設得稍大（如 20-30 輪），等待更長時間確認是真正不改善而非暫時波動。以測試集作為早停依據會造成資料洩漏；根據訓練集停止訓練等於放棄早停的防過擬合效果。"}, {"id": 32, "subject": "科目三", "topic": "L231", "topicName": "L1正則化特徵選擇", "difficulty": "medium", "question": "某電信公司開發客戶流失預測模型，部分特徵彼此高度相關，也懷疑有些特徵對流失預測的貢獻度有限。若希望模型在避免過擬合的同時，能自動篩選出較具代表性的特徵，採用下列哪一種方法最為合適？", "code": null, "options": ["使用早期停止法（Early Stopping）控制訓練回合數", "同時移除多重共線性特徵並採用 L2 正則化（Ridge）", "僅使用 L2 正則化（Ridge），抑制所有權重幅度但保留全部特徵", "採用 L1 正則化（Lasso），透過懲罰項使部分特徵係數縮為 0"], "answer": 3, "explanation": "需求：① 避免過擬合；② 自動篩選特徵（讓無關特徵係數歸零）。L1 Lasso 正則化完全符合：在損失函數加入 λΣ|w|，讓部分特徵的係數精確歸零，同時保留重要特徵。L2 Ridge 只縮小係數但不歸零，無法做特徵選擇。Early Stopping 只控制訓練時間，不篩選特徵。"}, {"id": 33, "subject": "科目三", "topic": "L231", "topicName": "時間複雜度", "difficulty": "medium", "question": "某資料科學團隊開發客戶相似度比對系統，需逐一比對每一位客戶與其他所有客戶的資料組合。此時演算法的時間複雜度最可能為哪一種？", "code": null, "options": ["O(n) — 執行時間與資料量成線性關係", "O(n²) — 執行時間與資料量平方成正比", "O(1) — 執行時間固定不變", "O(log n) — 執行時間與資料量呈對數成長關係"], "answer": 1, "explanation": "若有 n 位客戶，每位客戶需要與其他 (n-1) 位客戶比對，總比對次數 = n × (n-1) / 2 ≈ n²/2，時間複雜度為 O(n²)。這是為什麼 KNN 在大規模資料集上預測速度慢的根本原因——每次預測都需要計算與所有訓練樣本的距離。"}, {"id": 34, "subject": "科目三", "topic": "L233", "topicName": "Stratified Leave-One-Out", "difficulty": "hard", "question": "某醫療 AI 團隊資料量僅有 150 筆，陽性個案不到 8%。希望在有限資料下兼顧資料利用率與各類別在驗證折中的比例一致性。最適合採用下列哪一種交叉驗證方法？", "code": null, "options": ["5-Fold 交叉驗證（5-Fold Cross Validation）", "留一法交叉驗證（Leave-One-Out Cross Validation）", "隨機交叉驗證（Random Cross Validation）", "分層留一法交叉驗證（Stratified Leave-One-Out Cross Validation）"], "answer": 3, "explanation": "需求：① 資料量極少（150筆）→ 需要最大化資料利用率 → 傾向 LOO；② 類別嚴重不平衡（陽性<8%）→ 需確保每個 Fold 的類別比例一致 → 需要 Stratified。分層留一法（Stratified LOO）同時滿足兩個需求：每次只留一筆作驗證（最大化訓練資料），且分層抽樣確保類別比例。"}, {"id": 35, "subject": "科目三", "topic": "L231", "topicName": "PCA變異量解釋", "difficulty": "hard", "question": "某公司進行主成分分析（PCA），得到三個主成分的特徵值：λ1=6.0, λ2=3.0, λ3=1.0。若決定僅保留能解釋至少 80% 總變異量的主成分，下列哪一項敘述最合理？", "code": null, "options": ["前兩個主成分合計解釋 90% 的總變異量，因此可安全降維至二維，且仍保留大部分資訊", "第一主成分解釋 60% 的變異量，表示資料結構呈現明顯線性關係，僅保留一維即可避免過擬合", "雖然前兩個主成分可解釋超過 80% 變異量，但第二主成分貢獻仍高達 30%，不宜捨棄第三主成分", "三個特徵值相差不大，顯示各主成分變異均衡，降維可能導致資訊損失"], "answer": 0, "explanation": "總變異量 = λ1+λ2+λ3 = 6.0+3.0+1.0 = 10.0。PC1 解釋 6/10 = 60%；PC1+PC2 解釋 9/10 = 90%。90% > 80% 的門檻，因此保留前兩個主成分可安全降維至二維，保留 90% 的資訊量。選項 B 說「僅保留一維」只保留 60% < 80%，不符合要求。選項 C 說「不宜捨棄第三主成分」，但 PC3 只貢獻 10%，90% 已足夠。"}, {"id": 36, "subject": "科目三", "topic": "L234", "topicName": "同態加密", "difficulty": "medium", "question": "某銀行計畫與多家合作機構共同訓練 AI 信用風險預測模型，為避免客戶交易資料在傳輸與運算過程中外洩，技術團隊評估使用同態加密（Homomorphic Encryption）技術。下列何者最能正確描述同態加密在此應用中的關鍵特性？", "code": null, "options": ["系統以隨機雜訊干擾輸出，確保統計結果不洩漏個資", "各參與銀行透過安全通道交換私鑰，確保模型參數一致", "將原始資料壓縮並同時加密，以減少加密後資料量與運算時間", "資料在加密狀態下仍可進行數值運算，模型訓練可於未解密資料上完成"], "answer": 3, "explanation": "同態加密（Homomorphic Encryption）的核心特性：允許在密文（Ciphertext）上直接執行數學運算（加法、乘法），解密後的結果與在明文上運算的結果完全相同，整個過程原始資料從未被解密暴露。這使得 AI 模型可以在加密的客戶資料上訓練推論，資料提供方不需要信任計算方。選項 A 描述的是差分隱私。"}, {"id": 37, "subject": "科目三", "topic": "L234", "topicName": "資料隱私技術組合", "difficulty": "hard", "question": "某跨銀行風控平台需整合多家銀行用戶行為資料訓練信用風險模型，各銀行僅願提供加密後資料且不得被解密，同時需確保資料傳輸過程未被竄改或重放。下列哪一組技術最能完整對應上述需求？", "code": null, "options": ["對稱加密＋單向雜湊＋非對稱加密＋差分隱私", "同態加密＋非對稱加密＋單向雜湊＋對稱加密", "差分隱私＋對稱加密＋同態加密＋數位簽章", "同態加密＋安全多方計算（MPC）＋雜湊函數＋對稱加密"], "answer": 1, "explanation": "需求對應：① 加密狀態下計算（不解密）→ 同態加密；② 安全金鑰交換與身份驗證 → 非對稱加密（如 RSA/ECC）；③ 確保資料未被竄改（防重放）→ 單向雜湊函數（如 SHA-256，用於訊息摘要/完整性驗證）；④ 大量資料傳輸加密效率 → 對稱加密（如 AES，速度快）。選項 B 完整對應四個需求。"}, {"id": 38, "subject": "科目三", "topic": "L231", "topicName": "MSE程式碼判讀", "difficulty": "hard", "question": "下列程式碼所計算的是哪一類型的評估指標？
 
-const S = {
-  subj:'all', diff:'all', mode:'rand',
-  stats:{t:0,c:0,w:0}, answered:false, cur:null, n:0,
-  seen:new Set(), curCh:0,
-  wb: JSON.parse(localStorage.getItem('ipas_wb')||'[]')
-};
+def metric(y_true, y_pred):
+    return sum((y_true - y_pred) ** 2) / len(y_true)", "code": "def metric(y_true, y_pred):
+    return sum((y_true - y_pred) ** 2) / len(y_true)", "options": ["MAE", "MSE", "RMSE", "R²"], "answer": 1, "explanation": "程式碼計算：Σ(y_true - y_pred)² / n，這是均方誤差（Mean Squared Error, MSE）的公式。MAE = Σ|y_true - y_pred| / n（用絕對值）；RMSE = √MSE（需要開平方根）；R² = 1 - SS_res/SS_tot（完全不同的公式）。關鍵差異：MSE 用平方（** 2），MAE 用絕對值（abs）。"}, {"id": 39, "subject": "科目三", "topic": "L232", "topicName": "Dropout程式碼判讀", "difficulty": "hard", "question": "下列程式碼實現的是哪一種正則化技術？
 
-/* ── READ ── */
+def forward(x, p, training=True):
+    if training:
+        mask = np.random.binomial(1, p, size=x.shape)
+        return x * mask / p
+    else:
+        return x", "code": "def forward(x, p, training=True):
+    if training:
+        mask = np.random.binomial(1, p, size=x.shape)
+        return x * mask / p
+    else:
+        return x", "options": ["L1 正則化", "L2 正則化", "Dropout", "Batch Normalization"], "answer": 2, "explanation": "程式碼特徵：① np.random.binomial(1, p, size=x.shape) 產生隨機二元遮罩（0或1），以機率 p 保留神經元；② 訓練時 x * mask / p：乘以遮罩讓部分神經元輸出為 0，除以 p 做縮放補償（Inverted Dropout）；③ 推論時直接回傳 x：不進行 Dropout。這是 Dropout 正則化的完整實現，包含 Inverted Dropout 的比例縮放技巧。"}, {"id": 40, "subject": "科目三", "topic": "L231", "topicName": "NumPy矩陣運算", "difficulty": "hard", "question": "依據下列程式碼進行資料處理，下列何者正確？
+
+import numpy as np
+v1 = np.array([1, 2, 3])
+v2 = np.array([4, 5, 6])
+A = np.array([[1, 2], [3, 4]])", "code": "import numpy as np
+v1 = np.array([1, 2, 3])
+v2 = np.array([4, 5, 6])
+A = np.array([[1, 2], [3, 4]])", "options": ["np.linalg.inv(A) 計算矩陣 A 的行列式", "v1 * v2 結果為 array([5, 7, 9])", "np.dot(v1, v2) 結果為 np.int64(32)", "np.linalg.eig(A) 計算矩陣 A 的反矩陣"], "answer": 2, "explanation": "np.dot(v1, v2) 計算向量點積 = 1×4 + 2×5 + 3×6 = 4+10+18 = 32，類型為 np.int64(32)。其他選項：v1 * v2 是逐元素乘積（Element-wise），結果為 array([4, 10, 18])，不是 [5,7,9]（那是加法）；np.linalg.inv(A) 計算反矩陣（不是行列式，行列式用 np.linalg.det）；np.linalg.eig(A) 計算特徵值和特徵向量（不是反矩陣）。"}, {"id": 41, "subject": "科目三", "topic": "L231", "topicName": "條件機率計算", "difficulty": "hard", "question": "考慮擲骰子並採用 Monte Carlo 方法估算條件機率。事件 A：擲出偶數；事件 B：擲出大於 3。請問條件機率 P(A|B) 的正確計算方式為何？
+
+np.random.seed(123)
+n = 100000
+dice_rolls = np.random.randint(1, 7, size=n)
+A = (dice_rolls % 2 == 0)
+B = (dice_rolls > 3)
+A_and_B = A & B", "code": "np.random.seed(123)
+n = 100000
+dice_rolls = np.random.randint(1, 7, size=n)
+A = (dice_rolls % 2 == 0)
+B = (dice_rolls > 3)
+A_and_B = A & B", "options": ["A_and_B.sum() / (A.sum() * B.sum())", "A_and_B.sum() / (A.sum() + B.sum())", "A_and_B.sum() / A.sum()", "A_and_B.sum() / B.sum()"], "answer": 3, "explanation": "條件機率公式：P(A|B) = P(A∩B) / P(B)。在 Monte Carlo 模擬中：P(A∩B) ≈ A_and_B.sum() / n；P(B) ≈ B.sum() / n。因此 P(A|B) = (A_and_B.sum()/n) / (B.sum()/n) = A_and_B.sum() / B.sum()。驗證：骰子大於 3 的有 {4,5,6}，其中偶數為 {4,6}，所以 P(A|B) = 2/3 ≈ 0.667。"}, {"id": 42, "subject": "科目三", "topic": "L232", "topicName": "VGG16參數量", "difficulty": "hard", "question": "在 VGG16 模型架構中，不同層的參數量差異極大。根據模型摘要（Linear-33 參數 102,764,544；Linear-36 參數 16,781,312；Linear-39 參數 4,097,000；卷積層最大 Conv2d 參數 2,359,808），請問在 VGG16 中，下列何者的參數量最多？", "code": null, "options": ["卷積層（Conv2d）", "全連接層（Linear）", "ReLU 激活函數", "池化層（MaxPool2d, AdaptiveAvgPool2d）"], "answer": 1, "explanation": "從 VGG16 模型摘要可知：全連接層（Linear）的參數量遠大於卷積層。Linear-33：102,764,544 個參數（最多）；Linear-36：16,781,312；Linear-39：4,097,000。相比之下，最大的卷積層參數約為 2,359,808，遠小於全連接層。ReLU 和池化層參數量為 0（無可訓練參數）。這是 VGG 架構的特點：全連接層佔總參數的絕大部分。"}, {"id": 43, "subject": "科目三", "topic": "L232", "topicName": "VGG16運算量", "difficulty": "hard", "question": "在 VGG16 模型架構中，了解各層的運算量（FLOPs）分佈有助於模型壓縮策略設計。請問在 VGG16 中，下列何者運算量（FLOPs）最多？", "code": null, "options": ["卷積層（Conv2d）", "全連接層（Linear）", "ReLU 激活函數", "池化層（MaxPool2d, AdaptiveAvgPool2d）"], "answer": 0, "explanation": "雖然全連接層的參數量最多，但卷積層的運算量（FLOPs）最多。原因：卷積層對大尺寸特徵圖（如早期的 150×150、75×75）進行密集卷積運算，每個輸出像素需要進行 kernel_size² × in_channels 次乘法。卷積層在大空間尺寸時，FLOPs 遠超全連接層（全連接層的輸入已是展平的低維向量）。這也是為什麼卷積是深度學習的硬體加速重點。"}, {"id": 44, "subject": "科目三", "topic": "L232", "topicName": "VGG16架構分析", "difficulty": "hard", "question": "根據 VGG16 的模型架構摘要，下列敘述何者正確？（總參數量 138,357,544；AdaptiveAvgPool2d 輸出 [-1, 512, 7, 7]；Linear-33 輸入維度對應）", "code": null, "options": ["AdaptiveAvgPool2d 的輸出攤平後傳入第一個全連接層；由於前一層池化輸出空間為 4×4，所以第一個線性層的輸入維度是 512×4×4=8192", "Linear-33（第一個全連接層）報出的 102,764,544 參數只包含權重，偏差（bias）沒有算在內", "根據 Estimated Total Size (MB)=624.98，表示訓練此模型只需約 625MB 的 GPU 記憶體，一張 1GB GPU 就足夠訓練", "VGG16 包含 13 層卷積層（conv）與 3 層全連接層（FC），總參數數目約為 138,357,544（約 138.36M）"], "answer": 3, "explanation": "VGG16 的標準架構確實包含 13 個卷積層和 3 個全連接層，總參數量約 138.36M。選項 A 錯誤：AdaptiveAvgPool2d 輸出是 7×7（不是 4×4），所以 Linear-33 輸入維度是 512×7×7=25,088，乘以 4096 加 bias = 102,764,544。選項 B 錯誤：參數量包含 weight 和 bias。選項 C 錯誤：Estimated Total Size 只是參考，實際訓練需要額外的 optimizer state、梯度等記憶體，遠超 625MB。"}, {"id": 45, "subject": "科目三", "topic": "L232", "topicName": "遷移學習程式碼", "difficulty": "hard", "question": "對 VGG16 進行遷移學習，希望凍結卷積層（features）的參數，只訓練最後全連接層（classifier）。下列哪段程式碼寫法正確？", "code": "# 選項 A
+for param in model.parameters():
+    param.requires_grad = False
+model.classifier[6] = torch.nn.Linear(4096, 10)
+
+# 選項 B（正確）
+for param in model.features.parameters():
+    param.requires_grad = False
+model.classifier[6] = torch.nn.Linear(4096, 10)", "options": ["凍結所有層參數（model.parameters()），再替換最後分類層", "只凍結 model.features 的參數，再替換最後分類層（model.classifier[6]）", "凍結 model.classifier 的參數，再替換最後分類層", "凍結整個模型（model.requires_grad = False），再替換最後分類層"], "answer": 1, "explanation": "正確的遷移學習做法：① 只凍結卷積部分（model.features.parameters()），設 requires_grad=False；② 替換分類器最後一層（model.classifier[6]）為新任務的輸出層。新加入的 Linear 層預設 requires_grad=True，所以只有 classifier 層會被訓練。選項 A 凍結了所有層（包括 classifier），導致新加的分類層也無法訓練，這是常見錯誤。"}, {"id": 46, "subject": "科目三", "topic": "L231", "topicName": "PCA降噪", "difficulty": "hard", "question": "研究人員對含有雜訊的手寫數字影像使用 PCA 進行降噪，希望保留影像的主要特徵並去除雜訊。程式碼：pca = PCA()，pca.fit(noisy)，components = pca.transform(noisy)，filtered = pca.inverse_transform(components)。觀察到影像仍然含有明顯的雜訊，請問哪一段程式碼（B = pca = PCA()）需要修改，才能讓 PCA 對 noisy 影像有效去噪？", "code": "from sklearn.decomposition import PCA
+pca = PCA()              # 程式碼B（需修改）
+pca.fit(noisy)           # 程式碼C
+components = pca.transform(noisy)  # 程式碼D
+filtered = pca.inverse_transform(components)  # 程式碼E", "options": ["程式碼 A", "程式碼 B", "程式碼 C", "程式碼 D"], "answer": 1, "explanation": "PCA 降噪的原理：保留主要成分（大特徵值方向，包含主要資訊），捨棄次要成分（小特徵值方向，包含雜訊）。若 PCA() 不設定 n_components，預設保留所有主成分（沒有降維），逆變換後等於完整重建，雜訊也一起還原，毫無降噪效果。修改方法：pca = PCA(n_components=k)，設定 k 為適當的主成分數量（如 0.95 保留 95% 變異量），才能有效濾除雜訊。"}, {"id": 47, "subject": "科目三", "topic": "L233", "topicName": "KNN交叉驗證程式碼", "difficulty": "hard", "question": "研究人員撰寫了四組不同程式碼進行 KNN 訓練與交叉驗證，請問哪幾組程式碼能正確使用 KNN 搭配交叉驗證，對 digits 資料集進行訓練並輸出準確率？（程式碼 A：StratifiedKFold+cross_val_score，scoring='accuracy'；程式碼 B：StratifiedKFold+cross_val_score，scoring='f1'；程式碼 C：cv=5+cross_val_score，scoring='accuracy'；程式碼 D：StratifiedKFold+cross_val_score，scoring='f1'）", "code": "# 程式碼 A（正確）
+cv = StratifiedKFold(n_splits=5, shuffle=True)
+scores = cross_val_score(model, X, y, cv=cv, scoring='accuracy')
+
+# 程式碼 C（正確）
+scores = cross_val_score(model, X, y, cv=5, scoring='accuracy')", "options": ["程式碼 A、B、C、D", "程式碼 A、C", "程式碼 A、B", "程式碼 C、D"], "answer": 1, "explanation": "能正確輸出「準確率」的程式碼：程式碼 A：StratifiedKFold + cross_val_score(scoring='accuracy') ✓；程式碼 C：cv=5 + cross_val_score(scoring='accuracy') ✓。程式碼 B 和 D 使用 scoring='f1'，輸出的是 F1 score 而非準確率，不符合「輸出準確率」的要求。兩種 CV 設定（StratifiedKFold 和預設 cv=5）都可以正確執行。"}, {"id": 48, "subject": "科目三", "topic": "L233", "topicName": "標準化程式碼判讀", "difficulty": "hard", "question": "參考下列程式碼，下列何者正確？
+X_train -= X_train.mean(axis=0)
+X_train /= X_train.std(axis=0)
+X_test -= X_test.mean(axis=0)
+X_test /= X_test.std(axis=0)
+
+A：X_train -= X_train.mean(axis=0) 將每個訓練集特徵的平均值調整為 0
+B：X_train /= X_train.std(axis=0) 將每個訓練集特徵的標準差調整為 0
+C：X_train 處理結果會將資料壓縮到 0 和 1 之間
+D：標準化結果防止梯度爆炸或消失", "code": "X_train -= X_train.mean(axis=0)
+X_train /= X_train.std(axis=0)
+X_test -= X_test.mean(axis=0)
+X_test /= X_test.std(axis=0)", "options": ["A、B、C、D", "A、E", "A、D", "A、C、F"], "answer": 2, "explanation": "分析各敘述：A（正確）：減去均值後，每個特徵的平均值確實變為 0。B（錯誤）：除以標準差是讓標準差變為 1（不是 0）。C（錯誤）：StandardScaler 輸出範圍是 (-∞, +∞)，不是 [0,1]（MinMaxScaler 才是 [0,1]）。D（正確）：標準化能讓各特徵在相似的數值範圍，避免梯度爆炸（某特徵值過大）或梯度消失（某特徵值過小），是訓練神經網路的重要前處理。⚠️ 注意：此程式碼對 X_test 也用了 X_test.mean()，這是 Data Leakage！正確做法是用 X_train 的均值和標準差來轉換 X_test。"}, {"id": 49, "subject": "科目三", "topic": "L232", "topicName": "Keras模型參數計算", "difficulty": "hard", "question": "參考下列 Keras 程式碼，下列何者正確？空格1和空格2分別代表 dense 層和 dense_1 層的參數量。
+
+model = Sequential()
+model.add(Input(shape=(X_train.shape[1],)))
+model.add(Dense(10, activation='relu'))
+model.add(Dense(10, activation='relu'))
+model.add(Dense(1, activation='sigmoid'))
+
+A：activation='relu' 數學式為 f(x)=1/(1+e⁻ˣ)
+B：空格1值為110，空格2值為100
+C：空格1值為100，空格2值為110", "code": "model = Sequential()
+model.add(Input(shape=(X_train.shape[1],)))
+model.add(Dense(10, activation='relu'))
+model.add(Dense(10, activation='relu'))
+model.add(Dense(1, activation='sigmoid'))", "options": ["activation='relu' 數學式為 f(x)=1/(1+e⁻ˣ)", "空格 1 值為 110，空格 2 值為 100", "空格 1 值為 100，空格 2 值為 110", "activation='sigmoid' 一般用於多類別分類預測模型"], "answer": 2, "explanation": "X_train 有 9 個特徵（shape[1]=9）。Dense(10)：輸入 9 個節點，輸出 10 個節點，參數 = 9×10（權重）+ 10（偏差）= 100（空格1）。Dense(10)（第二層）：輸入 10 個節點，輸出 10 個節點，參數 = 10×10 + 10 = 110（空格2）。A 錯誤：f(x)=1/(1+e⁻ˣ) 是 Sigmoid，ReLU 是 max(0,x)。D 錯誤：Sigmoid 用於二元分類（輸出0或1），多類別分類用 Softmax。"}, {"id": 50, "subject": "科目三", "topic": "L232", "topicName": "訓練曲線程式碼", "difficulty": "hard", "question": "參考下列程式碼和訓練結果圖（藍色實線為訓練損失，紅色虛線為驗證損失），下列何者正確？
+
+plt.plot(epochs, loss, 空格1, label='Training Loss')
+plt.plot(epochs, val_loss, 空格2, label='Validation Loss')
+
+A：空格1須填入 'b-'
+B：空格2須填入 'b--'
+C：空格1須填入 'r-'
+D：空格2須填入 'r--'
+E：驗證損失明顯較訓練損失減少更明顯", "code": "loss = history.history['loss']
+epochs = range(1, len(loss)+1)
+val_loss = history.history['val_loss']
+plt.plot(epochs, loss, 空格1, label='Training Loss')
+plt.plot(epochs, val_loss, 空格2, label='Validation Loss')", "options": ["B、C", "A、C、D", "A、D", "C、D、E"], "answer": 2, "explanation": "從圖中可知：訓練損失（Training Loss）是藍色實線；驗證損失（Validation Loss）是紅色虛線。Matplotlib 格式字串：'b-' = 藍色實線（b=blue, -=solid）；'r--' = 紅色虛線（r=red, --=dashed）。所以：空格1（Training Loss）= 'b-'（A 正確）；空格2（Validation Loss）= 'r--'（D 正確）。E 錯誤：從圖可看出驗證損失（紅色）比訓練損失下降幅度小且波動更大，並非「減少更明顯」。"}];
+const CHS=[{"id": "exam-ch1", "subject": "科目三", "chapter": "第一章", "title": "模型訓練核心概念", "code": "L231・L233", "sections": [{"title": "1.1 損失函數與正則化（題 2、32）", "concept": "訓練模型的目標是最小化損失函數。正則化是在損失函數裡加一個「懲罰項」，讓模型不要太複雜、不要死背訓練資料。", "analogy": "就像考試時老師規定「作文不能超過 800 字」，限制你不能把所有細節都硬塞進去，反而讓你更精練地表達重點——正則化就是這個「字數限制」，讓模型更泛化。", "points": [{"label": "L1 正則化（Lasso）⭐考古題第2、32題", "text": "損失函數加入 λΣ|w|。效果：讓部分特徵權重精確歸零 → **稀疏模型** → 自動特徵選擇。
+口訣：L1 = Lasso = Leave some zero"}, {"label": "L2 正則化（Ridge）", "text": "損失函數加入 λΣw²。效果：讓所有權重縮小但**不歸零** → 通用防過擬合。適合特徵都有一定貢獻的情況。"}, {"label": "兩者核心差異", "text": "L1 讓不重要特徵「消失」→ 特徵選擇。L2 讓所有特徵「縮小」→ 整體防過擬合。如果題目說「自動篩選特徵」→ 選 L1。"}, {"label": "MSE 損失函數（題38程式碼）", "text": "MSE = Σ(y_true - y_pred)² / n。程式碼判讀關鍵：看到 ** 2 → MSE；看到 abs() → MAE；看到 sqrt → RMSE。"}], "exam": "【必考】L1 Lasso 使部分權重歸零（稀疏模型）；L2 Ridge 縮小但不歸零。
+【程式碼題38】return sum((y_true - y_pred) ** 2) / len(y_true) → 答案：MSE"}, {"title": "1.2 梯度下降與優化器（題 17）", "concept": "模型訓練就是不斷調整參數讓損失最小。梯度下降是最基本的方法，Adam 是目前最常用的進階版。", "analogy": "梯度下降像蒙眼在山上走路，每步感受腳下坡度往下走。Adam 像有 GPS 的登山客：知道以前走過哪些方向（動量），也能根據地形自動調整步伐大小（自適應學習率）——當然比蒙眼的快多了！", "points": [{"label": "SGD（隨機梯度下降）", "text": "每次用單一樣本更新，速度快但方向不穩。現代深度學習幾乎不用純 SGD。"}, {"label": "Adam 優化器⭐考古題第17題", "text": "= Momentum（一階動量，記憶過去梯度方向）+ AdaGrad（二階動量，自動調整每個參數的學習率）。對頻繁更新的參數步長小；對稀疏參數步長大。PyTorch/Keras 預設優化器。"}, {"label": "學習率（題12）", "text": "學習率太大 → 震盪無法收斂。學習率太小 → 訓練太慢。這是最重要的超參數之一，直接控制收斂速度與穩定性。"}, {"label": "區分：超參數 vs 模型參數", "text": "超參數（訓練前設定）：學習率、batch size、樹的深度。模型參數（訓練中自動學習）：神經網路的 weight 和 bias。神經元的輸出結果和梯度值都不是超參數。"}], "exam": "【題17】哪個優化器內建動量？→ Adam（同時有一階動量+自適應學習率）。
+【題12】模型收斂不穩定 → 調整學習率（Learning Rate）超參數。"}, {"title": "1.3 PCA 主成分分析（題 35、46）", "concept": "PCA 把高維資料壓縮到低維，同時保留最多資訊。特徵值大的方向保留的資訊多，特徵值小的方向通常是雜訊。", "analogy": "你有 100 張照片，每張都有 RGB 三個顏色通道。PCA 發現「大部分照片的紅色和橙色變化幾乎一樣」，就把它們合併成一個「暖色調」方向——這就是主成分，用更少維度說清楚最主要的變化。", "points": [{"label": "變異量計算⭐考古題第35題", "text": "總變異量 = 各主成分特徵值之和。例如 λ1=6, λ2=3, λ3=1，總和=10。PC1 解釋 6/10=60%；PC1+PC2 解釋 9/10=90%。若要保留 80% 變異，選前兩個主成分（90%>80%）即可。"}, {"label": "PCA 降噪⭐考古題第46題", "text": "PCA 降噪的關鍵：必須設定 n_components！若 pca=PCA() 不設參數，預設保留所有主成分，逆變換後等於完整重建，雜訊也一起還原，根本沒有降噪效果。修正：pca=PCA(n_components=k)"}, {"label": "PCA 前必須標準化", "text": "PCA 基於協方差矩陣。若特徵量級不同（A:0-1, B:0-100000），PCA 會被 B 主導。StandardScaler 讓每個特徵地位平等。"}, {"label": "NumPy 矩陣運算⭐題40", "text": "np.dot(v1,v2)=點積（scalar）；v1*v2=逐元素乘積（array）；np.linalg.inv=反矩陣；np.linalg.det=行列式；np.linalg.eig=特徵值/特徵向量。"}], "exam": "【題35】λ1=6, λ2=3, λ3=1，保留 80% 變異 → 選前兩個主成分（解釋 90%）。
+【題46】PCA 降噪沒效果 → pca=PCA() 沒設 n_components，需改為 pca=PCA(n_components=k)。
+【題40】np.dot(v1,v2) = 點積 = 1×4+2×5+3×6 = 32。"}]}, {"id": "exam-ch2", "subject": "科目三", "chapter": "第二章", "title": "模型評估與選擇", "code": "L233", "sections": [{"title": "2.1 評估指標詳解（題 16、19、30）", "concept": "選錯評估指標，模型再好也沒用。不同業務場景應該優化不同指標。", "analogy": "醫院篩檢癌症，寧可多帶幾個健康人去複診（FP），也絕不能放掉真正的癌症患者（FN）。但垃圾郵件過濾，寧可放過幾封垃圾（FN），也不能把老闆的信件丟掉（FP）——同樣的資料，目標不同，最佳化的指標就不同！", "points": [{"label": "F1 計算公式⭐考古題第16題", "text": "F1 = 2×P×R / (P+R)。實例：P=0.8, R=0.6 → F1 = 2×0.8×0.6/(0.8+0.6) = 0.96/1.4 = **0.686**。
+注意：F1 是調和平均，不是算術平均（0.7 是錯的！）"}, {"label": "不平衡資料用 Accuracy 是陷阱⭐題19", "text": "正樣本只有 3%，全部預測為負類 → Accuracy = 97%！看起來很好但完全沒用。
+正確作法：用 **Recall、F1-score、PR-AUC**。「使用 Accuracy 作為評估指標」是最不適合的作法。"}, {"label": "Recall vs Precision 情境", "text": "醫療篩檢/詐欺偵測 → Recall 優先（不能漏掉）。垃圾郵件過濾 → Precision 優先（不能誤刪）。F1 = 兩者皆重要時的折衷。"}, {"label": "R²決定係數⭐題15", "text": "R²=0.85 代表：目標變數 85% 的變異可被模型解釋。不是準確率！不是預測誤差！不是信心水準！"}], "exam": "【題16計算題】P=0.8, R=0.6 → F1=0.686（不是0.7！調和平均≠算術平均）。
+【題19】不適合不平衡資料的評估指標 → Accuracy（全猜多數類也有高分，失去意義）。
+【題15】R²=0.85 的意義 → 解釋 85% 的變異量（不是準確率）。"}, {"title": "2.2 交叉驗證與超參數調校（題 1、11、29、34、47）", "concept": "交叉驗證讓模型評估更可靠；超參數調校找到最佳設定。兩者是模型開發的標準流程。", "analogy": "交叉驗證像老師出五套不同考卷（每次不同題目組合），取平均成績——比只考一次更能反映真實實力。超參數調校像廚師調整食譜比例，Grid Search 是把所有可能比例都試一遍，Random Search 是隨機試幾組看看哪個比較好吃。", "points": [{"label": "交叉驗證的目的⭐題1", "text": "評估模型對「未觀察資料」的適應能力與泛化效果。選項對比：F 檢定/t 檢定/卡方檢定都是統計假設檢定，不是評估泛化能力的方法。"}, {"label": "Stratified LOO⭐題34", "text": "資料量極少（150筆）+ 嚴重不平衡（陽性<8%）→ 分層留一法（Stratified LOO）。同時解決：最大化資料利用率（LOO每次只留一筆）+ 確保每折類別比例一致（Stratified）。"}, {"label": "Random Search 優勢⭐題11", "text": "在高維超參數空間，Random Search 比 Grid Search 更有效率。原因：大部分超參數影響不大，Random Search 能在有限次數內探索更廣的重要超參數範圍。"}, {"label": "時間序列交叉驗證⭐題29", "text": "時序資料不能用一般 K-Fold（未來資料會洩漏到訓練集）。應用滑動視窗驗證（Rolling Window）或時間序列 CV，動態更新驗證資料以適應時間演進。"}], "exam": "【題1】評估模型泛化能力 → 交叉驗證（不是統計假設檢定）。
+【題34】少量資料+不平衡 → Stratified Leave-One-Out CV。
+【題11】高維超參數空間 → Random Search 比 Grid Search 更高效。
+【題29】工況變化的設備故障預測 → 滑動視窗驗證（Rolling Window Validation）。"}, {"title": "2.3 過擬合診斷與解決（題 24、26、27、31）", "concept": "過擬合是機器學習最常見的問題：模型把訓練資料的「雜訊」也記住了，遇到新資料就不行了。", "analogy": "死背考古題的學生（過擬合）：考一模一樣的題目 100 分，題目稍微改一下就不會了。真正理解原理的學生（泛化）：題目怎麼變都能應對。正則化、Dropout、Early Stopping 就是讓模型「真正理解」而不是「死背」的機制。", "points": [{"label": "線性激活函數的問題⭐題27", "text": "線性函數無論堆疊幾層，整體仍是線性模型，無法學習複雜特徵。解法：改用 **ReLU**（f(x)=max(0,x)）引入非線性。不要選 Sigmoid（深層網路中梯度消失）。"}, {"label": "Early Stopping⭐題31", "text": "監控「驗證集」損失（不是訓練集！），設定 Patience（容忍 N 輪未改善）。驗證集有週期性波動時，Patience 要設大一點，避免過早停止。用測試集作早停依據 = 資料洩漏。"}, {"label": "不屬於防過擬合的方法⭐題26", "text": "L1/L2 正則化 ✓；Dropout ✓；Early Stopping ✓；**擴增輸入特徵變數 ✗**（增加複雜度，不是降低）。考題常考「哪個不屬於」，記住：增加特徵是反效果。"}, {"label": "殘差圖解讀⭐題24", "text": "理想殘差圖：隨機分佈。「殘差極大」→ 存在離群值；「系統性彎曲」→ 存在非線性關係，違反線性假設。解法：處理離群值或引入非線性模型。"}], "exam": "【題27】線性激活函數導致訓練停滯 → 改用 ReLU（引入非線性）。
+【題26】哪個不是防過擬合策略 → 擴增輸入特徵（增加複雜度）。
+【題31】Early Stopping 策略 → 監控驗證集損失，設定適度 Patience。"}]}, {"id": "exam-ch3", "subject": "科目三", "chapter": "第三章", "title": "機器學習演算法", "code": "L232", "sections": [{"title": "3.1 傳統 ML 演算法（題 4、8、9、22、23）", "concept": "不同演算法有不同的假設和適用場景，選對演算法比調參數更重要。", "analogy": "KNN 像找最近的鄰居問路——附近大家都往左走，你也往左走。SVM 像在兩群人之間畫一條最寬的分隔線。決策樹像玩 20 個問題猜謎——每次問一個問題把可能性縮小一半。DBSCAN 像找「人群密集」的地方自動圈出群體，稀疏的人自動被標記為「局外人（雜訊）」。", "points": [{"label": "DBSCAN 三種點⭐考古題第4題", "text": "核心點（Core Point）：鄰域內 ≥ MinPts 個樣本。邊界點（Border Point）：不是核心點，但在核心點的鄰域內。**雜訊點（Noise Point）**：既不是核心點，也不在任何核心點鄰域內 → 被排除出所有群集。"}, {"label": "距離型演算法必須標準化⭐題9", "text": "KNN 和 SVM（RBF核）完全依賴距離計算。若特徵量級不同，數值大的特徵主導距離。解法：進行**特徵縮放（Feature Scaling）**。決策樹/隨機森林/XGBoost 不需要。"}, {"label": "資訊增益 vs 決策樹⭐題8", "text": "資訊增益（Information Gain）= 分裂前後熵的減少量，用於決策樹選擇最佳分裂特徵。ID3 用資訊增益；C4.5 用增益比率；CART 用 Gini 不純度。"}, {"label": "貝氏定理應用⭐題22", "text": "「在觀察到行為特徵的情況下，計算購買機率」= 條件機率 P(購買|特徵)，這是貝氏定理的核心。樸素貝葉斯假設各特徵條件獨立。"}, {"label": "蒙地卡羅方法⭐題23、41", "text": "透過大量隨機抽樣模擬複雜系統，估算機率分佈和風險區間。適合高度不確定性的場景。條件機率 P(A|B) = P(A∩B)/P(B) = A_and_B.sum()/B.sum()。"}], "exam": "【題4】DBSCAN 既不是核心點也不在鄰域內的點 → 雜訊點（Noise Point）。
+【題9】KNN/SVM 最關鍵的前處理 → 特徵縮放（Feature Scaling）。
+【題41程式碼】P(A|B) = A_and_B.sum() / B.sum()（除以 B，不是 A）。"}, {"title": "3.2 集成方法與 XGBoost（題 18）", "concept": "單一模型有弱點，把多個模型組合起來通常更強——這就是集成學習的思想。", "analogy": "陪審團制度就是集成學習：不是讓一個法官獨斷，而是讓多個陪審員各自判斷再投票。隨機森林是民主投票（每棵樹各自訓練，多數決）；XGBoost 是接力賽（每棵樹專門糾正前一棵的錯誤）。", "points": [{"label": "XGBoost 相較 GBDT 的改進⭐考古題第18題", "text": "① 正則化：懲罰樹的葉子數量和葉子權重，防止過擬合。② 缺失值自動處理：學習缺失值的最佳分裂方向。③ 並行化訓練：節點內並行（不是樹間並行）。④ 二階泰勒展開：更精確的梯度近似。"}, {"label": "Bagging vs Boosting", "text": "Bagging（隨機森林）：並行訓練多棵樹，降低 Variance，不易過擬合。Boosting（XGBoost/GBM）：序列訓練，每棵樹學前一棵的殘差，降低 Bias，通常更準確但需調參。"}, {"label": "時間複雜度⭐題33", "text": "n 個客戶兩兩相比 = n×(n-1)/2 次比對 ≈ O(n²)。執行時間與資料量平方成正比，資料量加倍則時間變四倍。KNN 預測速度慢的原因也在此。"}, {"label": "AutoML 適用情境⭐題10", "text": "最適合：缺乏專職資料科學家、時間有限、需要快速比較多個模型的場景（如行銷部門）。不適合：需要高度客製化特徵工程、已有完整 MLOps 的情境。"}], "exam": "【題18】XGBoost vs GBDT 最主要改進 → 引入正則化、支援缺失值自動處理、並行化訓練。
+【題33】n 個客戶兩兩比對的時間複雜度 → O(n²)。
+【題10】最適合 AutoML 的情境 → 缺乏專職工程師、需快速比較多種模型的行銷部門。"}, {"title": "3.3 深度學習：CNN 與 Transformer（題 5、6、7、21、42~45）", "concept": "CNN 擅長影像（局部特徵），LSTM 擅長序列（時間依賴），Transformer 用 Attention 直接捕捉任意距離的關係。", "analogy": "CNN 像偵探用放大鏡掃描現場，一塊一塊仔細看局部細節（局部感受野），而且同一個放大鏡在全圖通用（參數共享）。LSTM 像有記憶的讀者，讀到後面還記得前面說了什麼（長期記憶）。Transformer 像同時讓整個句子的每個詞都互相對話，不需要一個一個傳遞，直接全局看關係。", "points": [{"label": "CNN 第一層卷積層的功能⭐題5", "text": "自動提取輸入影像的**局部特徵**（邊緣、紋理、角落）。第一層提取低階特徵，越深的層提取越高階的語意特徵。降低維度是池化層；整合輸出是全連接層。"}, {"label": "CNN 比 FCNN 效率高的原因⭐題6", "text": "① 局部感受野（Local Receptive Field）：每個神經元只連接局部區域。② 參數共享（Parameter Sharing）：同一卷積核在全圖共用，大幅減少參數量。FCNN 每個神經元連接所有輸入，參數量隨影像尺寸平方增長。"}, {"label": "LSTM 適用場景⭐題7", "text": "**時間序列**預測（電力需求、股票、氣象）。LSTM 透過門控機制（輸入門、遺忘門、輸出門）解決 RNN 的長期依賴問題。影像→CNN；分群→K-means；高維壓縮→自編碼器。"}, {"label": "多頭注意力機制⭐題21", "text": "Multi-head Attention 並行運行 h 個注意力頭，每個頭在不同表示子空間捕捉不同類型的依賴關係（發音特徵、語速、語意脈絡同時理解）。這是 Transformer 強大表示能力的核心。"}, {"label": "VGG16 架構分析⭐題42~45", "text": "參數最多的層：**全連接層 Linear**（Linear-33 有 1.027 億個參數）。運算量最多的層：**卷積層 Conv2d**（對大尺寸特徵圖做密集運算）。VGG16 = 13層卷積 + 3層全連接，總參數約 138M。"}], "exam": "【題5】CNN 第一層卷積層功能 → 提取局部特徵（不是降維/增加參數/輸出分類）。
+【題6】CNN 比 FCNN 效率高 → 局部感受野 + 參數共享（降低參數量）。
+【題7】哪種應用最適合 LSTM → 預測未來七天電力需求（時間序列）。
+【題42】VGG16 參數量最多的層 → 全連接層 Linear（Linear-33 有 1.03億個參數）。
+【題43】VGG16 運算量最多的層 → 卷積層 Conv2d（對大特徵圖做密集計算）。"}, {"title": "3.4 遷移學習與 Dropout（題 39、45）", "concept": "遷移學習把已學會的知識用在新任務上；Dropout 隨機關閉神經元防止過擬合。兩者都是現代深度學習的核心技術。", "analogy": "遷移學習像請一位有豐富工作經驗的人來做新工作——不需要從零培訓（凍結底層），只需要針對新職位的技能稍加訓練（只訓練頂層分類器）。Dropout 像公司定期隨機讓部分員工「請假」，強迫其他人學會獨立完成任務，公司整體能力反而更強健。", "points": [{"label": "Dropout 程式碼判讀⭐考古題第39題", "text": "特徵：① np.random.binomial(1, p, ...) 生成隨機遮罩；② x * mask / p（訓練時乘以遮罩讓部分輸出為0，除以 p 做 Inverted Dropout 補償）；③ 推論時直接 return x（不做 Dropout）。→ 答案：Dropout。"}, {"label": "遷移學習程式碼⭐題45", "text": "正確做法：① 只凍結 model.features.parameters()（不是 model.parameters()！）；② 替換 model.classifier[-1] 為新任務輸出層。新加的 Linear 層預設 requires_grad=True，不需要額外設定。"}, {"label": "requires_grad=False 的意義", "text": "告訴 PyTorch 不需要對這些參數計算梯度，反向傳播時跳過這些層。常見錯誤：凍結整個 model.parameters() → 新加的分類層也無法訓練！"}, {"label": "激活函數比較（題49）", "text": "ReLU：f(x)=max(0,x)，正數區域梯度=1，不飽和，深度學習首選。Sigmoid：f(x)=1/(1+e⁻ˣ)，輸出(0,1)，用於二元分類輸出層，不是 ReLU！Softmax：多類別分類輸出層。"}], "exam": "【題39程式碼】np.random.binomial+x*mask/p+推論直接return x → Dropout（Inverted Dropout 實現）。
+【題45程式碼】遷移學習正確寫法 → 凍結 model.features（不是 model）的 parameters。
+【題49】Dense(10, activation='relu') 參數計算 → 輸入9特徵：9×10+10=100；第二層Dense：10×10+10=110。"}]}, {"id": "exam-ch4", "subject": "科目三", "chapter": "第四章", "title": "資料偏差與 AI 治理", "code": "L234", "sections": [{"title": "4.1 資料偏差三大類型（題 13、28）", "concept": "AI 模型的公平性問題通常源於資料本身，而不是演算法。「垃圾進，垃圾出」——訓練資料有偏見，模型就有偏見。", "analogy": "如果你只收集「籃球明星」的身高資料來訓練「平均身高預測模型」，模型就會高估全體人口的身高——這就是取樣偏差。如果標注者都是男性，評估「管理能力」時可能帶有性別偏見，標注出有偏見的資料——這就是標籤偏差。", "points": [{"label": "標籤偏差（Label Bias）⭐考古題第13題", "text": "標注資料本身帶有主觀偏見，由於標注者的文化背景、主觀判斷導致標籤分配不公平。例如：人臉辨識標注品質對不同族裔不一致；情感分析標注帶有標注者的個人偏見。"}, {"label": "取樣偏差（Sampling Bias）⭐題28", "text": "訓練樣本不能代表真實的預測對象。例：只用「購買三次以上的活躍顧客」訓練，但需要預測「全體會員」→ 對新會員和低消費者預測差。解法：確保訓練資料涵蓋所有目標族群的代表性樣本。"}, {"label": "特徵偏差（Feature Bias）", "text": "使用了與受保護屬性（性別、種族）高度相關的代理特徵，間接造成歧視。例如：用郵遞區號預測信用風險，可能間接反映種族分佈。"}, {"label": "三者的核心差異", "text": "標籤偏差：標注過程問題（人的主觀性）。取樣偏差：收集資料過程問題（不具代表性）。特徵偏差：特徵選擇問題（使用了有偏見的代理特徵）。"}], "exam": "【題13】標籤偏差的原因 → 標記資料本身帶有主觀偏見（不是資料量、模型結構、特徵數量）。
+【題28】新會員預測準確率偏低 → 取樣偏差（訓練只用活躍顧客，不代表全體）。"}, {"title": "4.2 隱私保護技術（題 36、37）", "concept": "企業想用多方的資料訓練 AI，但各方都不想洩露自己的數據。這一節的技術就是為了解決「資料不能共享，但模型要能訓練」的矛盾。", "analogy": "同態加密像你把錢存在保險箱，把保險箱寄給別人，別人可以往裡面加錢（計算），但打不開也看不到裡面有什麼（不解密）。你收回保險箱打開後，發現裡面的錢正確增加了——運算在密文上完成，結果正確。", "points": [{"label": "同態加密（Homomorphic Encryption）⭐考古題第36題", "text": "允許在**加密狀態**下直接進行數值運算（加法、乘法），解密後結果與在明文上運算完全相同。整個過程資料從未解密暴露。代價：計算開銷極大（比明文慢千倍）。"}, {"label": "區分易混淆選項", "text": "差分隱私：加入隨機雜訊保護個人資訊（不是加密）。聯邦學習：各方本地訓練，只共享梯度，不共享資料本身。同態加密：連梯度都在加密狀態下計算。題36選項A描述的是差分隱私，不是同態加密！"}, {"label": "跨銀行平台技術組合⭐題37", "text": "需求：① 加密狀態下計算 → 同態加密；② 安全金鑰交換身份驗證 → 非對稱加密；③ 確保資料未被竄改（防重放）→ 單向雜湊；④ 大量資料高效加密 → 對稱加密（AES）。答案：同態加密+非對稱加密+單向雜湊+對稱加密。"}, {"label": "可解釋性要求⭐題14", "text": "AI 可解釋性最關鍵的場景：**醫療診斷**（醫生需要理解 AI 依據才能負責任決策；GDPR/PDPA 要求解釋自動化決策）。電商推播、廣告出價、客戶流失預測的可解釋性要求相對較低。"}], "exam": "【題36】同態加密的關鍵特性 → 資料在加密狀態下仍可進行數值運算（不需解密）。
+【題37】跨銀行聯合訓練的技術組合 → 同態加密+非對稱加密+單向雜湊+對稱加密。
+【題14】可解釋性最關鍵的情境 → 醫療診斷（醫師需理解 AI 依據）。"}, {"title": "4.3 資料不平衡與 SMOTE（題 19）", "concept": "真實世界的資料很少是平衡的，詐欺、疾病、設備故障這類「罕見事件」的資料本來就少，但偏偏最重要。", "analogy": "10000 封郵件裡只有 100 封是垃圾，若模型全部預測「不是垃圾」，準確率 99%，但完全沒抓到任何垃圾信——這種「不努力的模型」靠不平衡的資料騙到了高分，真實場景毫無用處。SMOTE 是讓少數類的聲音被聽到的方法。", "points": [{"label": "為什麼不能只用 Accuracy⭐題19", "text": "正樣本只有 3%：全部預測負類 → Accuracy=97%！看起來完美但完全無用。應改用 Recall（找回多少正例）、F1（精確率與召回率的平衡）、PR-AUC。「使用 Accuracy 作為評估指標」是**最不適合**的作法。"}, {"label": "SMOTE 原理", "text": "對少數類樣本找 K 個最近鄰，在兩者連線之間**線性插值**生成合成新樣本：x_new = x + rand(0,1) × (x_neighbor - x)。比直接複製多樣性更好，擴展少數類的決策邊界。"}, {"label": "class_weight='balanced'", "text": "Sklearn 自動根據類別頻率計算反比權重，讓少數類樣本在訓練中獲得更重的懲罰。不生成新樣本，比 SMOTE 更輕量，適合快速實驗。"}, {"label": "Stratified K-Fold", "text": "交叉驗證時，確保每個 Fold 的類別比例與原始資料相同。不平衡資料必須使用，否則某個 Fold 可能完全沒有正例。"}], "exam": "【題19】不適合提升少數類預測能力的作法 → 使用 Accuracy 作為評估指標（97%的假象）。
+適合的作法：SMOTE 過採樣 / 調整類別權重 / 欠採樣多數類 / 改用 Recall/F1 評估。"}]}, {"id": "exam-ch5", "subject": "科目三", "chapter": "第五章", "title": "程式碼判讀重點", "code": "L233・L232", "sections": [{"title": "5.1 標準化與 Data Leakage（題 9、46、47、48）", "concept": "程式碼正不正確，很多時候取決於「有沒有讓測試集的資訊洩漏到訓練過程」——這叫 Data Leakage，是最常見的 ML 程式設計錯誤。", "analogy": "想像你在考試前偷看了答案（Data Leakage）——模型評估時看起來很好，但換一份考卷（真實新資料）就不行了。正確做法是：用訓練集學習「解題方式」（fit），再用同樣的方式處理測試集（transform），測試集的答案在評估前絕對不能看。", "points": [{"label": "fit/transform/fit_transform 區別⭐題47、48", "text": "fit()：從訓練資料學習參數（均值、標準差），只對 X_train！transform()：套用已學參數轉換，可用於 X_train 和 X_test。fit_transform()：等同 fit+transform，只用於訓練集！X_test 絕對不能用 fit_transform()，否則測試集資訊洩漏。"}, {"label": "題48程式碼的 Data Leakage⭐", "text": "程式碼：X_test -= X_test.mean(axis=0) / X_test.std(axis=0)。問題：對 X_test 用了 X_test.mean() 和 X_test.std()，即用測試集自己的統計量轉換。正確：應使用 X_train 的均值和標準差來轉換 X_test。本題考的是：A（均值→0）正確；D（防梯度爆炸）正確 → 答案 C（A、D）。"}, {"label": "PCA 降噪的 n_components⭐題46", "text": "pca=PCA() 不設參數 → 保留所有主成分 → 逆變換等於完整重建 → 雜訊沒有被過濾。正確：pca=PCA(n_components=k) 指定保留的主成分數，過濾掉小特徵值（雜訊）方向。需要修改的是 程式碼B（PCA的初始化）。"}, {"label": "KNN 交叉驗證程式碼⭐題47", "text": "能正確輸出「準確率」的程式碼：scoring='accuracy' 的版本（A 和 C）。scoring='f1' 輸出的是 F1 score 而非準確率，不符合要求（B 和 D 錯誤）。答案：程式碼 A、C。"}], "exam": "【題48】標準化程式碼判讀：A（均值→0 ✓）；B（標準差→0 ✗，應是→1）；C（壓縮到0-1 ✗，是MinMaxScaler）；D（防梯度爆炸 ✓）→ 正確的是 A、D。
+【題47】哪幾組程式碼正確輸出準確率 → 程式碼 A、C（scoring='accuracy'的版本）。"}, {"title": "5.2 神經網路程式碼（題 42~45、49、50）", "concept": "考試的程式碼題不需要你從頭寫，只需要看懂每一行在做什麼，以及為什麼這樣寫。", "analogy": "就像你不需要會蓋房子，但看到建築圖紙要能看懂「這裡是廚房、這裡是浴室、這扇門通往哪裡」——程式碼判讀就是看懂「程式的建築圖紙」。", "points": [{"label": "VGG16 參數計算⭐題44、49", "text": "Dense 層參數量 = 輸入節點 × 輸出節點 + 輸出節點（bias）。例：X_train 有 9 個特徵，Dense(10) → 9×10+10=**100**；Dense(10) → 10×10+10=**110**。VGG16：AdaptiveAvgPool 輸出 512×7×7，Linear-33 → 512×7×7×4096+4096=102,764,544。"}, {"label": "遷移學習程式碼⭐題45", "text": "正確：for param in model.**features**.parameters(): param.requires_grad=False（只凍結卷積部分）。錯誤 A：for param in model.parameters()（凍結全部，包括新加的分類層）→ 新分類層也無法訓練！錯誤 C：凍結 model.classifier（凍結了要訓練的部分）。"}, {"label": "訓練曲線程式碼⭐題50", "text": "Matplotlib 格式字串：'b-' = 藍色實線（Training Loss）；'r--' = 紅色虛線（Validation Loss）。空格1（Training Loss）= 'b-'（A 正確）；空格2（Validation Loss）= 'r--'（D 正確）。E 錯誤：從圖看驗證損失波動更大，不是「減少更明顯」。→ 答案：A、D。"}, {"label": "Keras 激活函數⭐題49", "text": "activation='relu'：f(x)=max(0,x)（不是 sigmoid！sigmoid = 1/(1+e⁻ˣ)）。activation='sigmoid'：用於二元分類輸出層（不是多類別！多類別用 softmax）。"}], "exam": "【題45】遷移學習正確寫法 → 凍結 model.features.parameters()（不是 model.parameters()）。
+【題49】Dense(10)第一層，輸入9特徵 → 參數量=9×10+10=100；第二層Dense(10) → 10×10+10=110。
+【題50】Training Loss是藍色實線='b-'（A正確），Validation Loss是紅色虛線='r--'（D正確）→ 答案 A、D。"}]}];
+
+const S={subj:'all',diff:'all',mode:'rand',stats:{t:0,c:0,w:0},answered:false,cur:null,n:0,seen:new Set(),curCh:0,wb:JSON.parse(localStorage.getItem('ipas_wb')||'[]')};
+
+/* READ */
 function buildNav(){
-  let html='', lastSubj='';
+  var h='',ls='';
   CHS.forEach(function(ch,i){
-    if(ch.subject!==lastSubj){
-      html+='<div class="nav-subj">'+ch.subject+'</div>';
-      lastSubj=ch.subject;
-    }
-    html+='<div class="nav-ch'+(i===0?' on':'')+'" onclick="loadCh('+i+',this)"><span class="nav-dot"></span>'+ch.chapter+' '+esc(ch.title)+'</div>';
+    if(ch.subject!==ls){h+='<div class="nsubj">'+ch.subject+'</div>';ls=ch.subject;}
+    h+='<div class="nch'+(i===0?' on':'')+'" onclick="loadCh('+i+',this)"><span class="ndot"></span>'+ch.chapter+' '+esc(ch.title)+'</div>';
   });
-  document.getElementById('read-nav').innerHTML=html;
+  document.getElementById('rnav').innerHTML=h;
 }
 
-function loadCh(idx, el){
+function loadCh(idx,el){
   S.curCh=idx;
-  document.querySelectorAll('.nav-ch').forEach(function(n){n.classList.remove('on');});
-  if(el){ el.classList.add('on'); }
-  else {
-    var items=document.querySelectorAll('.nav-ch');
-    if(items[idx]) items[idx].classList.add('on');
-  }
+  document.querySelectorAll('.nch').forEach(function(n){n.classList.remove('on');});
+  if(el)el.classList.add('on');
+  else{var ns=document.querySelectorAll('.nch');if(ns[idx])ns[idx].classList.add('on');}
   var ch=CHS[idx];
-  var sc=ch.subject==='科目二'?'tag-s2':'tag-s3';
-  var html='<span class="ch-subj-tag '+sc+'">'+ch.subject+'</span>'
-    +'<div class="ch-num">'+ch.chapter+' · '+ch.code+'</div>'
-    +'<div class="ch-title">'+esc(ch.title)+'</div>';
+  var sc=ch.subject==='科目二'?'ts2':'ts3';
+  var h='<span class="csubj '+sc+'">'+ch.subject+'</span><div class="cnum">'+ch.chapter+' · '+ch.code+'</div><div class="ctitle">'+esc(ch.title)+'</div>';
   ch.sections.forEach(function(sec,si){
-    html+='<div class="sec-card">'
-      +'<div class="sec-head" onclick="secToggle(this)">'
-      +'<span class="sec-num">'+(si+1)+'</span>'
-      +'<span class="sec-title-txt">'+esc(sec.title)+'</span>'
-      +'<span class="sec-arr">›</span>'
-      +'</div>'
-      +'<div class="sec-body">'+fmtContent(sec.content)+'</div>'
-      +'</div>';
+    h+='<div class="scard"><div class="shead" onclick="stog(this)"><span class="snum">'+(si+1)+'</span><span class="stit">'+esc(sec.title)+'</span><span class="sarr">›</span></div><div class="sbody">';
+    // Concept block
+    h+='<div class="blk"><span class="blk-label lbl-concept">核心概念</span><div class="blk-text">'+esc(sec.concept)+'</div>';
+    if(sec.analogy)h+='<div class="cbox">💡 <strong>白話理解：</strong>'+esc(sec.analogy)+'</div>';
+    h+='</div>';
+    // Points
+    if(sec.points&&sec.points.length){
+      h+='<div class="blk"><span class="blk-label lbl-compare">重點拆解</span><div class="pts">';
+      sec.points.forEach(function(p){
+        h+='<div class="pt"><div class="pt-lbl">'+esc(p.label)+'</div><div class="pt-txt">'+fmtTxt(p.text)+'</div></div>';
+      });
+      h+='</div></div>';
+    }
+    // Exam tip
+    if(sec.exam){
+      h+='<div class="blk"><div class="exam-box"><div class="exam-label">⚡ 考試重點</div><div class="exam-text">'+esc(sec.exam)+'</div></div></div>';
+    }
+    h+='</div></div>';
   });
-  var prevDis=idx===0?'disabled':'';
-  var nextDis=idx===CHS.length-1?'disabled':'';
-  html+='<div class="ch-btns">'
-    +'<button class="ch-btn" '+prevDis+' onclick="navCh(-1)">← 上一章</button>'
-    +'<button class="ch-btn primary" onclick="goQuiz()">去刷題 →</button>'
-    +'<button class="ch-btn" '+nextDis+' onclick="navCh(1)">下一章 →</button>'
-    +'</div>';
-  document.getElementById('read-body').innerHTML=html;
-  // auto-open first section
-  var first=document.querySelector('.sec-head');
-  if(first) secToggle(first);
-  document.getElementById('read-body').scrollTop=0;
+  var pd=idx===0?'disabled':'',nd=idx===CHS.length-1?'disabled':'';
+  h+='<div class="cbtns"><button class="cbtn" '+pd+' onclick="navCh(-1)">← 上一章</button><button class="cbtn pri" onclick="goQuiz()">去刷題 →</button><button class="cbtn" '+nd+' onclick="navCh(1)">下一章 →</button></div>';
+  document.getElementById('rbody').innerHTML=h;
+  var fs=document.querySelector('.shead');
+  if(fs)stog(fs);
+  document.getElementById('rbody').scrollTop=0;
   window.scrollTo(0,0);
 }
 
-function navCh(d){ var n=S.curCh+d; if(n>=0&&n<CHS.length) loadCh(n,null); }
-function goQuiz(){ goTab('quiz', document.querySelectorAll('.tab')[1]); }
+function navCh(d){var n=S.curCh+d;if(n>=0&&n<CHS.length)loadCh(n,null);}
+function goQuiz(){goTab('quiz',document.querySelectorAll('.tab')[1]);}
+function stog(h){var b=h.nextElementSibling,op=h.classList.contains('sopen');h.classList.toggle('sopen',!op);b.style.display=op?'none':'block';}
+function fmtTxt(t){return esc(t).replace(/\*\*([^*]+)\*\*/g,'<strong>$1</strong>');}
 
-function secToggle(head){
-  var body=head.nextElementSibling;
-  var open=head.classList.contains('sec-open');
-  head.classList.toggle('sec-open',!open);
-  body.style.display=open?'none':'block';
-}
-
-function fmtContent(txt){
-  // code blocks first
-  txt=txt.replace(/```([\s\S]*?)```/g,'<pre>$1</pre>');
-  // inline code
-  txt=txt.replace(/`([^`]+)`/g,'<code>$1</code>');
-  // bold
-  txt=txt.replace(/\*\*([^*]+)\*\*/g,'<strong>$1</strong>');
-  // newlines to br (outside pre)
-  var parts=txt.split(/(<pre>[\s\S]*?<\/pre>)/g);
-  var out='';
-  for(var i=0;i<parts.length;i++){
-    if(parts[i].startsWith('<pre>')) out+=parts[i];
-    else out+=parts[i].replace(/\n/g,'<br>');
-  }
-  return out;
-}
-
-/* ── QUIZ ── */
-function pool(){
-  return QS.filter(function(q){
-    if(S.subj!=='all'&&q.subject!==S.subj) return false;
-    if(S.diff!=='all'&&q.difficulty!==S.diff) return false;
-    return true;
-  });
-}
-
+/* QUIZ */
+function pool(){return QS.filter(function(q){if(S.subj!=='all'&&q.subject!==S.subj)return false;if(S.diff!=='all'&&q.difficulty!==S.diff)return false;return true;});}
 function nextQ(){
   var p=pool();
-  if(!p.length){ document.getElementById('qa').innerHTML='<div style="text-align:center;padding:2.5rem;color:var(--muted)">此篩選條件下沒有題目</div>'; return; }
-  var unseen=p.filter(function(q){return !S.seen.has(q.id);});
-  if(!unseen.length){ S.seen.clear(); unseen=p.slice(); }
+  if(!p.length){document.getElementById('qa').innerHTML='<div style="text-align:center;padding:2.5rem;color:var(--mut)">此篩選條件下沒有題目</div>';return;}
+  var us=p.filter(function(q){return !S.seen.has(q.id);});
+  if(!us.length){S.seen.clear();us=p.slice();}
   var q;
-  if(S.mode==='rand') q=unseen[Math.floor(Math.random()*unseen.length)];
-  else{ unseen.sort(function(a,b){return a.id-b.id;}); q=unseen[0]; }
-  S.seen.add(q.id); S.cur=q; S.n++;
-  showQ(q);
+  if(S.mode==='rand')q=us[Math.floor(Math.random()*us.length)];
+  else{us.sort(function(a,b){return a.id-b.id;});q=us[0];}
+  S.seen.add(q.id);S.cur=q;S.n++;showQ(q);
 }
-
 function showQ(q){
-  var sc={'\u79d1\u76ee\u4e00':'ts1','\u79d1\u76ee\u4e8c':'ts2','\u79d1\u76ee\u4e09':'ts3'};
+  var sc={'\u79d1\u76ee\u4e00':'qs1','\u79d1\u76ee\u4e8c':'qs2','\u79d1\u76ee\u4e09':'qs3'};
   var dl={easy:'\u57fa\u790e',medium:'\u9032\u968e',hard:'\u6311\u6230'};
-  var dc={easy:'te',medium:'tm',hard:'th'};
+  var dc={easy:'qte',medium:'qtm',hard:'qth'};
   var keys=['A','B','C','D'];
   var code=q.code?'<pre class="qcode">'+esc(q.code)+'</pre>':'';
-  var opts=q.options.map(function(o,i){
-    return '<div class="opt" id="opt'+i+'" onclick="pick('+i+')"><span class="okey">'+keys[i]+'</span><span>'+esc(o)+'</span></div>';
-  }).join('');
-  document.getElementById('qa').innerHTML='<div class="qcard">'
-    +'<div class="qmeta"><span class="qtag '+(sc[q.subject]||'ts3')+'">'+esc(q.subject)+'</span>'
-    +'<span class="qtag tt">'+esc(q.topicName||q.topic)+'</span>'
-    +'<span class="qtag '+(dc[q.difficulty]||'tm')+'">'+dl[q.difficulty]+'</span>'
-    +'<span class="qnum">Q'+S.n+' / 50</span></div>'
-    +'<div class="qtext">'+esc(q.question)+'</div>'+code
-    +'<div class="opts">'+opts+'</div>'
-    +'<div class="exp" id="exp"><div class="exph">\u2705 \u89e3\u6790</div><div class="expb">'+esc(q.explanation||'')+'</div></div>'
-    +'<div class="acts" id="acts" style="display:none">'
-    +'<button class="abtn wb" id="wbtn" onclick="addWB()">\ud83d\udcd5 \u52a0\u5165\u932f\u984c\u672c</button>'
-    +'<button class="abtn nx" onclick="nextQ()">\u4e0b\u4e00\u984c \u2192</button>'
-    +'</div></div>';
+  var opts=q.options.map(function(o,i){return '<div class="opt" id="op'+i+'" onclick="pick('+i+')"><span class="ok">'+keys[i]+'</span><span>'+esc(o)+'</span></div>';}).join('');
+  document.getElementById('qa').innerHTML='<div class="qcard"><div class="qm"><span class="qt '+(sc[q.subject]||'qs3')+'">'+esc(q.subject)+'</span><span class="qt qtt">'+esc(q.topicName||q.topic)+'</span><span class="qt '+(dc[q.difficulty]||'qtm')+'">'+dl[q.difficulty]+'</span><span class="qnum">Q'+S.n+' / 50</span></div><div class="qtxt">'+esc(q.question)+'</div>'+code+'<div class="opts">'+opts+'</div><div class="exp" id="exp"><div class="exph">\u2705 \u89e3\u6790</div><div class="expb">'+esc(q.explanation||'')+'</div></div><div class="acts" id="acts" style="display:none"><button class="ab wb" id="wbtn" onclick="addWB()">\ud83d\udcd5 \u52a0\u5165\u932f\u984c\u672c</button><button class="ab nx" onclick="nextQ()">\u4e0b\u4e00\u984c \u2192</button></div></div>';
   S.answered=false;
 }
-
 function pick(i){
-  if(S.answered) return;
-  S.answered=true;
-  var c=S.cur.answer, ok=i===c;
-  S.stats.t++; if(ok) S.stats.c++; else S.stats.w++;
-  updStats();
-  for(var x=0;x<4;x++){
-    var e=document.getElementById('opt'+x); if(!e) continue;
-    e.classList.add('dis');
-    if(x===c) e.classList.add('ok');
-    else if(x===i&&!ok) e.classList.add('no');
-  }
+  if(S.answered)return;S.answered=true;
+  var c=S.cur.answer,ok=i===c;
+  S.stats.t++;if(ok)S.stats.c++;else S.stats.w++;
+  updS();
+  for(var x=0;x<4;x++){var e=document.getElementById('op'+x);if(!e)continue;e.classList.add('dis');if(x===c)e.classList.add('ok');else if(x===i&&!ok)e.classList.add('no');}
   document.getElementById('exp').classList.add('on');
   document.getElementById('acts').style.display='flex';
-  if(!ok) addWB(true);
+  if(!ok)addWB(true);
 }
-
-/* ── WB ── */
 function addWB(auto){
-  var q=S.cur; if(!q) return;
-  if(S.wb.find(function(w){return w.id===q.id;})){if(!auto) toast('\u5df2\u5728\u932f\u984c\u672c\u4e2d'); return;}
-  S.wb.push(q); localStorage.setItem('ipas_wb',JSON.stringify(S.wb));
-  updWBCount();
-  var b=document.getElementById('wbtn');
-  if(b){b.classList.add('added');b.textContent='\ud83d\udcd5 \u5df2\u52a0\u5165';}
-  if(!auto) toast('\u5df2\u52a0\u5165\u932f\u984c\u672c \ud83d\udcd5');
+  var q=S.cur;if(!q)return;
+  if(S.wb.find(function(w){return w.id===q.id;})){if(!auto)toast('\u5df2\u5728\u932f\u984c\u672c\u4e2d');return;}
+  S.wb.push(q);localStorage.setItem('ipas_wb',JSON.stringify(S.wb));updWB();
+  var b=document.getElementById('wbtn');if(b){b.classList.add('added');b.textContent='\ud83d\udcd5 \u5df2\u52a0\u5165';}
+  if(!auto)toast('\u5df2\u52a0\u5165\u932f\u984c\u672c \ud83d\udcd5');
 }
-function rmWB(id){ S.wb=S.wb.filter(function(q){return q.id!==id;}); localStorage.setItem('ipas_wb',JSON.stringify(S.wb)); updWBCount(); renderWB(); }
+function rmWB(id){S.wb=S.wb.filter(function(q){return q.id!==id;});localStorage.setItem('ipas_wb',JSON.stringify(S.wb));updWB();renderWB();}
 function renderWB(){
-  var el=document.getElementById('wb-list');
-  if(!S.wb.length){ el.innerHTML='<div class="wbempty">\ud83d\udced \u932f\u984c\u672c\u662f\u7a7a\u7684<br><small>\u7b54\u932f\u7684\u984c\u76ee\u6703\u81ea\u52d5\u6536\u9304</small></div>'; return; }
+  var el=document.getElementById('wblist');
+  if(!S.wb.length){el.innerHTML='<div class="wbmt">\ud83d\udced \u932f\u984c\u672c\u662f\u7a7a\u7684<br><small>\u7b54\u932f\u7684\u984c\u76ee\u6703\u81ea\u52d5\u6536\u9304</small></div>';return;}
   var dl={easy:'\u57fa\u790e',medium:'\u9032\u968e',hard:'\u6311\u6230'};
-  el.innerHTML=S.wb.map(function(q,i){
-    return '<div class="wbitem" onclick="reviewWB('+q.id+')">'
-      +'<div class="wbrow"><div class="wbq">'+esc(q.question.substring(0,70))+(q.question.length>70?'\u2026':'')+'</div>'
-      +'<span class="wbrm" onclick="event.stopPropagation();rmWB('+q.id+')">\u2715</span></div>'
-      +'<div class="wbmeta"><span>'+esc(q.subject)+'</span><span>'+esc(q.topicName||q.topic)+'</span>'
-      +'<span>'+(dl[q.difficulty]||q.difficulty)+'</span></div></div>';
-  }).join('');
+  el.innerHTML=S.wb.map(function(q){return '<div class="wbi" onclick="rvWB('+q.id+')"><div class="wbr"><div class="wbq">'+esc(q.question.substring(0,68))+(q.question.length>68?'\u2026':'')+'</div><span class="wbrm" onclick="event.stopPropagation();rmWB('+q.id+')">\u2715</span></div><div class="wbm"><span>'+esc(q.subject)+'</span><span>'+esc(q.topicName||q.topic)+'</span><span>'+(dl[q.difficulty]||q.difficulty)+'</span></div></div>';}).join('');
 }
-function reviewWB(id){
-  var q=S.wb.find(function(w){return w.id===id;}); if(!q) return;
-  S.cur=q; S.n++;
-  goTab('quiz',document.querySelectorAll('.tab')[1]);
-  showQ(q);
-}
-function updWBCount(){ document.getElementById('wb-count').textContent='('+S.wb.length+'\u984c)'; }
-
-/* ── FILTERS / TABS ── */
-function setSubj(v,el){ S.subj=v; S.seen.clear(); document.querySelectorAll('#sf .fbtn').forEach(function(b){b.classList.remove('on');}); el.classList.add('on'); }
-function setDiff(v,el){ S.diff=v; S.seen.clear(); document.querySelectorAll('#df .fbtn').forEach(function(b){b.classList.remove('on');}); el.classList.add('on'); }
-function setMode(v,el){ S.mode=v; document.querySelectorAll('.mode-row .fbtn').forEach(function(b){b.classList.remove('on');}); el.classList.add('on'); document.getElementById('m-hint').textContent=v==='rand'?'\u96a8\u6a5f\u51fa\u984c':'\u4f9d\u984c\u865f\u9806\u5e8f'; }
+function rvWB(id){var q=S.wb.find(function(w){return w.id===id;});if(!q)return;S.cur=q;S.n++;goTab('quiz',document.querySelectorAll('.tab')[1]);showQ(q);}
+function updWB(){document.getElementById('wbcnt').textContent='('+S.wb.length+'\u984c)';}
+function setSubj(v,el){S.subj=v;S.seen.clear();document.querySelectorAll('#sf .fb').forEach(function(b){b.classList.remove('on');});el.classList.add('on');}
+function setDiff(v,el){S.diff=v;S.seen.clear();document.querySelectorAll('#df .fb').forEach(function(b){b.classList.remove('on');});el.classList.add('on');}
+function setMode(v,el){S.mode=v;document.querySelectorAll('.mr .fb').forEach(function(b){b.classList.remove('on');});el.classList.add('on');document.getElementById('mhint').textContent=v==='rand'?'\u96a8\u6a5f\u51fa\u984c':'\u4f9d\u984c\u865f\u9806\u5e8f';}
 function goTab(id,el){
   document.querySelectorAll('.view').forEach(function(v){v.classList.remove('on');});
   document.querySelectorAll('.tab').forEach(function(t){t.classList.remove('on');});
-  document.getElementById('v-'+id).classList.add('on');
-  el.classList.add('on');
-  if(id==='wb') renderWB();
-  if(id==='quiz'&&!S.cur) nextQ();
+  document.getElementById('v-'+id).classList.add('on');el.classList.add('on');
+  if(id==='wb')renderWB();
+  if(id==='quiz'&&!S.cur)nextQ();
 }
-
-/* ── UTILS ── */
-function csToggle(el){
-  el.classList.toggle('cs-open');
-  var b=el.querySelector('.cs-body');
-  if(b) b.style.display=el.classList.contains('cs-open')?'block':'none';
-}
-function updStats(){
-  var t=S.stats.t, c=S.stats.c, w=S.stats.w;
-  document.getElementById('hn-t').textContent=t;
-  document.getElementById('hn-c').textContent=c;
-  document.getElementById('hn-w').textContent=w;
+function cctog(el){el.classList.toggle('ccopen');var b=el.querySelector('.ccb');if(b)b.style.display=el.classList.contains('ccopen')?'block':'none';}
+function updS(){
+  var t=S.stats.t,c=S.stats.c,w=S.stats.w;
+  document.getElementById('hn-t').textContent=t;document.getElementById('hn-c').textContent=c;document.getElementById('hn-w').textContent=w;
   document.getElementById('hn-r').textContent=t>0?Math.round(c/t*100)+'%':'\u2014';
-  document.getElementById('p-tot').textContent=t;
-  document.getElementById('p-cor').textContent=c;
-  document.getElementById('p-wrg').textContent=w;
-  var done=S.seen.size;
-  document.getElementById('p-fill').style.width=Math.min(done/50*100,100)+'%';
-  document.getElementById('p-label').textContent=done+' / 50 \u984c';
+  document.getElementById('p-t').textContent=t;document.getElementById('p-c').textContent=c;document.getElementById('p-w').textContent=w;
+  var d=S.seen.size;document.getElementById('pf').style.width=Math.min(d/50*100,100)+'%';
+  document.getElementById('plbl').textContent=d+' / 50 \u984c';
 }
-function toast(msg){ var t=document.getElementById('toast'); t.textContent=msg; t.classList.add('on'); setTimeout(function(){t.classList.remove('on');},2200); }
-function esc(s){ if(!s) return ''; return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
-
-/* ── INIT ── */
-buildNav();
-loadCh(0, null);
-updWBCount(); updStats();
+function toast(m){var t=document.getElementById('toast');t.textContent=m;t.classList.add('on');setTimeout(function(){t.classList.remove('on');},2200);}
+function esc(s){if(!s)return'';return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');}
+buildNav();loadCh(0,null);updWB();updS();
 </script>
 </body>
 </html>
