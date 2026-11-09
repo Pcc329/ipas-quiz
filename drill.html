@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>iPAS 分類記憶練習</title>
+<style>
+:root{--bg:#0f1117;--sur:#161b22;--card:#1c2128;--bdr:#30363d;--acc:#4493f8;--grn:#3fb950;--red:#f85149;--ylw:#d29922;--txt:#e6edf3;--mut:#7d8590;--r:10px;
+--f0:#4493f8;--f1:#3fb950;--f2:#d29922;--f3:#a371f7;--f4:#f778ba;--f5:#39c5cf;}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:-apple-system,'Segoe UI','PingFang TC','Microsoft JhengHei',sans-serif;background:var(--bg);color:var(--txt);min-height:100vh;line-height:1.6}
+button{font:inherit;color:inherit;cursor:pointer}
+button:focus-visible,a:focus-visible{outline:2px solid var(--acc);outline-offset:2px}
+.hdr{background:var(--sur);border-bottom:1px solid var(--bdr);padding:.8rem 1.2rem;display:flex;align-items:center;gap:.8rem;position:sticky;top:0;z-index:5}
+.logo{font-weight:700;font-size:.95rem}
+.hdr a{margin-left:auto;color:var(--mut);font-size:.82rem;text-decoration:none}
+.hdr a:hover{color:var(--txt)}
+.wrap{max-width:760px;margin:0 auto;padding:1.4rem 1rem 3rem}
+.intro h1{font-size:1.45rem;font-weight:700;margin-bottom:.3rem}
+.intro p{color:var(--mut);font-size:.9rem;max-width:36em}
+.subj{margin-top:1.8rem}
+.subj h2{font-size:1rem;font-weight:600;margin-bottom:.6rem;color:var(--mut)}
+.deck{border:1px solid var(--bdr);background:var(--sur);border-radius:var(--r);padding:.9rem 1rem;margin-bottom:.6rem}
+.deck-top{display:flex;align-items:baseline;gap:.6rem;flex-wrap:wrap}
+.deck-top b{font-size:1rem}
+.deck-top span{font-size:.8rem;color:var(--mut)}
+.tip{font-size:.82rem;color:var(--mut);margin:.25rem 0 .55rem}
+.dots{display:flex;flex-wrap:wrap;gap:4px;margin-bottom:.65rem}
+.dot{width:12px;height:12px;border-radius:3px;background:var(--card);border:1px solid var(--bdr)}
+.dot.s1{background:rgba(63,185,80,.35);border-color:rgba(63,185,80,.5)}
+.dot.s2{background:var(--grn);border-color:var(--grn)}
+.acts{display:flex;gap:.5rem;flex-wrap:wrap}
+.btn{border:1px solid var(--bdr);background:var(--card);border-radius:8px;padding:.45rem .85rem;font-size:.85rem}
+.btn:hover{border-color:var(--mut)}
+.btn.pri{background:var(--acc);border-color:var(--acc);color:#000;font-weight:600}
+.btn.pri:hover{filter:brightness(1.1)}
+.bar{display:flex;gap:.5rem;flex-wrap:wrap;margin-top:1.2rem}
+.view{display:none}.view.on{display:block}
+.back{color:var(--mut);font-size:.85rem;background:none;border:none;margin-bottom:1rem}
+.back:hover{color:var(--txt)}
+.vt{font-size:1.25rem;font-weight:700}
+.vtip{background:var(--sur);border:1px solid var(--bdr);border-left:3px solid var(--acc);border-radius:6px;padding:.6rem .8rem;font-size:.88rem;margin:.6rem 0 1.2rem}
+.fam{margin-bottom:1.1rem}
+.fam h3{font-size:.85rem;font-weight:600;display:flex;align-items:center;gap:.45rem;margin-bottom:.35rem}
+.fam h3 i{width:10px;height:10px;border-radius:50%;display:inline-block}
+.row{display:grid;grid-template-columns:minmax(0,11em) minmax(0,1fr);gap:.2rem 1rem;padding:.55rem .1rem;border-top:1px solid var(--bdr);font-size:.88rem}
+.row .n{font-weight:600}
+.row .a{color:var(--txt)}
+.row .k{grid-column:2;color:var(--mut);font-size:.8rem}
+@media(max-width:560px){.row{grid-template-columns:1fr}.row .k{grid-column:1}}
+.qtop{display:flex;justify-content:space-between;font-size:.8rem;color:var(--mut);margin-bottom:.6rem}
+.prog{height:4px;background:var(--card);border-radius:2px;margin-bottom:1rem;overflow:hidden}
+.prog div{height:100%;background:var(--acc);transition:width .2s}
+.qcard{background:var(--sur);border:1px solid var(--bdr);border-radius:12px;padding:1.3rem 1.1rem;text-align:center;margin-bottom:.9rem}
+.qhint{font-size:.78rem;color:var(--mut);margin-bottom:.4rem}
+.qtext{font-size:1.15rem;font-weight:600;line-height:1.55}
+.opts{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:.5rem}
+.opt{border:1px solid var(--bdr);background:var(--card);border-radius:8px;padding:.7rem .8rem;text-align:left;font-size:.9rem}
+.opt:hover:not(:disabled){border-color:var(--mut)}
+.opt.ok{border-color:var(--grn);color:var(--grn);font-weight:600}
+.opt.no{border-color:var(--red);color:var(--red)}
+.opt:disabled{cursor:default}
+.fb{margin-top:1rem;background:var(--sur);border:1px solid var(--bdr);border-radius:10px;padding:.85rem 1rem;font-size:.9rem;display:none}
+.fb .v{font-weight:700;margin-bottom:.3rem}
+.fb .v.ok{color:var(--grn)}.fb .v.no{color:var(--red)}
+.chip{display:inline-block;font-size:.78rem;border-radius:5px;padding:.05rem .5rem;margin:.15rem .3rem .15rem 0;border:1px solid var(--bdr)}
+.fb .btn{margin-top:.7rem}
+.res{text-align:center;padding:1rem 0}
+.res .big{font-size:2.2rem;font-weight:700}
+.res p{color:var(--mut);font-size:.9rem}
+.wl{margin-top:1rem;text-align:left}
+.wl div{border-top:1px solid var(--bdr);padding:.5rem .1rem;font-size:.88rem}
+.wl b{font-weight:600}
+@media(prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+<div class="hdr"><span class="logo">iPAS 分類記憶練習</span><a href="./">回題庫</a></div>
+<div class="wrap">
+<section class="view on" id="home">
+<div class="intro"><h1>看到名字，就說得出它在做什麼</h1>
+<p>每個牌組先看家族表，再練習。每題連續答對兩次就算記住，方塊會變成實心綠色。進度存在這台裝置的瀏覽器裡。</p></div>
+<div class="bar"><button class="btn pri" id="mixWrong">練所有還沒記住的</button><button class="btn" id="reset">清除進度</button></div>
+<div id="decks"></div>
+</section>
+<section class="view" id="study"><button class="back" data-go="home">回牌組列表</button><div id="studyBody"></div></section>
+<section class="view" id="quiz"><button class="back" data-go="home">結束練習</button><div id="quizBody"></div></section>
+</div>
+<script>
+const DECKS=[
+{id:'s1cv',subj:'科目一',title:'電腦視覺',tip:'是什麼→分類，在哪裡→偵測，多大塊→分割；要分個體→實例分割',items:[
+['影像分類','整張圖回答「這是什麼」','判斷一張 X 光片有沒有肺炎','是什麼','任務'],
+['物件偵測','框出物體在哪、有幾個','產線即時找出瑕疵零件的位置','在哪裡、計數','任務'],
+['語義分割','逐像素標類別，不分個體','標出畫面中所有道路與行人的像素','逐像素、不分個體','任務'],
+['實例分割','逐像素標類別，且分出每個個體','分別標出行人#1、行人#2','Pixel Mask、分個體','任務'],
+['YOLO','單階段偵測，看一次就輸出框與類別','高頻影像流要即時偵測','One-stage、快','偵測模型'],
+['Faster R-CNN','兩階段偵測，先產生候選區域再分類','重視準確、不趕時間的偵測','Two-stage、準','偵測模型'],
+['Grad-CAM','用 CNN 梯度畫熱力圖，速度快','醫療影像 200ms 內解釋判斷原因','CNN、快、熱力圖','可解釋性'],
+['LIME／KernelSHAP','反覆擾動輸入觀察輸出，任何模型都能用但慢','模型種類不限、不趕時間的解釋','擾動採樣、model-agnostic','可解釋性'],
+['TreeSHAP','專門解釋樹模型的特徵貢獻','解釋 XGBoost 授信模型','樹模型專用','可解釋性']]},
+{id:'s1nlp',subj:'科目一',title:'NLP 與 Transformer',tip:'N-gram 切候選，TF-IDF 排重要，POS 看詞性，NER 認身分，Word2Vec 看意思；雙向理解找 BERT，單向生成找 GPT',items:[
+['Tokenization 斷詞','把句子切成詞','「王小明／昨天／在／台北」','切詞','前處理'],
+['POS 詞性標註','標出每個詞的詞性','王小明＝名詞、買＝動詞','名詞、動詞','前處理'],
+['NER 命名實體辨識','認出詞的身分（人名、地名）','從客服對話抽出姓名、地址','人名、地名、組織','前處理'],
+['N-gram','把相鄰的詞組合成候選，不判斷好壞','把「人工」「智慧」組成「人工智慧」','詞組、候選','文字表示'],
+['TF-IDF','這份常出現、別份少出現＝重要','找出每本書的關鍵字','關鍵字、計分','文字表示'],
+['Word2Vec','把詞變成低維向量，意思近距離就近','解決 One-hot 無語意、維度爆炸','Embedding、語意','文字表示'],
+['CBOW','用上下文猜中心詞，快但罕見詞差','訓練效率優先的詞向量','快、平滑','文字表示'],
+['Skip-gram','用中心詞猜上下文，罕見詞品質好','語料有大量長尾詞彙','長尾詞、慢','文字表示'],
+['RNN','逐字讀，讀到後面忘了前面','早期的序列模型','梯度消失','序列模型'],
+['LSTM','逐字讀＋閘門筆記本，記得比較久','改善 RNN 的遺忘問題','閘門、cell state','序列模型'],
+['Self-Attention','每個字同時看所有字並加權','捕捉長距離依賴、可平行運算','全局、平行','序列模型'],
+['BERT','雙向看、克漏字（MLM）訓練，擅長理解','判斷客服來信屬於哪一類','Encoder、雙向、MLM','預訓練模型'],
+['GPT','只看左邊、預測下一個字，擅長生成','依規格寫 200 字商品文案','Decoder、單向、接龍','預訓練模型']]},
+{id:'s1llm',subj:'科目一',title:'LLM 客製化與壓縮',tip:'不動參數用 Prompt，少動參數用 LoRA，全動參數怕遺忘，知識常換用 RAG；讓推論變便宜：量化、蒸餾、剪枝',items:[
+['Full Fine-tuning','更新全部參數','資源充足的完整微調','記憶體大、易災難性遺忘','微調'],
+['LoRA','凍結原權重，只訓練小的低秩矩陣（便利貼）','GPU 記憶體不夠、想減少遺忘','凍結、低秩','微調'],
+['QLoRA','先把模型壓成 4-bit 再做 LoRA','記憶體比 LoRA 更吃緊','4-bit 量化 + LoRA','微調'],
+['Prompt Tuning','只學輸入端的 soft prompt，不動模型','最輕量的客製化','不動參數','微調'],
+['RAG','外掛檢索資料，不改模型','知識常更新、要降低幻覺','檢索、外部知識','不改模型'],
+['量化','把 FP32 數字變粗成 INT8','邊緣裝置推論太慢、不能換硬體','FP32→INT8','壓縮'],
+['知識蒸餾','大模型教小模型','要把模型縮小放進地端設備','Teacher→Student','壓縮'],
+['剪枝','刪掉不重要的參數','讓模型變小變快','Pruning','壓縮'],
+['ReAct','思考→行動→觀察，循環使用工具','Agent 先查工具再回答，避免幻覺','Thought、Action、Observation','Agent'],
+['Multi-Agent','總指揮分派任務給多個 Agent','Orchestrator 評估結果、重試或改派','Orchestrator','Agent']]},
+{id:'s1ops',subj:'科目一',title:'MLOps 部署與維運',tip:'輸入變 = Data Drift，關係變 = Concept Drift，一上線就壞 = Skew；不能漏先小流量 Canary',items:[
+['Data Drift','輸入的分布變了，X→y 關係沒變','客群變年輕，但同條件違約率一樣','輸入變','監控'],
+['Concept Drift','X 和 y 的關係變了','疫情後同樣的深夜交易不再代表盜刷','關係變','監控'],
+['Training-Serving Skew','線上與離線的特徵處理不一致，一上線就壞','訓練缺值填平均，線上卻填 0','上線第一天','監控'],
+['PSI','比較現在與訓練時的特徵分布差多少','偵測 Data Drift 的指標','Population Stability Index','監控'],
+['分群監控','依區間分開看指標，不只看整體','整體 RMSE 正常但高額理賠失準','5% 被平均掩蓋','監控'],
+['Canary 金絲雀發布','先導 1～5% 真實流量給新模型','要量真實 CTR 又要控制風險','小流量、真使用者','上線策略'],
+['Shadow Mode','新舊模型都跑，但只顯示舊模型','比較輸出差異，但量不到點擊','使用者看不到新模型','上線策略'],
+['Phased Rollout','流量 5%→30%→100% 逐步放大','放量時延遲升高就先暫停優化','漸進式','上線策略'],
+['Circuit Breaker','外部服務一直逾時就先跳開、回替代回應','防止一個服務拖垮整個平台','斷路器、保險絲','上線策略'],
+['Backtesting','用歷史資料模擬模型表現','仍是離線，量不到真實互動','回測','上線策略'],
+['GPU 排程與批次','調整排程與批次大小，讓 GPU 不閒置','GPU 使用率 60%、kernel 間有閒置','太閒不是太忙','推論效能'],
+['Redis／Feature Store 快取','把即時特徵先存好，毫秒取用','100 毫秒內要回推薦結果','快取、低延遲','推論效能']]},
+{id:'s1data',subj:'科目一',title:'資料與模型規劃',tip:'多、少、新、雜、放、小',items:[
+['PCA 主成分分析','把很多欄位依比重壓成少數主成分','200 個感測器特徵壓成 10 個','多：協方差、特徵值','多'],
+['維度詛咒','欄位太多，大家距離差不多，距離方法失效','300 個特徵用 DBSCAN 全變雜訊','多：高維','多'],
+['特徵篩選','挑出跟目標有關的原始欄位','留下購買次數、刪掉顧客編號','多：挑選','多'],
+['遷移學習','借別人練好的模型，自己只微調最後一段','每類只有 50 張零件圖','少：預訓練、微調','少'],
+['合成資料','造出難取得的情境資料，但不能完全取代真實','缺少大雨濃霧的駕駛資料','少：擴充場景','少'],
+['增量學習','有新資料新特徵就接著學，不用全部重訓','每天新增數百個廣告特徵','新：持續更新','新'],
+['異質特徵融合','不同類型資料先各自處理再融合','基因序列＋電子病歷文本','雜：分層處理','雜'],
+['Data Lake','存原始、雜亂的資料','原始影像與文字','放：原始','放'],
+['Data Warehouse','存整理好的結構化資料','月報用的彙總表','放：結構化','放']]},
+{id:'s1mm',subj:'科目一',title:'多模態與治理',tip:'早期融合在輸入整合，晚期融合在預測後整合；高風險要 HITL',items:[
+['早期融合','在輸入或特徵層就把模態合併','模態互動強，但某模態品質差會拖累全部','特徵層合併','多模態'],
+['晚期融合','各模態先各自預測，再整合結果','某模態品質不穩時較穩健','預測後合併','多模態'],
+['CLIP 跨模態對齊','把圖和文字投到同一個語意空間','以文字搜尋圖片','對比學習、共同空間','多模態'],
+['HITL','高風險決策保留人工審核','醫療診斷由醫師最後確認','Human-in-the-Loop','治理'],
+['聯邦學習','資料不出門，只傳模型更新','醫院資料不能離院卻要用雲端訓練','Federated Learning','治理'],
+['可重現與可追溯','保存資料、流程與版本，結果能重現','NIST AI RMF 稽核要求','Reproducibility','治理'],
+['SHAP 值','每個特徵把預測往正或負推了多少','某特徵 −2.3 代表往負方向推','特徵貢獻','治理']]},
+{id:'s2stat',subj:'科目二',title:'中心、離散與離群',tip:'一般用算術、成長用幾何、分子固定用調和、偏態用中位、類別用眾數；同一家族一起用',items:[
+['算術平均','全部相加 ÷ 個數；平均×個數＝總和','估算明年理賠準備金總額','總額、對稱','數值家族'],
+['幾何平均','相乘後開 n 次方','三年成長 +10%、+20%、−10% 的年均成長率','成長率、複利','數值家族'],
+['調和平均','翻過來、對齊基準、平均、翻回去','每次花固定 1,000 元買零件的平均單價','分子固定、F1','數值家族'],
+['中位數','排序後正中間的值','報告「一般家庭」的房價','偏態、極端值','位置家族'],
+['眾數','出現最多次的值','決定哪個尺碼進最多貨','類別資料','特殊用途'],
+['標準差','大家離平均，平均差多遠','比較兩家分店哪家銷量較穩定','波動、離散','數值家族'],
+['IQR','Q3 − Q1，中間 50% 的範圍','盒鬚圖盒子的寬度','四分位、穩健','位置家族'],
+['1.5×IQR 圍欄','超出 Q1−1.5IQR 或 Q3+1.5IQR 為離群','盒鬚圖鬍鬚外的點','圍欄','位置家族'],
+['Z-score','(x − 平均) ÷ 標準差，離平均走幾步','某天銷量是否異常（|Z|>3）','標準化、離群','數值家族'],
+['變異係數 CV','標準差 ÷ 平均，去掉單位','比較台幣與日圓薪資誰差距大','不同單位','特殊用途'],
+['全距','最大 − 最小','快速看資料跨多大','最怕極端值','特殊用途']]},
+{id:'s2dist',subj:'科目二',title:'機率分布',tip:'先看答案：是否→伯努利；時間→指數；量測值→常態；次數→有 n 二項、只有區間泊松、爆量負二項',items:[
+['伯努利','試一次，會不會','一位顧客會不會用優惠券','單次、是否','離散'],
+['二項','試 n 次，成功幾次','寄給 200 位會員有幾位開信','共 n 次','離散'],
+['泊松','一段時間內發生幾次（釣魚一小時）','客服中心每小時接幾通電話','每小時、每天','離散'],
+['負二項','泊松忽多忽少時的替補','每天退貨平均 4、變異數 25','變異數 > 平均','離散'],
+['常態','鐘形，量測值集中在中間','成年男性的身高分布','身高、誤差','連續'],
+['指數','等下一次要多久','兩通電話之間隔幾分鐘','間隔、無記憶性','連續']]},
+{id:'s2test',subj:'科目二',title:'假設檢定',tip:'數字還是類別？比幾組？同一群還是不同人？p 看小、Z 看大',items:[
+['Z 檢定','1 組跟宣稱值比，已知母體標準差','宣稱電池壽命 500 小時，已知標準差','已知 σ','比平均'],
+['單樣本 t','1 組跟宣稱值比，不知標準差','宣稱出餐 10 分鐘，用樣本標準差','不知 σ','比平均'],
+['獨立 t','兩群不同的人比平均','A 班 vs B 班數學成績','不同人','比平均'],
+['成對 t','同一群人前後比','同一批患者用藥前後的血壓','同一批、前後','比平均'],
+['ANOVA','3 組以上比平均','三種學習率的平均損失','3 組以上','比平均'],
+['卡方檢定','類別資料比次數或比例','新舊網頁的轉換率（買／沒買）','類別、比例','比類別'],
+['型一錯誤','不應到卻到（假警報、FP）','皮帶扣被安檢門攔下','拒絕 H0 判錯','判錯'],
+['型二錯誤','應到未到（漏接、FN）','帶刀卻沒被攔','不拒絕 H0 判錯','判錯'],
+['p 值','假設 H0 成立，看到這個結果的機率','p < α 就拒絕 H0','p 看小','判決'],
+['信賴區間','真正的值大概落在的範圍','區間含 0 → 不拒絕 H0','含 H0 值','判決']]},
+{id:'s2algo',subj:'科目二',title:'演算法',tip:'先問有沒有標準答案，再問預測數字還是類別；線性家族怕編碼，樹家族不在乎',items:[
+['線性迴歸','畫一條直線預測數字','預測下個月的營收金額','預測金額','線性家族'],
+['羅吉斯迴歸','二選一，輸出 0～1 機率','預測客戶會不會流失並給出機率','會不會、機率','線性家族'],
+['多類別羅吉斯迴歸','三類以上的分類，訓練快','預測讀者下次買 8 類書中的哪一類','Multinomial','線性家族'],
+['SVM','在兩類之間畫最寬的分隔線','找出讓兩類距離最遠的邊界','邊界、核函數','線性家族'],
+['決策樹','一路問是非題，用 Gini 選問題','收入 >100 萬？有房貸？一路判斷','Gini、節點分裂','樹家族'],
+['隨機森林','很多棵樹一起投票','地區編成 1、2、3 也不會誤解大小','多棵樹、不怕編碼','樹家族'],
+['XGBoost','一棵接一棵，後面的樹修正前面的錯','逐步修正錯誤來提升準確度','Boosting','樹家族'],
+['KNN','看最近 k 個鄰居投票','算距離、排序、取前 k 筆、多數決','距離、取前 k','距離家族'],
+['K-means','沒答案，自動分成 K 群','沒有標籤，把客戶分成 5 群','無標籤、分群','距離家族'],
+['DBSCAN','依密度分群，能找出雜訊點','依資料點密集程度分群','密度、雜訊','距離家族'],
+['Apriori','找常被一起買的組合，小組合不夠就刪','分析購物籃的熱門組合','支持度、Lift','關聯'],
+['SVD','把大表拆成小表相乘，任何形狀都能拆','Netflix 拆評分表做推薦','矩陣分解','拆解家族']]},
+{id:'s2pd',subj:'科目二',title:'Pandas 與程式',tip:'Pandas 是 Python 版的 Excel；從左讀到右；工具.動作(資料)',items:[
+["df[df['分類']=='電子']",'只留下符合條件的列','只要電子產品的資料','Excel 篩選','選取'],
+["df['營收']",'取出一整欄','只要營收這一欄','選取整欄','選取'],
+["groupby('ID')['營收'].sum()",'依某欄分組加總','算每位客戶的總消費','樞紐分析表','彙總'],
+['.nlargest(3)','取數值最大的 3 個','總營收前 3 名客戶','取前 3 名','彙總'],
+['sort_values().head(3)','排序後看前 3「筆」','金額最大的 3 筆交易（不是前 3 名客戶）','前 3 筆','彙總'],
+["merge(how='inner')",'兩表接起來，只留兩邊都有的','只保留客戶表有對應的交易','VLOOKUP 後刪找不到','合併'],
+["merge(how='left')",'左表全留，對不到補 NaN','交易全留，找不到地區就空白','VLOOKUP 留空白','合併'],
+["merge(how='outer')",'兩表全部保留','交易和客戶都不能漏','全部合併','合併'],
+['fillna(median())','用中位數補空值','右偏的收入欄位有 5% 缺值','空白格填值','清理'],
+['read_csv(chunksize=…)','分批讀完整個大檔','50GB 檔案大於記憶體','分批讀取','讀取'],
+['read_csv(nrows=…)','只讀前 N 筆，後面丟掉','只想先看前 1 萬筆','會漏資料','讀取'],
+['scaler.fit_transform(X)','先算平均與標準差，再換算','對特徵做標準化','先量尺寸再裁','前處理'],
+['Spark agg()','各機器先算小計再彙總','10 億筆資料算標準差','不要 collect()','分散式'],
+['def f(x, tags=[])','預設清單只建一次、大家共用','第二次呼叫得到兩個 checked','共用簽到簿','Python 陷阱']]},
+{id:'s2eval',subj:'科目二',title:'評估、不平衡與資料洩漏',tip:'準確率會騙人；先切分再處理；不能漏門檻調低',items:[
+['Accuracy 準確率','全部判斷對幾成','99.5% 正常交易全猜正常也有 99.5%','不平衡會騙人','指標'],
+['Recall 召回率','真的有事的抓到幾成','作弊零容忍，不能放過','寧可錯殺','指標'],
+['Precision 精確率','判有事的真的有事幾成','垃圾信不能冤枉正常信','寧缺勿濫','指標'],
+['F1','Recall 與 Precision 的調和平均','兩者都要好才高','木桶','指標'],
+['PR-AUC','專看少數類抓得好不好','敗血症只佔 3.2%','不平衡時用','指標'],
+['SMOTE','在相近少數樣本之間造新樣本','違約只佔 1.6%','切分後才做','不平衡對策'],
+['Class Weight','抓錯少數類罰更重','詐欺 0.3%，準確率高卻攔不到','Cost-sensitive','不平衡對策'],
+['降低門檻','更容易判定有事，Recall 上升','營運長：不能放過任何作弊者','不能漏','不平衡對策'],
+['先切分再處理','SMOTE、篩特徵、標準化都只用訓練集','在全體資料上篩特徵，AUC 虛高','資料洩漏','防洩漏'],
+['依時間切分','用過去預測未來（Walk-Forward）','預測未來 14 天門市銷售','時間序列','防洩漏'],
+['依人分組切分','同一人的資料只在同一邊','ICU 病患有多筆紀錄','Group Split','防洩漏'],
+['過擬合','訓練高分、測試低分','訓練 AUC 0.94、測試 0.68','只背考古題','問題']]},
+{id:'s2store',subj:'科目二',title:'儲存與架構',tip:'不同需求用不同資料庫，各取所需；要精確計算交給 SQL',items:[
+['Data Lake','原始、雜亂的資料先放進來','數百億筆點擊紀錄','原始','儲存'],
+['Data Warehouse','整理好的結構化資料','月報用的彙總表','結構化','儲存'],
+['文件型資料庫','存格式不固定的資料','各類商品欄位都不同','半結構化','資料庫'],
+['向量資料庫','存 Embedding，專門找相似','1,536 維向量做相似度搜尋','相似度','資料庫'],
+['關聯式資料庫','整齊表格，交易精準（ACID）','庫存扣減不能超賣','ACID','資料庫'],
+['Sharding','資料橫切，分給多台機器','PB 級資料單一節點撐不住','水平分割','擴展'],
+['Replication','同一份資料存多份','提升備份與可用性','複寫','擴展'],
+['Feature Store','特徵共用倉庫，訓練推論同一套','兩團隊都要 30 天交易行為','避免重複開發','特徵管理'],
+['Text-to-SQL Agent','LLM 把自然語言轉 SQL，交給資料庫算','行銷人員問上月台北 3C 女性轉換率','精確計算','查詢'],
+['RAG','先檢索再讓 LLM 生成回答','適合問答，不適合精確統計','檢索生成','查詢']]},
+{id:'s2feat',subj:'科目二',title:'特徵與編碼',tip:'衍生加欄，增強加列；有序用 Ordinal，無序遇線性要 One-Hot',items:[
+['特徵衍生','從舊欄位算出新欄位（加欄）','生日 → 年齡；總消費 ÷ 次數','加欄','特徵工程'],
+['資料增強','把資料稍微變化造出新資料（加列）','貓的照片翻轉、旋轉、調亮','加列','特徵工程'],
+['離散化','連續數字切成區間','時間 → 早晨、下午、夜晚','切段','特徵工程'],
+['Ordinal Encoding','有順序的類別照順序給數字','滿意度：差 1、普通 2、好 3','有順序','編碼'],
+['One-Hot Encoding','沒順序的類別每類開一欄','縣市給線性模型使用','沒順序、線性模型','編碼'],
+['Label Encoding','類別直接換成 1、2、3','線性模型會誤以為 C 區最大','誤解大小','編碼'],
+['Target Encoding','用答案平均值代表類別，只能用訓練集算','台北續約率 0.8','切分前算＝洩漏','編碼'],
+['Positional Encoding','告訴 Transformer 每個字在第幾個','分辨「狗咬人」和「人咬狗」','位置資訊','編碼']]},
+{id:'s2viz',subj:'科目二',title:'視覺化',tip:'分布看箱直，比較用長條，占比用圓餅，關係看散點，趨勢用折線',items:[
+['直方圖','看數值落在各區間的數量與形狀','看薪資是不是右偏','分布','數值'],
+['箱形圖','看中位數、IQR 與離群值','比較三個城市房價分布','離群','數值'],
+['長條圖','比較各類別的多少','各分店營收比較','比較','類別'],
+['圓餅圖','各類佔整體的比例（5 類以內）','市場佔有率','占比','類別'],
+['堆疊圖','每一類裡面的組成','各分店男女客比例','組成','類別'],
+['散布圖','兩個數值變數的關係','身高與體重','關係','關聯'],
+['熱力圖／相關矩陣','很多變數兩兩相關，顏色深淺','30 個特徵的相關程度','多變數','關聯'],
+['折線圖','隨時間的趨勢','推論延遲每分鐘的變化','趨勢','時間'],
+['截斷 Y 軸','Y 軸不從 0 開始，放大差距','3.2% vs 4.0% 看起來差很多','誤導','陷阱'],
+['資料密度','有限空間放最多有效資訊，維持可讀','不拆十張、不加 3D 裝飾','Tufte','原則']]},
+{id:'s2priv',subj:'科目二',title:'隱私與安全',tip:'K 匿名改模糊；差分隱私加雜訊；合成資料造新的；亂數回應擲硬幣',items:[
+['K 匿名','資料改模糊，每筆至少跟 K−1 筆一樣','年齡改 30～39 歲、地址只到區','準識別符','去識別化'],
+['差分隱私','加一點雜訊，有你沒你結果幾乎一樣','防止成員推斷攻擊','可量化保證','去識別化'],
+['差分隱私合成資料','用差分隱私造出一份全新的假資料','發布沒有真人的模擬名單','造新的，不是直接加雜訊','去識別化'],
+['亂數回應','擲硬幣決定說真話或隨機答','問「你有沒有逃稅？」','可否認性','去識別化'],
+['成員推斷攻擊','從模型的高信心輸出，猜某人是否在訓練資料裡','信用模型開放 API 的風險','Membership Inference','攻擊'],
+['聯邦學習','資料不出門，只傳模型更新','多家醫院合作訓練','Federated Learning','保護架構']]}
+];
+const KEY='ipas-drill-v1';
+let S={};try{S=JSON.parse(localStorage.getItem(KEY)||'{}')}catch(e){S={}}
+const save=()=>{try{localStorage.setItem(KEY,JSON.stringify(S))}catch(e){}};
+const id=(d,it)=>d.id+'|'+it[0];
+const lvl=k=>Math.min(S[k]||0,2);
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const shuffle=a=>{a=a.slice();for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a};
+const FC=['var(--f0)','var(--f1)','var(--f2)','var(--f3)','var(--f4)','var(--f5)'];
+function famsOf(d){const f=[];d.items.forEach(it=>{if(!f.includes(it[4]))f.push(it[4])});return f}
+function show(v){document.querySelectorAll('.view').forEach(x=>x.classList.toggle('on',x.id===v));window.scrollTo(0,0)}
+document.querySelectorAll('[data-go]').forEach(b=>b.onclick=()=>{renderHome();show(b.dataset.go)});
+function renderHome(){
+const box=document.getElementById('decks');let h='';
+['科目一','科目二'].forEach(sj=>{
+h+='<div class="subj"><h2>'+sj+'</h2>';
+DECKS.filter(d=>d.subj===sj).forEach(d=>{
+const m=d.items.filter(it=>lvl(id(d,it))>=2).length;
+h+='<div class="deck"><div class="deck-top"><b>'+esc(d.title)+'</b><span>記住 '+m+' / '+d.items.length+'</span></div>'+
+'<div class="tip">'+esc(d.tip)+'</div><div class="dots">'+d.items.map(it=>'<span class="dot s'+lvl(id(d,it))+'" title="'+esc(it[0])+'"></span>').join('')+'</div>'+
+'<div class="acts"><button class="btn" data-study="'+d.id+'">看家族表</button><button class="btn pri" data-quiz="'+d.id+'">練習</button></div></div>';});
+h+='</div>';});
+box.innerHTML=h;
+box.querySelectorAll('[data-study]').forEach(b=>b.onclick=()=>study(b.dataset.study));
+box.querySelectorAll('[data-quiz]').forEach(b=>b.onclick=()=>startDeck(b.dataset.quiz));}
+function study(did){const d=DECKS.find(x=>x.id===did),f=famsOf(d);
+let h='<div class="vt">'+esc(d.subj)+'｜'+esc(d.title)+'</div><div class="vtip">口訣：'+esc(d.tip)+'</div>';
+f.forEach((fm,i)=>{h+='<div class="fam"><h3><i style="background:'+FC[i%6]+'"></i>'+esc(fm)+'</h3>';
+d.items.filter(it=>it[4]===fm).forEach(it=>{h+='<div class="row"><div class="n">'+esc(it[0])+'</div><div class="a">'+esc(it[1])+'</div><div class="k">例：'+esc(it[2])+'　關鍵字：'+esc(it[3])+'</div></div>'});h+='</div>'});
+h+='<div class="bar"><button class="btn pri" id="goQuiz">看完了，開始練習</button></div>';
+document.getElementById('studyBody').innerHTML=h;document.getElementById('goQuiz').onclick=()=>startDeck(did);show('study');}
+let Q=null;
+function build(pairs){
+const unm=shuffle(pairs.filter(p=>lvl(id(p.d,p.it))<2)),mas=shuffle(pairs.filter(p=>lvl(id(p.d,p.it))>=2));
+return unm.concat(mas).slice(0,15).map(p=>({...p,mode:Math.random()<.5?'name':'scene'}));}
+function startDeck(did){const d=DECKS.find(x=>x.id===did);startList(build(d.items.map(it=>({d,it}))),d.title);}
+function startList(list,title){if(!list.length){alert('目前沒有需要練習的題目');return}Q={list,i:0,sc:0,wrong:[],title};ask();show('quiz');}
+function ask(){const q=Q.list[Q.i],d=q.d,it=q.it,fi=famsOf(d).indexOf(it[4]);
+let ans,pool,hint,text;
+if(q.mode==='name'){hint='這個在做什麼？';text=it[0];ans=it[1];pool=d.items.filter(x=>x!==it).map(x=>x[1]);}
+else{hint='這個情境該用哪一個？';text=it[2];ans=it[0];pool=d.items.filter(x=>x!==it).map(x=>x[0]);}
+const ch=shuffle([ans].concat(shuffle(pool).slice(0,3)));
+let h='<div class="qtop"><span>'+esc(Q.title)+'</span><span>第 '+(Q.i+1)+' / '+Q.list.length+' 題　答對 '+Q.sc+'</span></div>'+
+'<div class="prog"><div style="width:'+(Q.i/Q.list.length*100)+'%"></div></div>'+
+'<div class="qcard"><div class="qhint">'+hint+'</div><div class="qtext">'+esc(text)+'</div></div><div class="opts">'+
+ch.map((c,k)=>'<button class="opt" data-k="'+k+'">'+esc(c)+'</button>').join('')+'</div><div class="fb" id="fb"></div>';
+const body=document.getElementById('quizBody');body.innerHTML=h;
+body.querySelectorAll('.opt').forEach(b=>b.onclick=()=>pick(ch[+b.dataset.k],ans,b,fi));}
+function pick(t,ans,btn,fi){const q=Q.list[Q.i],it=q.it,k=id(q.d,it),r=t===ans;
+document.querySelectorAll('.opt').forEach(b=>{b.disabled=true;if(b.textContent===ans)b.classList.add('ok')});
+if(r){Q.sc++;S[k]=(S[k]||0)+1}else{btn.classList.add('no');S[k]=0;Q.wrong.push(q)}
+save();
+const fb=document.getElementById('fb');fb.style.display='block';
+fb.innerHTML='<div class="v '+(r?'ok':'no')+'">'+(r?'答對了':'正解：'+esc(ans))+'</div>'+
+'<div><b>'+esc(it[0])+'</b>：'+esc(it[1])+'</div><div style="color:var(--mut);font-size:.85rem">例：'+esc(it[2])+'</div>'+
+'<div><span class="chip" style="border-color:'+FC[fi%6]+';color:'+FC[fi%6]+'">家族：'+esc(it[4])+'</span><span class="chip">關鍵字：'+esc(it[3])+'</span></div>'+
+'<button class="btn pri" id="next">'+(Q.i<Q.list.length-1?'下一題':'看結果')+'</button>';
+const n=document.getElementById('next');n.onclick=next;n.focus();}
+function next(){Q.i++;if(Q.i<Q.list.length)ask();else result();}
+function result(){const w=Q.wrong;
+let h='<div class="res"><div class="big">'+Q.sc+' / '+Q.list.length+'</div><p>'+(w.length?'把下面這幾個再看一次，再練一輪':'全對，這組已經很熟了')+'</p></div>';
+if(w.length){h+='<div class="wl">'+w.map(q=>'<div><b>'+esc(q.it[0])+'</b>：'+esc(q.it[1])+'<br><span style="color:var(--mut);font-size:.82rem">家族：'+esc(q.it[4])+'　關鍵字：'+esc(q.it[3])+'</span></div>').join('')+'</div>'}
+h+='<div class="bar">'+(w.length?'<button class="btn pri" id="redo">只練答錯的</button>':'')+'<button class="btn" id="again">再練一輪</button><button class="btn" id="home2">回牌組列表</button></div>';
+document.getElementById('quizBody').innerHTML=h;
+const title=Q.title,list=Q.list;
+if(w.length)document.getElementById('redo').onclick=()=>startList(shuffle(w).map(q=>({...q,mode:q.mode==='name'?'scene':'name'})),title);
+document.getElementById('again').onclick=()=>startList(build(list.map(q=>({d:q.d,it:q.it}))),title);
+document.getElementById('home2').onclick=()=>{renderHome();show('home')};}
+document.getElementById('mixWrong').onclick=()=>{const all=[];DECKS.forEach(d=>d.items.forEach(it=>{if(lvl(id(d,it))<2)all.push({d,it})}));startList(build(all),'還沒記住的混合練習');};
+document.getElementById('reset').onclick=()=>{if(confirm('確定要清除所有練習進度？')){S={};save();renderHome()}};
+renderHome();
+</script></body></html>
